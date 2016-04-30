@@ -1,0 +1,5 @@
+* {margin: 0; padding: 0; border: none; outline: none;}
+body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
+body a {color: #24A6CC; text-decoration: none;}
+body a:hover {text-decoration: underline;}
+body p {margin-bottom: 10px;}
