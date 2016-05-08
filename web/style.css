@@ -1,3 +1,9 @@
+/* Baseado no psd Joao:
+   Fonte padrão: Roboto
+   Fonte no logotipo: Arcon
+   Cor de fundo: f5f8fa
+   Cor de fundo central: eaebe8 */
+
 * {margin: 0; padding: 0; border: none; outline: none;}
 body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
 body a {color: #24A6CC; text-decoration: none;}
