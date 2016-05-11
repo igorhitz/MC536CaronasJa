@@ -5,7 +5,7 @@
         <title>Caronas já</title>
         <meta name="description" content="Rede social de caronas!">
         <meta name="keywords" content="Caronas, Rede Social, Transporte, Comunicação">
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="<?= PATH.'/app/css/' ?>style.css" />
         <!-- 
         <link rel="shortcut icon" href="img/favicon.ico" />
         <link rel="img_src" href="http://www.yuridelgado.com.br/images/nerd-icon.png" />
@@ -18,7 +18,7 @@
             <div class="wrapper">
                 <div id="logo">
                     <a href="http://localhost.com">
-                       <img src="resources/logotipo.png" alt ="Caronasjá">             
+                       <img src="<?= PATH.'/app/resources/'?>logotipo.png" alt ="Caronasjá">             
                     </a>
                 </div>
             </div>
