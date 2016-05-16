@@ -15,6 +15,13 @@
     
     <body>
         <header>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div id = "login">
+                    Link
+                </div>
+            </div>
+        </nav>
             <div class="wrapper">
                 <div id="logo">
                     <a href="http://localhost.com">
