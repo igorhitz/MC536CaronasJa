@@ -1,11 +1,11 @@
 /* Baseado no psd Joao:
-   Fonte padr„o: Roboto
+   Fonte padr√£o: Roboto
    Fonte no logotipo: Arcon
    Cor de fundo: f5f8fa
    Cor de fundo central: eaebe8 */
 
 * {margin: 0; padding: 0; border: none; outline: none;}
-body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
+body {padding-top: 50px; font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
 body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
@@ -22,3 +22,8 @@ header {background: url(resources/bg-header.png) repeat-x; width: 100%; height: 
 #menu ul li a {color: #4B4B4B; text-decoration: none; line-height: 18px; position: relative; float: left; padding: 13px 20px 10px; -webkit-transition: all 0.4s ease; border: none; text-shadow: 1px 1px 0 #FFF; -moz-transition: all 0.4s ease; -o-transition: all 0.4s ease;}
 #menu ul li a.PrincipAtivo {border-bottom: 2px solid #4389AC;}
 #menu ul li a.PrincipAtivo:hover {border-bottom: 2px solid #4389AC; padding-top: 13px;}
+
+.navbar {background: #FFFFFF; position: relative; min-height: 50px; margin-bottom: 20px; border: 1px solid transparent;}
+.navbar-fixed-top {position: fixed; right: 0;left: 0; z-index: 1030;}
+.container {margin-right: -15px; margin-left: -15px;}
+
