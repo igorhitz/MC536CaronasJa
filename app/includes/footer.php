@@ -1,7 +1,7 @@
 </div>
 		<div class = "wrapper">
 	    	<footer>
-	    		<ul id = "desenvolvedores">
+	    		<ul>
 	    			<li>Yuri Delgado</li>
 	    			<li>Igor Hitzschky</li>
 	    			<li>Julianny Favinha Donda</li>
