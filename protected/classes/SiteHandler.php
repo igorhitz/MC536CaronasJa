@@ -9,6 +9,15 @@
 			 }
 		}
 
+		public function getAlert($message, $type='error') {
+			switch($type) {
+				case 'error':
+					echo '<div class="alert errorMsg">'.$message.'</div>';
+					break;
+			}
+			
+		}
+
 
 	}
 ?>
