@@ -5,25 +5,31 @@
    Cor de fundo central: eaebe8 */
 
 * {margin: 0; padding: 0; border: none; outline: none;}
-body {padding-top: 50px; font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
+body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
 body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
 /* Header */
-header {background: url(resources/bg-header.png) repeat-x; width: 100%; height: 228px;}
+header {background: url(../resources/bg-header.png) repeat-x; width: 100%; height: 228px;}
 .wrapper {margin: 0 auto; width: 960px;}
 #logo {float: left; margin-top: 50px;}
 #logo img {display: block; margin-bottom: 10px;}
+.navbar {background: #D3DDB1; position: relative; min-height: 20px; margin-bottom: 20px; border: 1px solid transparent;}
+.navbar-fixed-top {position: fixed; right: 0;left: 0; z-index: 1030;}
+.container {margin-right: 30	px; margin-left: 30px;}
+.container ul {float left; list-style: none;}
+.container ul li {display: inline; float:right;}
+.container ul li a{color: #4B4B4B; position: relative; padding: 10px 20px 10px}
 
 /* Menu */
-#menu {background: url(resources/bg-menu.png) repeat-x; height: 63px;}
+#menu-principal {background: url(../resources/bg-menu.png) repeat-x; height: 43px;}
 #menu ul {float:left; list-style: none;}
-#menu ul li {display: inline; float: left; font-size: 14px; margin-right: 25px;}
+#menu ul li {border-right: 1px solid #93db60; display: inline; float: left; font-size: 14px;}
 #menu ul li a {color: #4B4B4B; text-decoration: none; line-height: 18px; position: relative; float: left; padding: 13px 20px 10px; -webkit-transition: all 0.4s ease; border: none; text-shadow: 1px 1px 0 #FFF; -moz-transition: all 0.4s ease; -o-transition: all 0.4s ease;}
-#menu ul li a.PrincipAtivo {border-bottom: 2px solid #4389AC;}
-#menu ul li a.PrincipAtivo:hover {border-bottom: 2px solid #4389AC; padding-top: 13px;}
+#menu ul li:first-child {border-left: 1px solid #93db60;}
+#menu ul li a.PrincipAtivo {border-bottom: 3px solid #0c6600; }
+#menu ul li a.PrincipAtivo:hover {border-bottom: 3px solid #0c6600; padding-top: 13px;}
 
-.navbar {background: #FFFFFF; position: relative; min-height: 50px; margin-bottom: 20px; border: 1px solid transparent;}
-.navbar-fixed-top {position: fixed; right: 0;left: 0; z-index: 1030;}
-.container {margin-right: -15px; margin-left: -15px;}
-
+/* Footer */
+#desenvolvedores ul {float:right; list-style: none;}
+#desenvolvedores ul li {display: inline; float: right; font-size: 8px; margin-right: 20px;}
