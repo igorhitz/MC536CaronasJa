@@ -1,12 +1,11 @@
 </div>
 		<div class = "wrapper">
 	    	<footer>
-	    		Desenvolvido por: 
 	    		<ul id = "desenvolvedores">
 	    			<li>Yuri Delgado</li>
 	    			<li>Igor Hitzschky</li>
-	    			<li>Julliany Favinha</li>
-	    			<li>João Vítor Buscatto</li>
+	    			<li>Julianny Favinha Donda</li>
+	    			<li>João Vítor Buscatto Silva</li>
 	    		</ul>
 	    	</footer>    
 	    </div>

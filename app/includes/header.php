@@ -17,9 +17,10 @@
         <header>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-                <div id = "login">
-                    Link
-                </div>
+                <ul>
+                    <li><a href="Login">Sign in</li>
+                    <li><a href="Cadastro">Sign up</li>
+                </ul>
             </div>
         </nav>
             <div class="wrapper">
@@ -40,6 +41,4 @@
                 </nav>
             </div>
         </div>
-        <!-- Inicio da página -->
-
         <div class="content">
