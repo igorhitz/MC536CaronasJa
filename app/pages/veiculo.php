@@ -3,17 +3,28 @@
 	  <fieldset>
 		<legend>Registrar Veículo</legend>
 		Marca:<br>
-		<input type="text" name="Marca"><br>
+		<input type="text" name="Marca" maxlength="50"><br>
 		Modelo:<br>
-		<input type="text" name="Modelo"><br>
+		<input type="text" name="Modelo" maxlength="50"><br>
 		Cor:<br>
-		<input type="text" name="Cor"><br>
+		<input type="text" name="Cor" maxlength="20"><br>
 		Quantidade de lugares:<br>
-		<input type="number" name="QtdLugares" min="0" max="4" step="1" value="4"><br>
+		<select name="QtdLugares">
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4" selected>4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+			<option value="9">9</option>
+			<option value="10">10</option>
+		</select>
 		Categoria:<br>
-		<input type="text" name="Categoria"><br>
+		<input type="text" name="Categoria" maxlength="50"><br>
 		Conforto:<br>
-		<input type="text" name="Conforto"><br><br>
+		<input type="text" name="Conforto" maxlength="50"><br><br>
 		<input type="submit" value="Cadastrar Veículo!">
 		
 	  </fieldset>
