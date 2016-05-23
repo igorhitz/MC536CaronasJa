@@ -1,6 +1,5 @@
 <div class = "wrapper">
-	<form id="form1" name="form1" class="wufoo topLabel page1" accept-charset="UTF-8" autocomplete="off" method="post" novalidate
-      action="">
+	<form id="form1" name="form1" class="wufoo topLabel page1" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
 		<h2>Registrar Carona</h2>
 		<ul>
 			<li id = "field1">
@@ -41,7 +40,13 @@
 						<option value ="1">1</option>
 						<option value ="2">2</option>
 						<option value ="3">3</option>
-						<option value ="4">4</option>
+						<option value ="4" selected>4</option>
+						<option value ="5">5</option>
+						<option value ="6">6</option>
+						<option value ="7">7</option>
+						<option value ="8">8</option>
+						<option value ="9">9</option>
+						<option value ="10">10</option>
 					</select>
 				</div>
 			</li>
@@ -58,7 +63,8 @@
 			<li id = "field8">
 				<label class = "desc" id = "title8" for = "Field8">Descrição</label>
 				<div>
-					<textarea id = "Field8" name = "Field8" class = "field textarea medium" spellcheck = "true" rows = "10" cols = "70" tabindex = "8"></textarea>
+					<textarea id = "Field8" name = "Field8" class = "field textarea medium" spellcheck = "true" rows = "10" cols = "70" tabindex = "8">
+					</textarea>
 				</div>
 			</li>
 			<li>

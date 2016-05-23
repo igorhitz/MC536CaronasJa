@@ -37,7 +37,7 @@
                     <ul>
                         <li><a href="Home" class="PrincipAtivo">Home</a></li>
                         <li><a href="Caronas">Caronas</a></li>
-						<li><a href="Veiculo">Veiculo</a></li>
+						<li><a href="Veiculo">Veículo</a></li>
                     </ul>
                 </nav>
             </div>
