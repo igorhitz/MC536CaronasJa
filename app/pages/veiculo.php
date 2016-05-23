@@ -1,5 +1,5 @@
 <div class = "wrapper">
-	<form id="form2" name="form2" class="wufoo topLabel page1" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
+	<form id="form2" name="form2" class="" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
 		<h2>Registrar Veículo</h2>
 		<ul>
 			<li id = "field1">
