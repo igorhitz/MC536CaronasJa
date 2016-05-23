@@ -18,8 +18,8 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <ul>
-                    <li><a href="Login">Sign in</li>
-                    <li><a href="Cadastro">Sign up</li>
+                    <li><a href="SignIn">Sign in</li>
+                    <li><a href="SignUp">Sign up</li>
                 </ul>
             </div>
         </nav>

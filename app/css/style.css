@@ -4,11 +4,15 @@
    Cor de fundo: f5f8fa
    Cor de fundo central: eaebe8 */
 
+/* Base */
 * {margin: 0; padding: 0; border: none; outline: none;}
+html {height: 101%;}
 body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
 body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
+
+
 /* Header */
 header {background: url(../resources/bg-header.png); width: 100%; height: 228px;}
 .wrapper {margin: 0 auto; width: 960px;}
@@ -23,13 +27,14 @@ header {background: url(../resources/bg-header.png); width: 100%; height: 228px;
 
 
 /* Menu */
-#menu-principal {background: url(../resources/bg-menu.png) repeat-x; height: 43px;}
+#menu-principal {background: url(../resources/bg-menu.png) repeat-x; height: 40px;}
 #menu ul {float:left; list-style: none;}
 #menu ul li {border-right: 1px solid #93db60; display: inline; float: left; font-size: 14px;}
 #menu ul li a {color: #4B4B4B; text-decoration: none; line-height: 18px; position: relative; float: left; padding: 13px 20px 10px; -webkit-transition: all 0.4s ease; border: none; text-shadow: 1px 1px 0 #FFF; -moz-transition: all 0.4s ease; -o-transition: all 0.4s ease;}
+#menu ul li a:hover {border-bottom: 1px solid #0c6600;}
 #menu ul li:first-child {border-left: 1px solid #93db60;}
-#menu ul li a.PrincipAtivo {border-bottom: 3px solid #0c6600; }
-#menu ul li a.PrincipAtivo:hover {border-bottom: 3px solid #0c6600; padding-top: 13px;}
+#menu ul li a.PrincipAtivo {border-bottom: 1px solid #0c6600; }
+
 
 /* Formulário */
 form {display: block;}
@@ -44,7 +49,6 @@ form ul li div input {text-rendering: auto; color: initial; letter-spacing: norm
 form ul li div input.text {font-family: "Lucida Grande", Tahoma, Arial, sans-serif;  font-size: 100%; color: #333; margin: 0; padding: 2px 0;}
 form ul li div input.medium {width: 30%;}
 form ul li div input.small {width: 10%;}
-form ul li div input.bt{ padding: 0 7px; height:300px; width: auto; overflow: visible;margin-right: 5px;}
 form ul li span.symbol { font-size: 120%; line-height: 155%;}
 form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 

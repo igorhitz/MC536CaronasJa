@@ -55,7 +55,7 @@
 				<div>
 					<select id = "Field7" tabindex = "7">
 						<option value ="P">Pequena</option>
-						<option value ="M">Média</option>
+						<option value ="M" selected>Média</option>
 						<option value ="G">Grande</option>
 					</select>
 				</div>
@@ -68,7 +68,7 @@
 				</div>
 			</li>
 			<li>
-				<input type="submit" class = "field bt" value="Publicar Carona!">
+				<button type="submit" > Publicar Carona!<button>
 			</li>
 		</ul>
 	</form>
