@@ -18,8 +18,8 @@
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <ul>
-                    <li><a href="SignIn">Sign in</li>
-                    <li><a href="SignUp">Sign up</li>
+                    <li><a href="SignIn">Sign in</a></li>
+                    <li><a href="SignUp">Sign up</a></li>
                 </ul>
             </div>
         </nav>
@@ -36,7 +36,12 @@
                 <nav id="menu">
                     <ul>
                         <li><a href="Home" class="PrincipAtivo">Home</a></li>
-                        <li><a href="Caronas">Caronas</a></li>
+                        <li><a>Caronas</a>
+							<ul>
+								<li><a href="registraCaronas">Sou Motorista</a></li>
+								<li><a href="buscaCaronas">Sou Passageiro</a></li>
+							</ul>
+						</li>
 						<li><a href="Veiculo">Veículo</a></li>
                     </ul>
                 </nav>

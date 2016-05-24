@@ -50,7 +50,9 @@
 				</div>
 			</li>
 			<li>
-				<input type="submit" class = "field bt" value="Cadastrar Veículo!">
+				<div>
+					<input type="submit" class = "field bt" value="Cadastrar Veículo">
+				</div>
 			</li>
 		</ul>
 	</form>

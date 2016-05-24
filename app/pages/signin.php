@@ -15,7 +15,9 @@
 				</div>
 			</li>
 			<li>
-				<button type="submit" > Logar-se!<button>
+				<div>
+				<input type="submit" class = "bt" value="Fazer login">
+				</div>
 			</li>
 		</ul>
 	</form>

@@ -47,7 +47,9 @@
 				</div>
 			</li>
 			<li>
-				<input type="submit" class = "field bt" value="Cadastrar Usuário!">
+				<div>
+					<input type="submit" class = "bt" value="Cadastrar Usuário">
+				</div>
 			</li>
 		</ul>
 	</form>

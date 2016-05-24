@@ -7,7 +7,7 @@
 /* Base */
 * {margin: 0; padding: 0; border: none; outline: none;}
 html {height: 101%;}
-body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #D3DDB1; line-height: 19px;}
+body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif; color: #555; font-size: 12px; background: #e6ecd3; line-height: 19px;}
 body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
@@ -18,7 +18,7 @@ header {background: url(../resources/bg-header.png); width: 100%; height: 228px;
 .wrapper {margin: 0 auto; width: 960px;}
 #logo {float: left; margin-top: 50px;}
 #logo img {display: block; margin-bottom: 10px;}
-.navbar {background: #D3DDB1; position: relative; min-height: 20px; margin-bottom: 20px; border-bottom: 1px solid #0c6600;}
+.navbar {background: #e6ecd3; position: relative; min-height: 20px; margin-bottom: 20px; border-bottom: 1px solid #0c6600;}
 .navbar-fixed-top {position: fixed; right: 0;left: 0; z-index: 1030;}
 .container {margin-right: 30	px; margin-left: 30px;}
 .container ul {float left; list-style: none;}
@@ -34,7 +34,8 @@ header {background: url(../resources/bg-header.png); width: 100%; height: 228px;
 #menu ul li a:hover {border-bottom: 1px solid #0c6600;}
 #menu ul li:first-child {border-left: 1px solid #93db60;}
 #menu ul li a.PrincipAtivo {border-bottom: 1px solid #0c6600; }
-
+#menu ul li ul{ position:relative; background-color:#fff; display:none;}   
+#menu li:hover ul, #menu li.over ul{display:block;}
 
 /* Formulário */
 form {display: block;}
@@ -49,6 +50,7 @@ form ul li div input {text-rendering: auto; color: initial; letter-spacing: norm
 form ul li div input.text {font-family: "Lucida Grande", Tahoma, Arial, sans-serif;  font-size: 100%; color: #333; margin: 0; padding: 2px 0;}
 form ul li div input.medium {width: 30%;}
 form ul li div input.small {width: 10%;}
+form ul li div input.bt{height:30px; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 form ul li span.symbol { font-size: 120%; line-height: 155%;}
 form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 

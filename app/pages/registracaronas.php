@@ -30,13 +30,14 @@
 				<label class = "desc" id = "title5" for = "Field5">Valor</label>
 				<span class="symbol"><b>R$</b></span>
 				<div>
-					<input id = "Field5" name = "Field5" type = "text" class= "field text " value size = "11" maxlength = "10" tabindex = "5">
+					<input id = "Field5" name = "Field5" type = "text" class= "field text " value size = "5" maxlength = "5" tabindex = "5"><b> ,</b>
+					<input id = "Field5-1" name = "Field5-1" type= "text" class="field text" value size = "3" maxlength = "3" tabindex = "6">
 				</div>
 			</li>
 			<li id = "field6">
 				<label class = "desc" id = "title6" for = "Field6">Passageiros</label>
 				<div>
-					<select id = "Field6" tabindex = "6">
+					<select id = "Field6" tabindex = "7">
 						<option value ="1">1</option>
 						<option value ="2">2</option>
 						<option value ="3">3</option>
@@ -53,7 +54,7 @@
 			<li id = "field7">
 				<label class = "desc" id = "title7" for = "Field7">Bagagem</label>
 				<div>
-					<select id = "Field7" tabindex = "7">
+					<select id = "Field7" tabindex = "8">
 						<option value ="P">Pequena</option>
 						<option value ="M" selected>Média</option>
 						<option value ="G">Grande</option>
@@ -63,12 +64,13 @@
 			<li id = "field8">
 				<label class = "desc" id = "title8" for = "Field8">Descrição</label>
 				<div>
-					<textarea id = "Field8" name = "Field8" class = "field textarea medium" spellcheck = "true" rows = "10" cols = "70" tabindex = "8">
-					</textarea>
+					<textarea id = "Field8" name = "Field8" style="resize:none" rows = "10" cols = "70" tabindex = "9"></textarea>
 				</div>
 			</li>
 			<li>
-				<button type="submit" > Publicar Carona!<button>
+				<div>
+					<input type="submit" class = "bt" value="Publicar Carona" tabindex = "9">
+				</div>
 			</li>
 		</ul>
 	</form>
