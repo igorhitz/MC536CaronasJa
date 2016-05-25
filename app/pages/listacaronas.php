@@ -37,7 +37,7 @@
 			<div class = "offer">
 			
 				<div class = "price"><strong><span>R$20</span></strong><span class="small">,00</span><span class="perUnit" dir = "rtl">por passageiro</span></div>
-				<div class = "availability"><strong>1/4&nbsp;</strong><span>lugares disponíveis</span></div>
+				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
 				<div class = "enter"><a href = "#">Ocupar lugar</a></div>
 			
 			</div>
@@ -77,7 +77,7 @@
 			<div class = "offer">
 			
 				<div class = "price"><strong><span>R$20</span></strong><span class="small">,00</span><span class="perUnit" dir = "rtl">por passageiro</span></div>
-				<div class = "availability"><strong>1/4&nbsp;</strong><span>lugares disponíveis</span></div>
+				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
 				<div class = "enter"><a href = "#">Ocupar lugar</a></div>
 			
 			</div>
@@ -117,7 +117,7 @@
 			<div class = "offer">
 			
 				<div class = "price"><strong><span>R$20</span></strong><span class="small">,00</span><span class="perUnit" dir = "rtl">por passageiro</span></div>
-				<div class = "availability"><strong>1/4&nbsp;</strong><span>lugares disponíveis</span></div>
+				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
 				<div class = "enter"><a href = "#">Ocupar lugar</a></div>
 			
 			</div>

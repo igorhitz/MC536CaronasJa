@@ -60,9 +60,9 @@ form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 .totalbusca h1 {display: inline-block; float: left; max-width: 600px; margin: 0; padding: 8px 0 10px 0; font-size: 18px; font-weight: bold; line-height: 24px;}
 
 .search-results {padding: 0px; margin : 0; }
-.search-results article {display:block; width:100%;border-top:1px dotted #0c6600; float:left; margin-bottom:20px; }
+.search-results article {display:block; width:100%;border-top:1px solid #CCC; float:left; margin-bottom:20px; }
 .search-results article .row{margin-left: 50px}
-.row .user {width:190px; float:left; min-height:1px; margin-top: 20px; margin-left:20px; border-right: 1px dotted #0c6600;}
+.row .user {width:190px; float:left; min-height:1px; margin-top: 20px; margin-left:20px; border-right: 1px solid #CCC;}
 .user .photo {border-radius:50%; margin-top:1px; float: left;}
 .photo img {max-width:100%; vertical-align: middle; border: 0;}
 .user .info {float:left; width:95px; font-size:12px; line-height:20px; margin: 0 0 0 8px; color: #666;}
@@ -74,9 +74,6 @@ form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 .row .description-box {margin-left: 10px; margin-top:18px; width:500px; float:left;}
 .row .description-box h3 {}
 .day-time {font-weight: bold; font-size: 19px;line-height: 27px;color: #333 !important;}
-.from-to {}
-.from-to .local {}
-.from-to .arrow {}
 .description {font-size:12px; color: #888;}
 .row .description-box .bagagem {font-size:10px; color: #888;}
 
@@ -97,6 +94,6 @@ form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 
 
 /* Footer */
-footer {position: relative; padding-top:5px; margin-top:5px; border-top: 1px dotted #0c6600;}
+footer {position: relative; padding-top:5px; margin-top:5px;}
 footer ul {float:right; list-style: none;}
 footer ul li {display: inline; float: right; font-size: 8px; margin-right: 20px;}
