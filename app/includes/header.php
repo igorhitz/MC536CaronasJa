@@ -25,7 +25,7 @@
         </nav>
             <div class="wrapper">
                 <div id="logo">
-                    <a href="http://localhost.com">
+                    <a href="Home">
                        <img src="<?= PATH.'resources/'?>logotipo.png" alt ="Caronasjá">             
                     </a>
                 </div>
@@ -42,7 +42,14 @@
 								<li><a href="buscaCaronas">Sou Passageiro</a></li>
 							</ul>
 						</li>
+						<li><a href="buscaUsuarios">Usuários</a></li>
 						<li><a href="Veiculo">Veículo</a></li>
+						<li><a href="Grupo">Grupo</a>
+							<ul>
+								<li><a href="meusGrupos">Meus Grupos</a></li>
+								<li><a href="buscaGrupos">Buscar Grupos</a></li>
+							</ul>
+						</li>
                     </ul>
                 </nav>
             </div>
