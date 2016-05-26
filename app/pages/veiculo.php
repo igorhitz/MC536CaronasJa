@@ -51,7 +51,7 @@
 			</li>
 			<li>
 				<div>
-					<input type="submit" class = "field bt" value="Cadastrar Veículo">
+					<input type="submit" class = "field bt" value="Cadastrar Veículo" tabindex="7">
 				</div>
 			</li>
 		</ul>

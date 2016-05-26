@@ -64,12 +64,12 @@
 			<li id = "field8">
 				<label class = "desc" id = "title8" for = "Field8">Descrição</label>
 				<div>
-					<textarea id = "Field8" name = "Field8" style="resize:none" rows = "10" cols = "70" tabindex = "9"></textarea>
+					<textarea id = "Field8" name = "Field8" style="resize:none" rows = "5" cols = "50" tabindex = "9"></textarea>
 				</div>
 			</li>
 			<li>
 				<div>
-					<input type="submit" class = "bt" value="Publicar Carona" tabindex = "9">
+					<input type="submit" class = "bt" value="Publicar Carona" tabindex = "10">
 				</div>
 			</li>
 		</ul>

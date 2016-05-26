@@ -35,16 +35,16 @@
             <div class="wrapper">
                 <nav id="menu">
                     <ul>
-                        <li><a href="Home" class="PrincipAtivo">Home</a></li>
-                        <li><a>Caronas</a>
+                        <li><a href="Home" class="PrincipAtivo"><b>Home</b></a></li>
+                        <li><a><b>Caronas</b></a>
 							<ul>
-								<li><a href="registraCaronas">Sou Motorista</a></li>
-								<li><a href="buscaCaronas">Sou Passageiro</a></li>
+								<li><a href="registraCaronas">Cadastrar Carona</a></li>
+								<li><a href="buscaCaronas">Buscar Carona</a></li>
 							</ul>
 						</li>
-						<li><a href="buscaUsuarios">Usuários</a></li>
-						<li><a href="Veiculo">Veículo</a></li>
-						<li><a href="Grupo">Grupo</a>
+						<li><a href="buscaUsuarios"><b>Usuários</b></a></li>
+						<li><a href="veiculo"><b>Veículo</b></a></li>
+						<li><a href="grupo"><b>Grupos</b></a>
 							<ul>
 								<li><a href="meusGrupos">Meus Grupos</a></li>
 								<li><a href="buscaGrupos">Buscar Grupos</a></li>
