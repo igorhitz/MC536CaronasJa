@@ -54,4 +54,6 @@
                 </nav>
             </div>
         </div>
-        <div class="content">
+        <div class="wrapper">
+            <div class="content">
+        
