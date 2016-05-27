@@ -24,13 +24,42 @@
 			 }
 		}
 
+		public function getAction($page) {
+			$file = 'app/action/'.$page.'.php';
+			$errorFile = 'app/pages/'.'404.php';
+			if(!file_exists($file)) {
+			 	return $errorFile;
+			 } else {
+			 	return $file;
+			 }
+		}
+
 		public function getAlert($message, $type='error') {
 			switch($type) {
 				case 'error':
 					echo '<div class="alert errorMsg">'.$message.'</div>';
 					break;
+
+				case 'advise':
+					echo '<div class="alert adviseMsg">'.$message.'</div>';
+					break;
 			}
 			
+		}
+
+		public static function getNotification() {
+			if(isset($_GET['stat']) && !empty($_GET['stat'])) {
+				$stat = $_GET['stat'];
+				switch($stat) {
+					case 'campos-vazios':
+						$this->getAlert('Preencha os campos obrigatórios');
+						break;
+				}
+			}
+		}
+
+		public static function getQueryAlert($query) {
+			self::getAlert("O comando executado foi:<br> <span class=\"query\">".$query . "</span>", 'advise');
 		}
 
 
