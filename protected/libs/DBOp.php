@@ -1,9 +1,9 @@
 <?php
 	class DBOp extends SiteHandler {
 
-		private $con;
+		public $con;
 
-		public function __construct($host, $user, $pass, $db) {
+		public function __construct($host=HOST, $user=USER, $pass=PASS, $db=DB) {
 			$this->connect($host, $user, $pass, $db);
 		}
 
@@ -23,10 +23,6 @@
 			} else {
 				return false;
 			}
-		}
-
-		public function getQuery() {
-			return $this->con->info();
 		}
 	}
 ?>
