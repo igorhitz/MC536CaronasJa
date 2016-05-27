@@ -1,6 +1,6 @@
 <div class = "wrapper">
 	<form id="form2" name="form2" class="" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
-		<h2>Registrar Grupo</h2>
+		<h2>Buscar Grupo</h2>
 		<ul>
 			<li id = "field1">
 				<label class = "desc" id = "title1" for = "Field1">Nome</label>
@@ -16,7 +16,7 @@
 			</li>
 			<li>
 				<div>
-					<input type="submit" class = "field bt" value="Cadastrar Grupo">
+					<input type="submit" class = "field bt" value="Buscar Grupo">
 				</div>
 			</li>
 		</ul>
