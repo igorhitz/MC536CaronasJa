@@ -11,12 +11,10 @@
     /* Se existirem os parametros passados via get */
     $site = new SiteHandler;
 
-    if(isset($_GET['p'])) {
-        if($page = $site->getPage($_GET['p'])) {
-            require_once($page);
-        } else {
-            require_once('404.php');
-        }
+    if(isset($_GET['p']) && !empty($_GET['p'])) {
+         require_once($site->getPage($_GET['p']));
+    } else {
+        require_once($site->getHome());
     }
 
     //Inclusao do rodape do site
