@@ -11,6 +11,9 @@ body {font-family: "Lucida Sans", "Lucida Grande", Helvetica, Arial, sans-serif;
 body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
+.alert {padding: 10px; border-radius: 2px; margin-bottom: 20px; box-sizing: border-box;}
+.adviseMsg {float: left; width: 100%; background: #cce6f9; border: 1px solid #8096aa;}
+.query {font-family: "Courier New";}
 
 
 /* Header */
