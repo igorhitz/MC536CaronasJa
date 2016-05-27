@@ -35,19 +35,24 @@
 			}
 		}
 
+		/**
+		 ** Funcao de insert para novo usuario
+		 ** return @var integer ultimo id inserido
+		**/
 		public function insert() {
 			
 			if(parent::checkConnection()) {
+				//query para insercao generica
 				$query = "INSERT INTO `usuario`(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?)";
+				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->email, $this->senha, $this->nome, $this->genero, $this->genero, $this->nascimento, $this->celular);
+					$stmt->bind_param('ssssss', $this->email, $this->senha, $this->nome, $this->genero, $this->nascimento, $this->celular);
 					$stmt->execute();
 				}
 				return $this->con->insert_id;
 			} else {
 				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 			}
-			
 		}
 
 	}
