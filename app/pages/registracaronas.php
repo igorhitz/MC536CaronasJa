@@ -1,5 +1,5 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+	<?php (isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '' ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
 		<fieldset>
 			<div class="form-line">
 				<h2>Cadastrar Carona</h2>
@@ -32,14 +32,14 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>Valor:</label>
-					<input type="text" name="valor">
+					<input type="text" name="preco">
 				</div>
 			</div>
 			
 			<div class="form-line">
 				<div class="col4">
 					<label>Passageiros:</label>
-					<select name="qtdPassageiros">
+					<select name="qtd_passageiros">
 						<option value ="1">1</option>
 						<option value ="2">2</option>
 						<option value ="3">3</option>
@@ -52,9 +52,7 @@
 						<option value ="10">10</option>
 					</select>
 				</div>
-			</div>
-			
-			<div class="form-line">
+				
 				<div class="col4">
 					<label>Bagagem:</label>
 					<select name="bagagem">
@@ -66,6 +64,18 @@
 			</div>
 			
 			<div class="form-line">
+				<div class = "col6">
+					<label>Grupo:</label>
+					<select name = "id_grupo">
+						<option selected value></option>
+						<option value = "1">Grupo BR</option>
+						<option value = "2">NANANINANAO</option>
+					</select>
+				</div>
+			</div>
+			
+			
+			<div class="form-line">
 				<div class="col6">
 					<label>Descrição:</label>
 					<textarea name = "descricao" style="resize:none" rows = "5" cols = "80" placeholder="Ex: ar condicionado?"></textarea>
@@ -73,7 +83,7 @@
 			</div>
 
 			<div>
-				<button type="submit" class="btn">Cadastrar</button>
+				<button type="submit" class="btn">Publicar Carona</button>
 			</div>
 		</fieldset>
 	</form>
