@@ -57,27 +57,10 @@ form.default-form .col8 {width: 80%;}
 form.default-form .col9 {width: 90%;}
 form.default-form .col10 {width: 100%;}
 form.default-form textarea, input, form.default-form select {margin-right: 10px; box-sizing: border-box; width: 100%; background: #FFF; padding: 10px; border: 1px solid #CCC; box-shadow: none; border-radius: 10px; -webkit-transition: 0.3s ease all;}
-form.default-form input:focus {box-shadow: 0 0 7px 1px #93DB60; border: 1px solid #93DB60;}
+form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0 7px 1px #93DB60; border: 1px solid #93DB60;}
 .btn {height:30px; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 .btn:hover {color: #4B4B4B;}
 
-/* Formulário 
-form {display: block;}
-form h2 {font-weight: normal; font-size: 160%; margin: 0 0 5px 0; clear: left; margin-top: 30px; padding: 0 1% 1.1em 1%; border-bottom: 1px dotted #0c6600;}
-form ul {margin-top: 30px; margin-bottom:15px; padding: 0; list-style-type: none;}
-form ul li {clear:both; padding: 6px 1% 9px 1%; margin: 0; background-color: transparent; position: relative; display: list-item;}
-form ul li label {cursor: default;}
-form ul li label.desc {font-size: 95%; font-weight: bold; color: #222; line-height: 150%; margin: 0; padding: 0 0 3px 0; border: none; display: block; white-space: normal; width: 100%;}
-form ul li div {margin: 0; padding: 0; color: #444; display: block;}
-form ul li div select{height: 16px;}
-form ul li div input {text-rendering: auto; color: initial; letter-spacing: normal;  height:16px; word-spacing: normal; text-transform: none; text-indent: 0px; text-shadow: none; display: inline-block; text-align: start; margin: 0em 0em 0em 0em; font: 18px Arial;}
-form ul li div input.text {font-family: "Lucida Grande", Tahoma, Arial, sans-serif;  font-size: 100%; color: #333; margin: 0; padding: 2px 0;}
-form ul li div input.medium {width: 30%;}
-form ul li div input.small {width: 10%;}
-form ul li div input.bt{height:30px; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
-form ul li span.symbol { font-size: 120%; line-height: 155%;}
-form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
-*/
 /* Listagem */
 .totalbusca {margin-bottom:50px;}
 .totalbusca span {display: inline-block; float: left; max-width: 600px; margin: 0; padding: 8px 0 10px 0; font-size: 18px; font-weight: bold; line-height: 24px;}
@@ -94,6 +77,8 @@ form ul li span {margin: 0 .3em 0 0; padding: 0; float: left;color: #444;}
 .user .trust {clear:both; font-size: 12px; padding-top:4px; margin-left:10px;}
 .ratings {display: inline-block; padding: 2px 0; margin: 0;}
 .ratings img {width:12px; height:12px;}
+.icons{width:110px; margin-left:30px; margin-top: 5px;}
+.icons img {padding-left:10px; padding-right:10px;}
 
 .row .description-box {margin-left: 10px; margin-top:18px; width:500px; float:left;}
 .row .description-box h3 {}

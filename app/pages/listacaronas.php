@@ -14,10 +14,15 @@
 				
 				<div class = "trust">
 					<p class="ratings">
-						<img class = "yellow star" src = "<?= PATH.'resources/'?>star.png" width="10" height="10">
+						<img src = "<?= PATH.'resources/'?>star.png" width="10" height="10">
 						<span class = "dark">4.9</span> 
 						<span class = "light"> - 10 avaliações</span>
 					</p>
+				</div>
+				
+				<div class = "icons">
+					<a href= "msg"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
+					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
 				
 			</div>
@@ -60,6 +65,11 @@
 					</p>
 				</div>
 				
+				<div class = "icons">
+					<a href= "msg"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
+					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
+				</div>
+				
 			</div>
 			<div class = "description-box">
 			
@@ -98,6 +108,11 @@
 						<span class = "dark">4.9</span> 
 						<span class = "light"> - 10 avaliações</span>
 					</p>
+				</div>
+				
+				<div class = "icons">
+					<a href= "msg"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
+					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
 				
 			</div>
