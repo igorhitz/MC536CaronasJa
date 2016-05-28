@@ -1,24 +1,26 @@
-<div class = "wrapper">
-	<form id="form2" name="form2" class="" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
-		<h2>Buscar Grupo</h2>
-		<ul>
-			<li id = "field1">
-				<label class = "desc" id = "title1" for = "Field1">Nome</label>
-				<div>
-					<input id = "Field1" name = "Field1" type = "text" class="field text medium" maxlength="50" tabindex = "1">
+	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+		<fieldset>
+			<div class="form-line">
+				<h2>Cadastrar Grupo</h2>
+			</div>
+			
+			<div class="form-line">
+				<div class="col4">
+					<label>Nome:</label>
+					<input type="text" name="nome" maxlength="50">
 				</div>
-			</li>
-			<li id = "field2">
-				<label class = "desc" id = "title2" for = "Field2">Categoria</label>
-				<div>
-					<input id = "Field2" name = "Field2" type = "text" class="field text medium" maxlength="50" tabindex = "2">
+			</div>
+			
+			<div class="form-line">
+				<div class="col4">
+					<label>Categoria:</label>
+					<input type="text" name="categoria" maxlength="50">
 				</div>
-			</li>
-			<li>
-				<div>
-					<input type="submit" class = "field bt" value="Buscar Grupo">
-				</div>
-			</li>
-		</ul>
+			</div>
+
+			<div>
+				<button type="submit" class="btn">Buscar</button>
+			</div>
+		</fieldset>
 	</form>
-</div>

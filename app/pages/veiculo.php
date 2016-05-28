@@ -1,29 +1,33 @@
-<div class = "wrapper">
-	<form id="form2" name="form2" class="" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
-		<h2>Registrar Veículo</h2>
-		<ul>
-			<li id = "field1">
-				<label class = "desc" id = "title1" for = "Field1">Marca</label>
-				<div>
-					<input id = "Field1" name = "Field1" type = "text" class="field text medium" maxlength="50" tabindex = "1">
+	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+		<fieldset>
+			<div class="form-line">
+				<h2>Cadastrar Veículo</h2>
+			</div>
+			
+			<div class="form-line">
+				<div class="col4">
+					<label>Marca:</label>
+					<input type="text" name="marca" maxlength="50">
 				</div>
-			</li>
-			<li id = "field2">
-				<label class = "desc" id = "title2" for = "Field2">Modelo</label>
-				<div>
-					<input id = "Field2" name = "Field2" type = "text" class="field text medium" maxlength="50" tabindex = "2"> 
+
+				<div class="col4">
+					<label>Modelo:</label>
+					<input type="text" name="modelo" maxlength="50">
 				</div>
-			</li>
-			<li id = "field3">
-				<label class = "desc" id = "title3" for = "Field3">Cor</label>
-				<div>
-					<input id = "Field3" name = "Field3" type = "text" class ="field text medium" maxlength = "20" tabindex = "3">
+			</div>
+
+			<div class="form-line">
+				<div class="col4">
+					<label>Cor:</label>
+					<input type="date" name="cor" maxlength="20">
 				</div>
-			</li>
-			<li id = "field4">
-				<label class = "desc" id = "title4" for = "Field4">Passageiros</label>
-				<div>
-					<select id = "Field4" tabindex = "4">
+			</div>
+			
+			<div class="form-line">
+				<div class="col1">
+					<label>Passageiros:</label>
+					<select name="qtdPassageiros">
 						<option value ="1">1</option>
 						<option value ="2">2</option>
 						<option value ="3">3</option>
@@ -36,24 +40,22 @@
 						<option value ="10">10</option>
 					</select>
 				</div>
-			</li>
-			<li id = "field5">
-				<label class = "desc" id = "title5" for = "Field5">Categoria</label>
-				<div>
-					<input id = "Field5" name = "Field5" type = "text" class ="field text medium" maxlength = "50" tabindex = "5">
+			</div>
+			
+			<div class="form-line">
+				<div class="col4">
+					<label>Categoria:</label>
+					<input type="text" name="categoria" maxlength="50">
 				</div>
-			</li>
-			<li id = "field6">
-				<label class = "desc" id = "title6" for = "Field6">Conforto</label>
-				<div>
-					<input id = "Field6" name = "Field6" type = "text" class ="field text medium" maxlength = "50" tabindex = "6">
+
+				<div class="col4">
+					<label>Conforto:</label>
+					<input type="text" name="conforto" maxlength="50">
 				</div>
-			</li>
-			<li>
-				<div>
-					<input type="submit" class = "field bt" value="Cadastrar Veículo" tabindex="7">
-				</div>
-			</li>
-		</ul>
+			</div>
+
+			<div>
+				<button type="submit" class="btn">Cadastrar</button>
+			</div>
+		</fieldset>
 	</form>
-</div>

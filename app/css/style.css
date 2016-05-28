@@ -55,7 +55,7 @@ form.default-form .col7 {width: 70%;}
 form.default-form .col8 {width: 80%;}
 form.default-form .col9 {width: 90%;}
 form.default-form .col10 {width: 100%;}
-form.default-form input, form.default-form select {margin-right: 10px; box-sizing: border-box; width: 100%; background: #FFF; padding: 10px; border: 1px solid #CCC; box-shadow: none; border-radius: 10px; -webkit-transition: 0.3s ease all;}
+form.default-form textarea, input, form.default-form select {margin-right: 10px; box-sizing: border-box; width: 100%; background: #FFF; padding: 10px; border: 1px solid #CCC; box-shadow: none; border-radius: 10px; -webkit-transition: 0.3s ease all;}
 form.default-form input:focus {box-shadow: 0 0 7px 1px #93DB60; border: 1px solid #93DB60;}
 .btn {height:30px; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 

@@ -1,24 +1,26 @@
-<div class = "wrapper">
-	<form id="form2" name="form2" class="" accept-charset="UTF-8" autocomplete="off" method="post" novalidate action="">
-		<h2>Login de Usuário</h2>
-		<ul>
-			<li id = "field1">
-				<label class = "desc" id = "title1" for = "Field1">Email</label>
-				<div>
-					<input id = "Field1" name = "Field1" type = "text" class="field text medium" maxlength="50" tabindex = "1">
+	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+		<fieldset>
+			<div class="form-line">
+				<h2>Entrar</h2>
+			</div>
+			
+			<div class="form-line">
+				<div class="col4">
+					<label>E-mail:</label>
+					<input type="text" name="email" placeholder="Seu endereço de email" maxlength="100">
 				</div>
-			</li>
-			<li id = "field2">
-				<label class = "desc" id = "title1" for = "Field1">Senha</label>
-				<div>
-					<input id = "Field1" name = "Field1" type = "password" class="field text medium" maxlength="50" tabindex = "1">
+			</div>
+
+			<div class="form-line">
+				<div  class="col4">
+					<label>Senha:</label>
+					<input type="password" name="senha" placeholder="Sua senha">
 				</div>
-			</li>
-			<li>
-				<div>
-				<input type="submit" class = "bt" value="Fazer login">
-				</div>
-			</li>
-		</ul>
+			</div>
+
+			<div>
+				<button type="submit" class="btn">Entrar</button>
+			</div>
+		</fieldset>
 	</form>
-</div>

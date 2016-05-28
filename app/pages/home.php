@@ -2,9 +2,13 @@
 	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
 		<fieldset>
 			<div class="form-line">
+				<h2>Cadastrar Usuário</h2>
+			</div>	
+				
+			<div class="form-line">
 				<div class="col col6">
 					<label>Nome:</label>
-					<input type="text" name="nome" placeholder="Seu nome completo">
+					<input type="text" name="nome" placeholder="Seu nome completo" maxlength="50">
 				</div>
 
 				<div class="col2">
@@ -19,7 +23,7 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>E-mail:</label>
-					<input type="text" name="email" placeholder="Seu endereço de email">
+					<input type="text" name="email" placeholder="Seu endereço de email" maxlength="100">
 				</div>
 
 				<div  class="col4">
@@ -38,12 +42,12 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>Data de nascimento:</label>
-					<input type="text" name="nascimento" placeholder="dd/mm/aaaa">
+					<input type="text" name="nascimento" placeholder="aaaa-mm-dd">
 				</div>
 
 				<div  class="col4">
 					<label>Celular:</label>
-					<input type="text" name="celular" placeholder="Seu número de celular">
+					<input type="text" name="celular" placeholder="Seu número de celular" maxlength="11">
 				</div>
 			</div>
 
