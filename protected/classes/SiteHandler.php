@@ -52,7 +52,10 @@
 				$stat = $_GET['stat'];
 				switch($stat) {
 					case 'campos-vazios':
-						$this->getAlert('Preencha os campos obrigatórios');
+						self::getAlert('Preencha os campos obrigatórios');
+						break;
+					case 'falha-login':
+						self::getAlert('Usuário e/ou senha incorreto(s).');
 						break;
 				}
 			}
