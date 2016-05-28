@@ -5,43 +5,22 @@
         <title>Caronas já</title>
         <meta name="description" content="Rede social de caronas!">
         <meta name="keywords" content="Caronas, Rede Social, Transporte, Comunicação">
-        <!-- Styles -->
-		<link rel="stylesheet" href="<?= PATH.'css/' ?>bootstrap.css" />
-		<link rel="stylesheet" href="<?= PATH.'css/' ?>style.css" />
-		
-		
-		
-		<!-- jQuery -->
-		<script src="<?= PATH.'js/' ?>jquery-1.12.4.min.js"></script>
-		<!-- bootstrap scripts -->
-		<script src="<?= PATH.'js/' ?>bootstrap.min.js"></script>
-		
+        <link rel="stylesheet" href="<?= PATH.'css/' ?>style.css" />
         <!-- 
         <link rel="shortcut icon" href="img/favicon.ico" />
         <link rel="img_src" href="http://www.yuridelgado.com.br/images/nerd-icon.png" />
         <base href="http://www.yuridelgado.com.br/"> 
          -->
     </head>
+    
     <body>
         <header>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
-                <ul>
-                    <?php 
-                    session_start();
-                    if(!Login::isLogged()) {
-                    ?>
-                    <li><a href="SignIn">Sign in</a></li>
-                    <li><a href="SignUp">Sign up</a></li>
-                    <?php 
-                    } else {
-                    ?>
-                    <li><a href="SignIn"><?=  $_SESSION['email'] ?></a></li>
-                    <li><a href="<?= PATH_HREF ?>action/Logout">Sair</a></li>
-                    <?php
-                        }
-                    ?>
-                </ul>
+                <div class="logged-user">
+					<img src = "https://d2kwny77wxvuie.cloudfront.net/user/-SEos2b3QV2Op5xI4j5HsA/thumbnail_72x72.jpeg">
+					<a href="#" style="text-decoration:none">Caio H.</a>
+				</div>
             </div>
         </nav>
             <div class="wrapper">
@@ -75,6 +54,4 @@
                 </nav>
             </div>
         </div>
-        <div class="wrapper">
-            <div class="content">
-        
+        <div class="content">

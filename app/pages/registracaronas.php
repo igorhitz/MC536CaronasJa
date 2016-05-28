@@ -66,9 +66,9 @@
 			</div>
 			
 			<div class="form-line">
-				<div class="col4">
+				<div class="col6">
 					<label>Descrição:</label>
-					<textarea name = "descricao" style="resize:none" rows = "5" cols = "50" placeholder="Ex: ar condicionado"></textarea>
+					<textarea name = "descricao" style="resize:none" rows = "5" cols = "80" placeholder="Ex: ar condicionado?"></textarea>
 				</div>
 			</div>
 
