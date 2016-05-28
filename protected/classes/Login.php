@@ -73,7 +73,7 @@
 		}
 
 		public static function isLogged() {
-			if(isset($_SESSION)) {
+			if(isset($_SESSION['logged'])) {
 				if($_SESSION['logged']) {
 					return true;
 				} else {
