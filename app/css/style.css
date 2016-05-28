@@ -24,8 +24,8 @@ header {background: url(../resources/bg-header.png); width: 100%; height: 228px;
 .navbar {background: #e6ecd3; position: relative; min-height: 20px; margin-bottom: 20px; border-bottom: 1px solid #0c6600;}
 .navbar-fixed-top {position: fixed; right: 0;left: 0; z-index: 1030;}
 .container {margin-right: 30	px; margin-left: 30px;}
-.container ul {float left; list-style: none;}
-.container ul li {display: inline; float:right;}
+.container ul {list-style: none; float:right;}
+.container ul li {display: inline;}
 .container ul li a{color: #4B4B4B; position: relative; padding: 10px 20px 10px}
 .content {position: relative; float: left; width: 100%; margin-top: 20px; padding: 20px; background: #FFF; box-sizing: border-box; box-shadow: 0px 3px 3px #E5E5E5;}
 
