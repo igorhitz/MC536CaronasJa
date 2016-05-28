@@ -15,6 +15,10 @@
 
 		private static $query;
 
+		public static function tableName() {
+			return 'usuario';
+		}
+
 		public function checkAttributes($attributes) {
 			if(is_array($attributes)) {
 				foreach($attributes as $item) {
@@ -73,6 +77,20 @@
 			return parent::getQueryAlert(self::decodeQuery($query));
 		}
 
+
+		/**
+		 ** Cria uma hash para senha em BCRYPT com 60 caracteres
+		 ** return @var string senha encriptada
+		**/
+		public static function codificaSenha($senha) {
+			$options = [
+			    'cost' => 12,
+			];
+			return password_hash($senha, PASSWORD_DEFAULT, $options);
+		}
+
+
+
 		/**
 		 ** Metodo de insert para novo usuario
 		 ** return @var integer ultimo id inserido
@@ -81,7 +99,7 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO `usuario`(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?)";
+				$query = "INSERT INTO ".self::tableName()."(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?)";
 				self::$query = "INSERT INTO `usuario`(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES ('".$this->email."', '".$this->senha."', '".$this->nome."', '".$this->genero."', '".$this->nascimento."', '".$this->celular."')";
 				
 				//executa a query com prepared statement
