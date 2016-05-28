@@ -12,14 +12,25 @@
         <base href="http://www.yuridelgado.com.br/"> 
          -->
     </head>
-    
     <body>
         <header>
         <nav class="navbar navbar-default navbar-fixed-top">
             <div class="container">
                 <ul>
+                    <?php 
+                    session_start();
+                    if(!Login::isLogged()) {
+                    ?>
                     <li><a href="SignIn">Sign in</a></li>
                     <li><a href="SignUp">Sign up</a></li>
+                    <?php 
+                    } else {
+                    ?>
+                    <li><a href="SignIn"><?=  $_SESSION['email'] ?></a></li>
+                    <li><a href="<?= PATH_HREF ?>action/Logout">Sair</a></li>
+                    <?php
+                        }
+                    ?>
                 </ul>
             </div>
         </nav>
