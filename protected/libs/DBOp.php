@@ -13,7 +13,6 @@
 				$this->con = new mysqli($host, $user, $pass, $db);
 			} catch (Exception $e ) { 
 				parent::getAlert('Falha na conexao. Verfique se os dados estao corretos.');
-					
 			}
 		}
 
