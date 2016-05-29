@@ -8,6 +8,7 @@
     require_once("protected/classes/Carona.php");
 	require_once("protected/classes/Grupo.php");
     require_once("protected/classes/InfoModelo.php");
+    require_once("protected/classes/Veiculo.php");
 
 
     //Inclusao do cabecalho (topo) do site

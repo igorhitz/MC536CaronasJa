@@ -13,6 +13,15 @@
 			return 'info_modelo';
 		}
 
+
+		/**
+		 ** Metodo que retorna uma string com os nomes de TODOS os campos da entidade correspondente no banco
+		 ** return @var integer ultimo id inserido
+		**/
+		public static function getFields() {
+			return 'modelo, marca, lugares';
+		}
+
 		public function checkAttributes($attributes) {
 			if(is_array($attributes)) {
 				foreach($attributes as $item) {
@@ -79,6 +88,44 @@
 					$stmt->execute();
 					if($stmt->affected_rows == 1) {
 						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+		/**
+		 ** Metodo de select para infoModelo
+		 ** return @var mixed tupla do banco
+		**/
+		public function selectAll() {
+			
+			if(parent::checkConnection()) {
+				//query para insercao generica
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName();
+				self::$query = "SELECT * FROM ".self::tableName();
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($modelo, $marca, $lugares);
+					
+					$rows = array();
+					
+					if($stmt->num_rows >= 1) {
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array('modelo' => $modelo, 'marca' => $marca, 'lugares' => $lugares);
+						}
+						return $rows;
 					} else {
 						return false;
 					}

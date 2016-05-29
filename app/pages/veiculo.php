@@ -1,5 +1,9 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+	//busca informações de modelos
+	$infoModelo = new InfoModelo;
+	$lista = $infoModelo->selectAll();
+	 ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/veiculo" method="post">
 		<fieldset>
 			<div class="form-line">
 				<h2>Cadastrar Veículo</h2>
@@ -7,37 +11,30 @@
 			
 			<div class="form-line">
 				<div class="col4">
-					<label>Marca:</label>
-					<input type="text" name="marca" maxlength="50">
+					<label>Marca e modelo:</label>
+					<select name="modelo" maxlength="50">
+						<?php 	
+						foreach($lista as $item) {
+						?>
+						<option value="<?= $item['modelo'] ?>"><?= $item['modelo'].' - '.$item['marca'] ?></option>
+						<?php
+						}
+						?>
+					</select>
 				</div>
 
-				<div class="col4">
-					<label>Modelo:</label>
-					<input type="text" name="modelo" maxlength="50">
-				</div>
-			</div>
-
-			<div class="form-line">
 				<div class="col4">
 					<label>Cor:</label>
-					<input type="date" name="cor" maxlength="20">
-				</div>
-			</div>
-			
-			<div class="form-line">
-				<div class="col1">
-					<label>Passageiros:</label>
-					<select name="qtdPassageiros">
-						<option value ="1">1</option>
-						<option value ="2">2</option>
-						<option value ="3">3</option>
-						<option value ="4" selected>4</option>
-						<option value ="5">5</option>
-						<option value ="6">6</option>
-						<option value ="7">7</option>
-						<option value ="8">8</option>
-						<option value ="9">9</option>
-						<option value ="10">10</option>
+					<select name="cor">
+						<option value="Prata">Prata</option>
+						<option value="Preto">Preto</option>
+						<option value="Branco">Branco</option>
+						<option value="Azul">Azul</option>
+						<option value="Amarelo">Amarelo</option>
+						<option value="Vermelho">Vermelho</option>
+						<option value="Verde">Verde</option>
+						<option value="Laranja">Laranja</option>
+						<option value="Outra">Outra</option>
 					</select>
 				</div>
 			</div>
@@ -45,16 +42,26 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>Categoria:</label>
-					<input type="text" name="categoria" maxlength="50">
+					<select name="categoria">
+						<option value="Hatch">Hatch</option>
+						<option value="Sedan">Sedan</option>
+						<option value="SUV">SUV</option>
+						<option value="Perua/Van">Perua/Van</option>
+					</select>
 				</div>
 
 				<div class="col4">
 					<label>Conforto:</label>
-					<input type="text" name="conforto" maxlength="50">
+					<select name="conforto">
+						<option value="Básico">Básico</option>
+						<option value="Confortável">Confortável</option>
+						<option value="Luxuoso">Luxuoso</option>
+					</select>
 				</div>
 			</div>
 
 			<div>
+				<input type="hidden" name="email" value="<?= $_SESSION['email'] ?>">
 				<button type="submit" class="btn">Cadastrar</button>
 			</div>
 		</fieldset>

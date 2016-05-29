@@ -1,21 +1,20 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
-		'email_dono',
-		'marca',
+		'email',
 		'modelo',
 		'cor',
 		'categoria',
-		'conforto',
-		'lugares'
+		'conforto'
 		);
 
 	//campos de preenchimento obrigatorios
 	$camposObrigatorios = array(
-		'email_dono',
+		'email',
 		'modelo',
+		'cor',
 		'categoria',
-		'cor'
+		'conforto'
 		);
 
 /** 
@@ -53,13 +52,13 @@
 	$veiculo = new Veiculo;
 
 	//salva os atributos
-	$veiculo->setAttributes($itens['modelo'], $itens['conforto'], $itens['categoria'], $itens['cor'], $itens['email_dono']);
+	$veiculo->setAttributes($itens['modelo'], $itens['conforto'], $itens['categoria'], $itens['cor'], $itens['email']);
 	
 	if($veiculo->insert()) {
 		header("Location: ../veiculo/query=".$veiculo->encodeQuery());
 		exit;
 	} else {
-		//header("Location: ../veiculo/stat=falha-insercao");
+		header("Location: ../veiculo/stat=falha-insercao");
 		exit;
 	}
 

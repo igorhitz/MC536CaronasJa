@@ -85,7 +85,7 @@
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->modelo, $this->conforto, $this->categoria, $this->cor, $this->email_dono);
+					$stmt->bind_param('sssss', $this->modelo, $this->conforto, $this->categoria, $this->cor, $this->email_dono);
 					$stmt->execute();
 					return true;
 				} else {
