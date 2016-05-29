@@ -42,7 +42,7 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>Data de nascimento:</label>
-					<input type="text" name="nascimento" placeholder="aaaa-mm-dd">
+					<input type="date" name="nascimento">
 				</div>
 
 				<div  class="col4">
