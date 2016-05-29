@@ -4,8 +4,8 @@
     require_once("protected/classes/SiteHandler.php");
     require_once("protected/libs/DBOp.php");
     require_once("protected/classes/Usuario.php");
-	require_once("protected/classes/Carona.php");
     require_once("protected/classes/Login.php");
+    require_once("protected/classes/Carona.php");
 
 
     //Inclusao do cabecalho (topo) do site
