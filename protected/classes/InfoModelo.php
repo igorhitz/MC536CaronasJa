@@ -22,7 +22,7 @@
 			return 'modelo, marca, lugares';
 		}
 
-		public function checkAttributes($attributes) {
+		public static function checkAttributes($attributes) {
 			if(is_array($attributes)) {
 				foreach($attributes as $item) {
 					if(!isset($item) || empty($item)) {
