@@ -66,7 +66,7 @@
 			<div class="form-line">
 				<div class = "col6">
 					<label>Grupo:</label>
-					<select name = "id_grupo">
+					<select name="id_grupo">
 						<option selected value></option>
 						<option value="1">Grupo BR</option>
 						<option value="2">NANANINANAO</option>

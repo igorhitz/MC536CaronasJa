@@ -10,7 +10,7 @@
 		'preco',
 		'qtd_passageiros',
 		'bagagem',
-		'grupo'
+		'id_grupo'
 		);
 
 	//campos de preenchimento obrigatorios
@@ -57,7 +57,6 @@
 	
 /** --------------------------------------- **/
 	$carona = new Carona;
-
 	//salva os atributos
 	$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
 	
@@ -65,7 +64,7 @@
 		header("Location: ../registraCaronas/query=".$carona->encodeQuery());
 		exit;
 	} else {
-		//header("Location: ../registraCaronas/stat=falha-insercao");
+		header("Location: ../registraCaronas/stat=falha-insercao");
 		exit;
 	}
 
