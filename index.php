@@ -9,7 +9,7 @@
 	require_once("protected/classes/Grupo.php");
     require_once("protected/classes/InfoModelo.php");
     require_once("protected/classes/Veiculo.php");
-	require_once("protected/classes/Reserva.php")
+	require_once("protected/classes/Reserva.php");
 
 
     //Inclusao do cabecalho (topo) do site
