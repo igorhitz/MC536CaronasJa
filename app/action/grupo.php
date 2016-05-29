@@ -37,7 +37,7 @@
 	}
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Grupo::checkAttributes($itensObrigatorios)) {
-		header("Location: ../Home/stat=campos-vazios");
+		header("Location: ../registraGrupo/stat=campos-vazios");
 		exit;
 	}
 
@@ -48,7 +48,7 @@
 	$grupo->setAttributes($itens['email_criador'], $itens['nome'], $itens['categoria']);
 	
 	if($grupo->insert()) {
-		header("Location: ../Home/query=".$grupo->encodeQuery());
+		header("Location: ../registraGrupo/query=".$grupo->encodeQuery());
 		exit;
 	}
 
