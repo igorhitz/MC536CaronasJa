@@ -25,7 +25,7 @@
 				
 				<div class="col4">
 					<label>Horário:</label>
-					<input type="time" name="horario">
+					<input type="time" name="hora">
 				</div>
 			</div>
 			
@@ -68,8 +68,8 @@
 					<label>Grupo:</label>
 					<select name = "id_grupo">
 						<option selected value></option>
-						<option value = "1">Grupo BR</option>
-						<option value = "2">NANANINANAO</option>
+						<option value="1">Grupo BR</option>
+						<option value="2">NANANINANAO</option>
 					</select>
 				</div>
 			</div>
@@ -78,11 +78,12 @@
 			<div class="form-line">
 				<div class="col6">
 					<label>Descrição:</label>
-					<textarea name = "descricao" style="resize:none" rows = "5" cols = "80" placeholder="Ex: ar condicionado?"></textarea>
+					<textarea name="descricao" style="resize:none" rows = "5" cols = "80" placeholder="Ex: ar condicionado?"></textarea>
 				</div>
 			</div>
 
 			<div>
+				<input type="hidden" name="email" value="<?= $_SESSION['email'] ?>">
 				<button type="submit" class="btn">Publicar Carona</button>
 			</div>
 		</fieldset>
