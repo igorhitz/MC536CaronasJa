@@ -71,13 +71,17 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				$query = "INSERT INTO ".self::tableName()."(`modelo`, `marca`, `lugares`) VALUES (?,?,?)";
-				self::$query = "INSERT INTO `info_modelo`(`modelo`, `marca`, `lugares`) VALUES ('".$this->modelo."', '".$this->marca."', '".$this->lugares."')";
+				self::$query = "INSERT INTO `info_modelo`(`modelo`, `marca`, `lugares`) VALUES ('".$this->modelo."', '".$this->marca."', ".$this->lugares.")";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->modelo, $this->marca, $this->lugares);
+					$stmt->bind_param('ssi', $this->modelo, $this->marca, $this->lugares);
 					$stmt->execute();
-					return true;
+					if($stmt->affected_rows == 1) {
+						return true;
+					} else {
+						return false;
+					}
 				} else {
 					return false;
 				}
