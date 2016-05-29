@@ -10,6 +10,8 @@
 		public $genero;
 		
 		public $nascimento;
+
+		public $foto;
 		
 		public $celular;
 
@@ -32,7 +34,7 @@
 			return true;
 		}
 
-		public function setAttributes($email=null, $senha=null, $nome=null, $genero=null, $nascimento=null, $celular=null) {
+		public function setAttributes($email=null, $senha=null, $nome=null, $genero=null, $nascimento=null, $foto=null, $celular=null) {
 			if(!empty($email)) {
 				$this->email = $email;
 			}
@@ -47,6 +49,9 @@
 			}
 			if(!empty($nascimento)) {
 				$this->nascimento = $nascimento;
+			}
+			if(!empty($foto)) {
+				$this->foto = $foto;
 			}
 			if(!empty($celular)) {
 				$this->celular = $celular;
@@ -99,12 +104,12 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO ".self::tableName()."(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?)";
-				self::$query = "INSERT INTO `usuario`(`email`, `senha`, `nome`, `genero`, `nascimento`, `celular`) VALUES ('".$this->email."', '".$this->senha."', '".$this->nome."', '".$this->genero."', '".$this->nascimento."', '".$this->celular."')";
+				$query = "INSERT INTO ".self::tableName()."(`email`, `senha`, `foto`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?,?)";
+				self::$query = "INSERT INTO `usuario`(`email`, `senha`, `foto`, `nome`, `genero`, `nascimento`, `celular`) VALUES ('".$this->email."', '".$this->senha."', '".$this->foto."', '".$this->nome."', '".$this->genero."', '".$this->nascimento."', '".$this->celular."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->email, $this->senha, $this->nome, $this->genero, $this->nascimento, $this->celular);
+					$stmt->bind_param('sssssss', $this->email, $this->senha, $this->foto, $this->nome, $this->genero, $this->nascimento, $this->celular);
 					$stmt->execute();
 					return true;
 				} else {
@@ -119,11 +124,11 @@
 		public function update() {
 			
 			if(parent::checkConnection()){
-				$query = "UPDATE ".self::tableName()." SET `nome`=?, `genero`=?, `nascimento`=?, `celular`=? WHERE email = ?";
-				self::$query = "UPDATE ".self::tableName()." SET `nome`='".$this->nome."', `genero`='".$this->genero."', `nascimento`='".$this->nascimento."', `celular`='".$this->celular."' WHERE email = '".$this->email."'";
+				$query = "UPDATE ".self::tableName()." SET `nome`=?, `genero`=?, `foto`=?, `nascimento`=?, `celular`=? WHERE email = ?";
+				self::$query = "UPDATE ".self::tableName()." SET `nome`='".$this->nome."', `genero`='".$this->genero."',`foto`='".$this->foto."', `nascimento`='".$this->nascimento."', `celular`='".$this->celular."' WHERE email = '".$this->email."'";
 				
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('sssss', $this->nome, $this->genero, $this->nascimento, $this->celular, $this->email);
+					$stmt->bind_param('ssssss', $this->nome, $this->genero, $this->foto, $this->nascimento, $this->celular, $this->email);
 					$stmt->execute();
 					return true;
 				} else {

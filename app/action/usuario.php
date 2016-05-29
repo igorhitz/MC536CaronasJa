@@ -16,7 +16,6 @@
 		'genero',
 		'email',
 		'senha',
-		'foto',
 		'nascimento',
 		'celular'
 		);
@@ -43,9 +42,11 @@
 			$itens[$item] = $_GET[$item];
 		}
 	}
+
+	print_r($itensObrigatorios);
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Usuario::checkAttributes($itensObrigatorios)) {
-		header("Location: ../Home/stat=campos-vazios");
+		header("Location: ../SignUp/stat=campos-vazios");
 		exit;
 	}
 
@@ -53,10 +54,13 @@
 /** --------------------------------------- **/
 	
 	//salva os atributos
-	$usuario->setAttributes($itens['email'], $itens['senha'], $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['celular']);
+	$usuario->setAttributes($itens['email'], $itens['senha'], $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['foto'], $itens['celular']);
 	
 	if($usuario->insert()) {
-		header("Location: ../Home/query=".$usuario->encodeQuery());
+		header("Location: ../SignUp/query=".$usuario->encodeQuery());
+		exit;
+	} else {
+		header("Location: ../SignUp/stat=falha-insercao");
 		exit;
 	}
 
