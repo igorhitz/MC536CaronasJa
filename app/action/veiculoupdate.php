@@ -1,22 +1,20 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
-		'nome',
-		'genero',
 		'email',
-		'foto',
-		'nascimento',
-		'celular'
+		'modelo',
+		'cor',
+		'categoria',
+		'conforto'
 		);
 
-	//campos de preenchimento obrigatorio
+	//campos de preenchimento obrigatorios
 	$camposObrigatorios = array(
-		'nome',
-		'genero',
 		'email',
-		'foto',
-		'nascimento',
-		'celular'
+		'modelo',
+		'cor',
+		'categoria',
+		'conforto'
 		);
 
 /** 
@@ -24,7 +22,8 @@
  **/
 	$itensObrigatorios = array();
 	$itens = array();
-
+	
+	
 	//converte itens do array de acordo com o metodo
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		foreach($camposObrigatorios as $item) {
@@ -41,20 +40,25 @@
 			$itens[$item] = $_GET[$item];
 		}
 	}
+
 	//verifica se os campos obrigatorios existem e foram preenchidos
-	if(!Usuario::checkAttributes($itensObrigatorios)) {
+	if(!Veiculo::checkAttributes($itensObrigatorios)) {
 		header("Location: ../config/stat=campos-vazios");
 		exit;
 	}
 
-	$usuario = new Usuario;
+	
 /** --------------------------------------- **/
-	
+	$veiculo = new Veiculo;
+
 	//salva os atributos
-	$usuario->setAttributes($itens['email'], null, $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['celular']);
+	$veiculo->setAttributes($itens['modelo'], $itens['conforto'], $itens['categoria'], $itens['cor'], $itens['email']);
 	
-	if($usuario->update()) {
-		header("Location: ../config/query=".$usuario->encodeQuery());
+	if($veiculo->update()) {
+		header("Location: ../config/query=".$veiculo->encodeQuery());
+		exit;
+	} else {
+		header("Location: ../config/stat=falha-insercao");
 		exit;
 	}
 

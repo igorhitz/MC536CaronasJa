@@ -1,4 +1,4 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+	<?php (isset($_GET['query'])) ? Veiculo::showQuery($_GET['query']) : '';
 	//busca informações de modelos
 	$infoModelo = new InfoModelo;
 	$lista = $infoModelo->selectAll();

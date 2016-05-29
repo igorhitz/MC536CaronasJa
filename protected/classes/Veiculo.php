@@ -17,7 +17,7 @@
 			return 'veiculo';
 		}
 
-		public function checkAttributes($attributes) {
+		public static function checkAttributes($attributes) {
 			if(is_array($attributes)) {
 				foreach($attributes as $item) {
 					if(!isset($item) || empty($item)) {
@@ -95,6 +95,25 @@
 				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 				return false;
 			}
+		}
+		
+		public function update() {
+			
+			if(parent::checkConnection()){
+				$query = "UPDATE ".self::tableName()." SET `modelo`=?, `conforto`=?, `categoria`=?, `cor`=? WHERE email_dono = ?";
+				self::$query = "UPDATE ".self::tableName()." SET `modelo`='".$this->modelo."', `conforto`='".$this->conforto."', `categoria`='".$this->categoria."', `cor`='".$this->cor."' WHERE email_dono = '".$this->email_dono."'";
+				
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('sssss', $this->modelo, $this->conforto, $this->categoria, $this->cor, $this->email_dono);
+					$stmt->execute();
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}	
 		}
 
 	}
