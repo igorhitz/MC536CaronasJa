@@ -14,7 +14,11 @@
 		private static $query;
 
 		public static function tableName() {
-			return 'veiculo';
+			return 'veiculo v';
+		}
+		
+		public static function getFields() {
+			return 'v.modelo, v.conforto, v.categoria, v.cor';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -115,6 +119,51 @@
 				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 				return false;
 			}	
+		}
+		
+		public function findByEmail($email) {
+			
+			if (parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." WHERE email = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." WHERE email = ".$email;
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('s', $email);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($modelo, $conforto, $categoria, $cor);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'modelo' => $modelo,
+								'conforto' => $conforto,
+								'categoria' => $categoria,
+								'cor' => $cor
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
 		}
 
 	}
