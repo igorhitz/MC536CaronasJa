@@ -1,16 +1,16 @@
 <?php
-	class Grupo extends DBOp {
+	class InfoModelo extends DBOp {
 
-		public $nome;
+		public $modelo;
 		
-		public $categoria;
+		public $marca;
 		
-		public $email_criador;
+		public $lugares;
 
 		private static $query;
 
 		public static function tableName() {
-			return 'grupo';
+			return 'info_modelo';
 		}
 
 		public function checkAttributes($attributes) {
@@ -26,15 +26,15 @@
 			return true;
 		}
 
-		public function setAttributes($nome=null, $categoria=null, $email_criador=null) {
-			if(!empty($nome)) {
-				$this->nome = $nome;
+		public function setAttributes($modelo=null, $marca=null, $lugares=null) {
+			if(!empty($modelo)) {
+				$this->modelo = $modelo;
 			}
-			if(!empty($categoria)) {
-				$this->categoria = $categoria;
+			if(!empty($marca)) {
+				$this->marca = $marca;
 			}
-			if(!empty($email_criador)) {
-				$this->email_criador = $email_criador;
+			if(!empty($lugares)) {
+				$this->lugares = $lugares;
 			}
 		}
 
@@ -63,19 +63,19 @@
 		}
 
 		/**
-		 ** Metodo de insert para novo grupo
+		 ** Metodo de insert para novo info modelo do veiculo
 		 ** return @var integer ultimo id inserido
 		**/
 		public function insert() {
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO ".self::tableName()."(`nome`, `categoria`, `email_criador`) VALUES (?,?,?)";
-				self::$query = "INSERT INTO `grupo`(`nome`, `categoria`, `email_criador`) VALUES ('".$this->nome."', '".$this->categoria."', '".$this->email_criador."')";
+				$query = "INSERT INTO ".self::tableName()."(`modelo`, `marca`, `lugares`) VALUES (?,?,?)";
+				self::$query = "INSERT INTO `info_modelo`(`modelo`, `marca`, `lugares`) VALUES ('".$this->modelo."', '".$this->marca."', '".$this->lugares."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->nome, $this->categoria, $this->email_criador);
+					$stmt->bind_param('ssssss', $this->modelo, $this->marca, $this->lugares);
 					$stmt->execute();
 					return true;
 				} else {
