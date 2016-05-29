@@ -2,16 +2,26 @@
 	class SiteHandler {
 
 		/** 
-		** @var home retorna o nome do arquivo de gome 
+		** @var home retorna o nome do arquivo de home 
 		**/
 		private $home;
 
+		/** 
+		** @var loginPage retorna o nome do arquivo de login 
+		**/
+		private $loginPage;
+
 		function __construct() {
 			$this->home = 'home';
+			$this->loginPage = 'signin';
 		}
 
 		public function getHome() {
 			return 'app/pages/'.$this->home.'.php';
+		}
+
+		public function getLoginPage() {
+			return 'app/pages/'.$this->loginPage.'.php';
 		}
 
 		public function getPage($page) {
