@@ -1,5 +1,5 @@
 	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+	<form class="default-form" action="<?= PATH_HREF ?>action/login" method="post">
 		<fieldset>
 			<div class="form-line">
 				<h2>Entrar</h2>
