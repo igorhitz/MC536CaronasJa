@@ -31,8 +31,8 @@
                     session_start();
                     if(!Login::isLogged()) {
                     ?>
-                    <li><a href="SignIn">Sign in</a></li>
-                    <li><a href="SignUp">Sign up</a></li>
+                    <li><a href="<?= PATH_HREF ?>SignIn">Sign in</a></li>
+                    <li><a href="<?= PATH_HREF ?>SignUp">Sign up</a></li>
                     <?php 
                     } else {
                     ?>
