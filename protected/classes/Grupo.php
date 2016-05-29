@@ -63,7 +63,7 @@
 		}
 
 		/**
-		 ** Metodo de insert para novo usuario
+		 ** Metodo de insert para novo grupo
 		 ** return @var integer ultimo id inserido
 		**/
 		public function insert() {
@@ -71,7 +71,7 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				$query = "INSERT INTO ".self::tableName()."(`nome`, `categoria`, `email_criador`) VALUES (?,?,?)";
-				self::$query = "INSERT INTO `grupo`(`id`, `nome`, `categoria`, `email_criador`) VALUES ('".$this->nome."', '".$this->categoria."', '".$this->email_criador."')";
+				self::$query = "INSERT INTO `grupo`(`nome`, `categoria`, `email_criador`) VALUES ('".$this->nome."', '".$this->categoria."', '".$this->email_criador."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
