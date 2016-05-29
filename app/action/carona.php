@@ -1,6 +1,7 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
+		'email',
 		'origem',
 		'destino',
 		'data',
@@ -12,13 +13,13 @@
 		'grupo'
 		);
 
-	//campos de preenchimento obrigatorio
+	//campos de preenchimento obrigatorios
 	$camposObrigatorios = array(
+		'email',
 		'origem',
 		'destino',
 		'data',
 		'hora',
-		'descricao',
 		'preco',
 		'qtd_passageiros'
 		);
@@ -29,8 +30,6 @@
 	$itensObrigatorios = array();
 	$itens = array();
 	
-	$itens['email'] = $_SESSION['email'];
-	$itensObrigatorios['email'] = $_SESSION['email'];
 	
 	//converte itens do array de acordo com o metodo
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -49,21 +48,24 @@
 		}
 	}
 
-	
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Carona::checkAttributes($itensObrigatorios)) {
-		header("Location: ../Home/stat=campos-vazios");
+		header("Location: ../registraCaronas/stat=campos-vazios");
 		exit;
 	}
 
-	$carona = new Carona;
-/** --------------------------------------- **/
 	
+/** --------------------------------------- **/
+	$carona = new Carona;
+
 	//salva os atributos
 	$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
 	
 	if($carona->insert()) {
-		header("Location: ../Home/query=".$carona->encodeQuery());
+		header("Location: ../registraCaronas/query=".$carona->encodeQuery());
+		exit;
+	} else {
+		//header("Location: ../registraCaronas/stat=falha-insercao");
 		exit;
 	}
 
