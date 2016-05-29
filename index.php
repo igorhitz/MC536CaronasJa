@@ -13,14 +13,29 @@
     /* Se existirem os parametros passados via get */
     $site = new SiteHandler;
 
+    $permitidas = array('Home','Signin','SignUp');
+
     if(isset($_GET['p']) && !empty($_GET['p'])) {
         //exibe notificacao ao usuario se houver
         SiteHandler::getNotification();
         
         if($_GET['p'] == 'action') {
+            //caso seja uma action
             require_once($site->getAction($_GET['s']));
         } else {
-           require_once($site->getPage($_GET['p'])); 
+            //se não for uma action
+            //se a página for permitida (sem necessidade de login)
+            if(in_array($_GET['p'], $permitidas)) {
+                require_once($site->getPage($_GET['p'])); 
+            } else {
+                //se for restrita verifica se há login
+                if(Login::isLogged()) {
+                    require_once($site->getPage($_GET['p'])); 
+                } else {
+                    SiteHandler::getAlert('Você precisa estar logado para acessar essa página.','error');
+                    require_once($site->getLoginPage());
+                }
+            }           
        }
     } else {
         require_once($site->getHome());
