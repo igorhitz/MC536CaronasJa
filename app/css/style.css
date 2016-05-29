@@ -41,25 +41,41 @@ header {background: url(../resources/bg-header.png); width: 100%; height: 228px;
 #menu ul #first:first-child {border-left: 1px solid #93db60;}
 #menu ul li #link.PrincipAtivo {border-bottom: 1px solid #0c6600; }
 
+/* Colunas */
+.col1 {width: 10%;}
+.col2 {width: 20%;}
+.col3 {width: 30%;}
+.col4 {width: 40%;}
+.col5 {width: 50%;}
+.col6 {width: 60%;}
+.col7 {width: 70%;}
+.col8 {width: 80%;}
+.col9 {width: 90%;}
+.col10 {width: 100%;}
 
 /* Forumlário */
 form.default-form {float: left; width: 100%;}
 form.default-form div.form-line {float: left; width: 100%; margin-bottom: 20px;}
 form.default-form div {float: left; padding-right: 10px; box-sizing: border-box;}
-form.default-form .col1 {width: 10%;}
-form.default-form .col2 {width: 20%;}
-form.default-form .col3 {width: 30%;}
-form.default-form .col4 {width: 40%;}
-form.default-form .col5 {width: 50%;}
-form.default-form .col6 {width: 60%;}
-form.default-form .col7 {width: 70%;}
-form.default-form .col8 {width: 80%;}
-form.default-form .col9 {width: 90%;}
-form.default-form .col10 {width: 100%;}
 form.default-form textarea, input, form.default-form select {margin-right: 10px; box-sizing: border-box; width: 100%; background: #FFF; padding: 10px; border: 1px solid #CCC; box-shadow: none; border-radius: 10px; -webkit-transition: 0.3s ease all;}
 form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0 7px 1px #93DB60; border: 1px solid #93DB60;}
-.btn {height:30px; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+
+/* Botao */
+.btn {height:30px; text-decoration: none; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 .btn:hover {color: #4B4B4B;}
+
+/* Listagem */
+.default-list {float:left; width: 100%;}
+.default-list div.line{float:left; width:100%; margin-bottom:20px; margin-left:30px; border-bottom: 1px solid #CCC;}
+.default-list .info{float:left; border-right:1px solid #CCC; margin-bottom: 20px; padding-right:20px;}
+.default-list div.info img{float:left; border-radius:50%; margin-right:20px;}
+.default-list div.info span{float:right; font-size:15px; color: #666;}
+.default-list div.trust p {display:inline-block; margin:0; padding: 2px 0;}
+.default-list div.trust img {width:15px; height:15px; margin-right:5px; border-radius:0%;}
+.default-list div.trust span {float:left;}
+.default-list div.icons{float:left;}
+.default-list div.icons a{margin:30px 30px 30px 30px;}
+.default-list div.icons a.btn{text-decoration: none; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline; font-size: 14px;}
 
 /* Listagem */
 .totalbusca {margin-bottom:50px;}
@@ -77,8 +93,8 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .user .trust {clear:both; font-size: 12px; padding-top:4px; margin-left:10px;}
 .ratings {display: inline-block; padding: 2px 0; margin: 0;}
 .ratings img {width:12px; height:12px;}
-.icons{width:110px; margin-left:30px; margin-top: 5px;}
-.icons img {padding-left:10px; padding-right:10px;}
+.search-results .icons{width:110px; margin-left:30px; margin-top: 5px;}
+.search-results .icons img {padding-left:10px; padding-right:10px;}
 
 .row .description-box {margin-left: 10px; margin-top:18px; width:500px; float:left;}
 .row .description-box h3 {}

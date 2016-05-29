@@ -1,7 +1,6 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
-		'email',
 		'origem',
 		'destino',
 		'data',
@@ -15,7 +14,6 @@
 
 	//campos de preenchimento obrigatorio
 	$camposObrigatorios = array(
-		'email',
 		'origem',
 		'destino',
 		'data',
@@ -30,7 +28,8 @@
  **/
 	$itensObrigatorios = array();
 	$itens = array();
-
+	
+	
 	//converte itens do array de acordo com o metodo
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		foreach($camposObrigatorios as $item) {
@@ -47,6 +46,9 @@
 			$itens[$item] = $_GET[$item];
 		}
 	}
+	$itens['email'] = $_SESSION['email'];
+	$itensObrigatorios['email'] = $_SESSION['email'];
+	
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Carona::checkAttributes($itensObrigatorios)) {
 		header("Location: ../Home/stat=campos-vazios");
@@ -55,7 +57,7 @@
 
 	$carona = new Carona;
 /** --------------------------------------- **/
-	$itens['email'] = $_SESSION['email'] /* ??? */
+	
 	//salva os atributos
 	/$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
 	

@@ -1,5 +1,5 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
+	<?php (isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '' ?>
+	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="get">
 		<fieldset>
 			<div class="form-line">
 				<h2>Buscar Carona</h2>

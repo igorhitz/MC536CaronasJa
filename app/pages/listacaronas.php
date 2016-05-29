@@ -1,4 +1,3 @@
-<div class = "wrapper">
 	<br>
 	<div class="totalbusca"><span >120&nbsp;</span><h1>viagens encontradas<h1></div>
 	<div class = "search-results">
@@ -138,4 +137,3 @@
 			</div>
 		</article>
 	</div>
-</div>

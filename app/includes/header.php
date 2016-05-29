@@ -53,26 +53,52 @@
             </div>
         </header>
         <div id="menu-principal">
-            <div class="wrapper">
-                <nav id="menu">
-                    <ul>
-                        <li id = "first"><a id = "link" href="<?= PATH_HREF ?>Home" class="PrincipAtivo"><b>Home</b></a></li>
-                        <li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" ><b>Caronas</b></a>
-							<ul class = "dropdown-menu">
-								<li><a href="<?= PATH_HREF ?>registraCaronas">Cadastrar Carona</a></li>
-								<li><a href="<?= PATH_HREF ?>buscaCaronas">Buscar Carona</a></li>
-							</ul>
-						</li>
-						<li id = "first"><a id = "link" href="<?= PATH_HREF ?>buscaUsuarios"><b>Usuários</b></a></li>
-						<li id = "first"><a id = "link"href="<?= PATH_HREF ?>veiculo"><b>Veículo</b></a></li>
-						<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" href="<?= PATH_HREF ?>grupo"><b>Grupos</b></a>
-							<ul class = "dropdown-menu">
-								<li><a href="<?= PATH_HREF ?>meusGrupos">Meus Grupos</a></li>
-								<li><a href="<?= PATH_HREF ?>buscaGrupos">Buscar Grupos</a></li>
-							</ul>
-						</li>
-                    </ul>
-                </nav>
+            <div class="wrapper"> <?php
+				if (!Login::isLogged()){ ?>
+					<nav id="menu">
+						<ul>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn" class="PrincipAtivo"><b>Home</b></a></li>
+							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" ><b>Caronas</b></a>
+								<ul class = "dropdown-menu">
+									<li><a href="<?= PATH_HREF ?>registraCaronas">Cadastrar Carona</a></li>
+									<li><a href="<?= PATH_HREF ?>buscaCaronas">Buscar Carona</a></li>
+								</ul>
+							</li>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>buscaUsuarios"><b>Usuários</b></a></li>
+							<li id = "first"><a id = "link"href="<?= PATH_HREF ?>veiculo"><b>Veículo</b></a></li>
+							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" href="<?= PATH_HREF ?>grupo"><b>Grupos</b></a>
+								<ul class = "dropdown-menu">
+									<li><a href="<?= PATH_HREF ?>meusGrupos">Meus Grupos</a></li>
+									<li><a href="<?= PATH_HREF ?>buscaGrupos">Buscar Grupos</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				<?php
+				} else {
+				?>
+					<nav id="menu">
+						<ul>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn" class="PrincipAtivo"><b>Home</b></a></li>
+							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" ><b>Caronas</b></a>
+								<ul class = "dropdown-menu">
+									<li><a href="<?= PATH_HREF ?>SignIn">Cadastrar Carona</a></li>
+									<li><a href="<?= PATH_HREF ?>SignIn">Buscar Carona</a></li>
+								</ul>
+							</li>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn"><b>Usuários</b></a></li>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn"><b>Veículo</b></a></li>
+							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" href="<?= PATH_HREF ?>SignIn"><b>Grupos</b></a>
+								<ul class = "dropdown-menu">
+									<li><a href="<?= PATH_HREF ?>SignIn">Meus Grupos</a></li>
+									<li><a href="<?= PATH_HREF ?>SignIn">Buscar Grupos</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				<?php
+				}
+				?>
             </div>
         </div>
         <div class="wrapper">
