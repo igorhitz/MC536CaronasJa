@@ -49,6 +49,8 @@
 				<button type="submit" class="btn">Salvar Alterações</button>
 			</div>
 		</fieldset>
+	</form>	
+
 	</form>
 	<?php (isset($_GET['query'])) ? Veiculo::showQuery($_GET['query']) : '';
 	$infoModelo = new InfoModelo;
@@ -116,4 +118,4 @@
 				<button type="submit" class="btn">Salvar Alterações</button>
 			</div>
 		</fieldset>
-	</form>	
+	</form>
