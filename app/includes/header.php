@@ -53,8 +53,7 @@
             </div>
         </header>
         <div id="menu-principal">
-            <div class="wrapper"> <?php
-				if (!Login::isLogged()){ ?>
+            <div class="wrapper">
 					<nav id="menu">
 						<ul>
 							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn" class="PrincipAtivo"><b>Home</b></a></li>
@@ -74,31 +73,8 @@
 							</li>
 						</ul>
 					</nav>
-				<?php
-				} else {
-				?>
-					<nav id="menu">
-						<ul>
-							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn" class="PrincipAtivo"><b>Home</b></a></li>
-							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" ><b>Caronas</b></a>
-								<ul class = "dropdown-menu">
-									<li><a href="<?= PATH_HREF ?>SignIn">Cadastrar Carona</a></li>
-									<li><a href="<?= PATH_HREF ?>SignIn">Buscar Carona</a></li>
-								</ul>
-							</li>
-							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn"><b>Usuários</b></a></li>
-							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn"><b>Veículo</b></a></li>
-							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" href="<?= PATH_HREF ?>SignIn"><b>Grupos</b></a>
-								<ul class = "dropdown-menu">
-									<li><a href="<?= PATH_HREF ?>SignIn">Meus Grupos</a></li>
-									<li><a href="<?= PATH_HREF ?>SignIn">Buscar Grupos</a></li>
-								</ul>
-							</li>
-						</ul>
-					</nav>
-				<?php
-				}
-				?>
+
+		
             </div>
         </div>
         <div class="wrapper">
