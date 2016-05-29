@@ -62,6 +62,7 @@
 								<ul class = "dropdown-menu">
 									<li><a href="<?= PATH_HREF ?>registraCaronas">Cadastrar Carona</a></li>
 									<li><a href="<?= PATH_HREF ?>buscaCaronas">Buscar Carona</a></li>
+									<li><a href="<?= PATH_HREF ?>listaCaronas">Listar Caronas</a></li>
 								</ul>
 							</li>
 							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>buscaUsuarios"><b>Usuários</b></a></li>
