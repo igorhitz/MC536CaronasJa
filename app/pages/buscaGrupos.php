@@ -2,7 +2,7 @@
 	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="post">
 		<fieldset>
 			<div class="form-line">
-				<h2>Cadastrar Grupo</h2>
+				<h2>Buscar Grupo</h2>
 			</div>
 			
 			<div class="form-line">
