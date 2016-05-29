@@ -99,7 +99,7 @@
 
 		/**
 		 ** Metodo de insert para nova carona
-		 ** return @var integer ultimo id inserido
+		 ** return @var boolean true se inserido corretamente
 		**/
 		public function insert() {
 			
@@ -110,14 +110,19 @@
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssssss', $this->email, $this->id_grupo, $this->origem, $this->destino, $this->descricao, $this->data, $this->hora, $this->qtd_passageiros, $this->bagagem, $this->preco);
+					$stmt->bind_param('sisssssiss', $this->email, $this->id_grupo, $this->origem, $this->destino, $this->descricao, $this->data, $this->hora, $this->qtd_passageiros, $this->bagagem, $this->preco);
 					$stmt->execute();
-					return true;
+					if($stmt->affected_rows == 1) {
+						return true;
+					} else {
+						parent::getAlert('error', 'Falha ao realizar essa operação.');
+						return false;
+					}
 				} else {
 					return false;
 				}
 			} else {
-				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				parent::getAlert('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 				return false;
 			}
 		}
