@@ -4,7 +4,7 @@
     require_once("protected/classes/SiteHandler.php");
     require_once("protected/libs/DBOp.php");
     require_once("protected/classes/Usuario.php");
-	require_once("protected/classes/Login.php");
+    require_once("protected/classes/Login.php");
 
 
     //Inclusao do cabecalho (topo) do site
@@ -15,7 +15,7 @@
 
     if(isset($_GET['p']) && !empty($_GET['p'])) {
         //exibe notificacao ao usuario se houver
-        $site->getNotification();
+        SiteHandler::getNotification();
         
         if($_GET['p'] == 'action') {
             require_once($site->getAction($_GET['s']));
