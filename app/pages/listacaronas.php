@@ -1,7 +1,6 @@
 	<?php
 	$caronas = new Carona;
 	$lista = $caronas->selectAll();
-	print_r($lista);
 	?>
 	<br>
 	<div class="totalbusca"><span >120&nbsp;</span><h1>viagens encontradas</h1></div>
