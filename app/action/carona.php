@@ -5,7 +5,7 @@
 		'destino',
 		'data',
 		'hora',
-		'desricao',
+		'descricao',
 		'preco',
 		'qtd_passageiros',
 		'bagagem',
@@ -18,7 +18,7 @@
 		'destino',
 		'data',
 		'hora',
-		'desricao',
+		'descricao',
 		'preco',
 		'qtd_passageiros'
 		);
@@ -29,6 +29,8 @@
 	$itensObrigatorios = array();
 	$itens = array();
 	
+	$itens['email'] = $_SESSION['email'];
+	$itensObrigatorios['email'] = $_SESSION['email'];
 	
 	//converte itens do array de acordo com o metodo
 	if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -46,8 +48,7 @@
 			$itens[$item] = $_GET[$item];
 		}
 	}
-	$itens['email'] = $_SESSION['email'];
-	$itensObrigatorios['email'] = $_SESSION['email'];
+
 	
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Carona::checkAttributes($itensObrigatorios)) {
@@ -59,7 +60,7 @@
 /** --------------------------------------- **/
 	
 	//salva os atributos
-	/$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
+	$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
 	
 	if($carona->insert()) {
 		header("Location: ../Home/query=".$carona->encodeQuery());
