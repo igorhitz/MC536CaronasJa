@@ -67,6 +67,9 @@
 					case 'falha-login':
 						self::getAlert('Usuário e/ou senha incorreto(s).');
 						break;
+					case 'falha-insercao':
+						self::getAlert('Não foi possível inserir o registro.');
+						break;
 				}
 			}
 		}
