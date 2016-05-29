@@ -65,8 +65,9 @@
 							</li>
 							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>buscaUsuarios"><b>Usuários</b></a></li>
 							<li id = "first"><a id = "link"href="<?= PATH_HREF ?>veiculo"><b>Veículo</b></a></li>
-							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" href="<?= PATH_HREF ?>grupo"><b>Grupos</b></a>
+							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown"><b>Grupos</b></a>
 								<ul class = "dropdown-menu">
+									<li><a href="<?= PATH_HREF ?>registraGrupo">Cadastrar Grupo</a></li>
 									<li><a href="<?= PATH_HREF ?>meusGrupos">Meus Grupos</a></li>
 									<li><a href="<?= PATH_HREF ?>buscaGrupos">Buscar Grupos</a></li>
 								</ul>
