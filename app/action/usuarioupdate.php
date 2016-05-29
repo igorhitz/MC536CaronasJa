@@ -43,7 +43,7 @@
 	}
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Usuario::checkAttributes($itensObrigatorios)) {
-		header("Location: ../config/stat=campos-vazios");
+		header("Location: ../Config/stat=campos-vazios");
 		exit;
 	}
 
@@ -54,7 +54,7 @@
 	$usuario->setAttributes($itens['email'], null, $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['celular']);
 	
 	if($usuario->update()) {
-		header("Location: ../config/query=".$usuario->encodeQuery());
+		header("Location: ../Config/query=".$usuario->encodeQuery());
 		exit;
 	}
 
