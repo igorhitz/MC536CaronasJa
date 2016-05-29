@@ -7,4 +7,5 @@ RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^([a-z0-9-._=+]+)/?$ index.php?p=$1 [NC]
 RewriteRule ^([a-z0-9-]+)/stat=([a-z0-9-@.]+)'?/?$ index.php?p=$1&stat=$2 [NC]
 RewriteRule ^([a-z0-9-]+)/query=([a-z0-9-@=.]+)'?/?$ index.php?p=$1&query=$2 [NC]
+RewriteRule ^([a-z0-9-]+)/id=([a-z0-9-@=.]+)/email=([a-z0-9-@=.]+)'?/?$ index.php?p=$1&id=$2&email=3 [NC]
 RewriteRule ^([a-z0-9-]+)/([a-z0-9-@.]+)'?/?$ index.php?p=$1&s=$2 [NC]
