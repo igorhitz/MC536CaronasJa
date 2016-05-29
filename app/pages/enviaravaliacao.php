@@ -20,7 +20,7 @@
 			<div class = "form-line">
 				<div class="col10">
 					<label>Descrição:</label>
-					<textarea name = "conteudo" style="resize:none" rows = "5" cols = "50" placeholder="Ex: ar condicionado?"></textarea>
+					<textarea name = "conteudo" style="resize:none" rows = "5" cols = "50" placeholder="Ex: boa conversa, muito educado!"></textarea>
 				</div>
 			</div>
 			
