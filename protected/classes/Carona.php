@@ -24,7 +24,16 @@
 		private static $query;
 
 		public static function tableName() {
-			return 'carona';
+			return 'carona c';
+		}
+
+
+		/**
+		 ** Metodo que retorna uma string com os nomes de TODOS os campos da entidade correspondente no banco
+		 ** return @var string
+		**/
+		public static function getFields() {
+			return "c.email, c.id_grupo, c.origem, c.destino, c.descricao, c.data, c.hora, c.qtd_passageiros, c.bagagem, c.preco, u.nome";
 		}
 
 		public static function checkAttributes($attributes) {
@@ -123,6 +132,63 @@
 				}
 			} else {
 				parent::getAlert('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+		/**
+		 ** Metodo de select para Caronas
+		 ** return @var mixed tupla do banco
+		**/
+		public function selectAll($orderBy='') {
+			
+			if(parent::checkConnection()) {
+				//query para insercao generica
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName();
+				
+				if($orderBy !== '') {
+					$query .= " ORDER BY ".$orderBy;
+					self::$query .= " ORDER BY ".$orderBy;
+				}
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'email_dono' => $email,
+								'id_grupo' => $id_grupo,
+								'origem' => $origem,
+								'destino' => $destino,
+								'descricao' => $descricao,
+								'data' => $data,
+								'hora' => $hora,
+								'qtd_passageiros' => $qtd_passageiros,
+								'bagagem' => $bagagem,
+								'preco' => $preco,
+								'nome' => $nome
+								);
+						}
+						return $rows;
+					} else {
+						return false;
+					}
+				} else {
+					echo $this->con->error;
+					echo self::$query;
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 				return false;
 			}
 		}
