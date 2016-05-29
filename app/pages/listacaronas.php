@@ -1,9 +1,27 @@
 	<?php
 	$caronas = new Carona;
-	$lista = $caronas->selectAll();
+	if(isset($_GET['origem']) && $_GET['destino']) {
+		$origem = $_GET['origem'];
+		$destino = $_GET['destino'];
+		if(isset($_GET['data'])) {
+			$data = $_GET['data'];
+		} else {
+			$data = '';
+		}
+		$lista = $caronas->findByFilter($origem, $destino, $data);
+	} else {
+		//obtem lista geral (*)
+		$lista = $caronas->selectAll();
+	}
 	?>
 	<br>
-	<div class="totalbusca"><span >120&nbsp;</span><h1>viagens encontradas</h1></div>
+	<?php if($caronas->rows > 0) { ?>
+	<div class="totalbusca"><span ><?= $caronas->rows ?>&nbsp;</span><h1>viagens encontradas</h1></div>
+	<?php } else { ?>
+	<div class="totalbusca"><h1>Nenhuma carona foi encontrada.</h1></div>
+	<?php 
+	}
+	?>
 	<div class = "search-results">
 		<?php 
 		foreach($lista as $item) {

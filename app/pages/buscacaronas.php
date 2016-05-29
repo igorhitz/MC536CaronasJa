@@ -1,7 +1,6 @@
 	<?php (isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '';
-	
 	?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="get">
+	<form id="buscarCaronaForm" class="default-form" action="<?= PATH_HREF ?>listacaronas/">
 		<fieldset>
 			<div class="form-line">
 				<h2>Buscar Carona</h2>
@@ -10,12 +9,12 @@
 			<div class="form-line">
 				<div class="col4">
 					<label>Origem:</label>
-					<input type="text" name="origem" placeholder="Cidade de partida. Ex: Bauru" maxlength="50">
+					<input type="text" name="origem" placeholder="Cidade de partida. Ex: Bauru" required maxlength="50">
 				</div>
 
 				<div class="col4">
 					<label>Destino:</label>
-					<input type="text" name="destino" placeholder="Cidade de chegada. Ex: Campinas" maxlength="50">
+					<input type="text" name="destino" placeholder="Cidade de chegada. Ex: Campinas" required maxlength="50">
 				</div>
 			</div>
 
@@ -31,3 +30,13 @@
 			</div>
 		</fieldset>
 	</form>
+
+	<script>
+		$('#buscarCaronaForm').submit(function(e){
+			e.preventDefault();
+			var origem = $('input[name=origem]').val();
+			var destino = $('input[name=destino]').val();
+			var data = $('input[name=data]').val();
+			$(location).attr('href','listaCaronas/origem='+origem+'/destino='+destino+'/data='+data+'');
+		});
+	</script>
