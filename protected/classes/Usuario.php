@@ -115,6 +115,25 @@
 				return false;
 			}
 		}
+		
+		public function update() {
+			
+			if(parent::checkConnection()){
+				$query = "UPDATE ".self::tableName()." SET `nome`=?, `genero`=?, `nascimento`=?, `celular`=? WHERE email = ?";
+				self::$query = "UPDATE ".self::tableName()." SET `nome`='".$this->nome."', `genero`='".$this->genero."', `nascimento`='".$this->nascimento."', `celular`='".$this->celular."' WHERE email = '".$this->email."'";
+				
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('sssss', $this->nome, $this->genero, $this->nascimento, $this->celular, $this->email);
+					$stmt->execute();
+					return true;
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}	
+		}
 
 	}
 ?>

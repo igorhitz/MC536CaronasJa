@@ -1,5 +1,5 @@
 	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/usuario" method="update">
+	<form class="default-form" action="<?= PATH_HREF ?>action/usuarioupdate" method="post">
 		<fieldset>
 			<div class="form-line">
 				<h2>Editar Usuário</h2>
@@ -22,15 +22,8 @@
 
 			<div class="form-line">
 				<div class="col4">
-					<label>E-mail:</label>
-					<input type="text" name="email" placeholder="Seu endereço de email" maxlength="100">
+					<input type="hidden" name="email" value="<?= $_SESSION['email'] ?>" maxlength="100">
 				</div>
-
-				<div  class="col4">
-					<label>Senha:</label>
-					<input type="password" name="senha" placeholder="Sua senha">
-				</div>
-			</div>
 
 			<div class="form-line">
 				<div class="col8">
@@ -56,4 +49,4 @@
 				<button type="submit" class="btn">Salvar Alterações</button>
 			</div>
 		</fieldset>
-	</form>
+	</form>	
