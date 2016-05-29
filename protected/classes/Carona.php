@@ -21,6 +21,8 @@
 		
 		public $preco;
 
+		public $rows;
+
 		private static $query;
 
 		public static function tableName() {
@@ -159,8 +161,11 @@
 					$stmt->bind_result($email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome);
 					
 					$rows = array();
-
 					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas
+						$this->rows = $stmt->num_rows;
+						
 						//para cada linha retornada
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
@@ -180,11 +185,76 @@
 						}
 						return $rows;
 					} else {
-						return false;
+						$this->rows = 0;
+						return $rows;
 					}
 				} else {
-					echo $this->con->error;
-					echo self::$query;
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+
+		/**
+		 ** Metodo de select para Caronas
+		 ** return @var mixed tupla do banco
+		**/
+		public function findByFilter($origem, $destino, $data='') {
+			
+			if(parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()."JOIN usuario u ON c.email = u.email WHERE origem = $origem && destino = $destino";
+				
+				if($data !== '') {
+					$query .= " AND data = ?";
+					self::$query .= " AND data = ".$data;
+				}
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					if($data == '') {
+						$stmt->bind_param('ss', $origem, $destino);
+					} else {
+						$stmt->bind_param('sss', $origem, $destino, $data);
+					}
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'email_dono' => $email,
+								'id_grupo' => $id_grupo,
+								'origem' => $origem,
+								'destino' => $destino,
+								'descricao' => $descricao,
+								'data' => $data,
+								'hora' => $hora,
+								'qtd_passageiros' => $qtd_passageiros,
+								'bagagem' => $bagagem,
+								'preco' => $preco,
+								'nome' => $nome
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
 					return false;
 				}
 			} else {
