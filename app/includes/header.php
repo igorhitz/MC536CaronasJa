@@ -47,7 +47,7 @@
         </nav>
             <div class="wrapper">
                 <div id="logo">
-                    <a href="<?= PATH_HREF ?> Home">
+                    <a href="<?= PATH_HREF ?>Home">
                        <img src="<?= PATH.'resources/'?>logotipo.png" alt ="Caronasjá">             
                     </a>
                 </div>
