@@ -30,11 +30,8 @@
 	<div class="line">
 		<div class="col4">
 			<div class="info">
-				<img src="https://d2kwny77wxvuie.cloudfront.net/user/-SEos2b3QV2Op5xI4j5HsA/thumbnail_72x72.jpeg" width="72" height="72">
-				<span class="light"><b>Caio Henrique Andrade da Silva</b> <br>
-		
-					Idade: 21 anos. <br> 
-					Veículo: ---- Não Possui ----- <br>
+				<img src="<?=$item['foto'] ?>" width="72" height="72">
+				<span class="username"><b><?= $item['nome'] ?></b> <br>
 				</span>
 				<div class="trust">
 					<p>
