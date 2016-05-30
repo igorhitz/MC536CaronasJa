@@ -176,7 +176,7 @@
 								'data' => $data,
 								'hora' => $hora,
 								'preco' => $preco,
-								'qtd_passageiros' => $passageiros,
+								'qtd_passageiros' => $qtd_passageiros,
 								'bagagem' => $bagagem,
 								'motorista' => $motorista
 								);

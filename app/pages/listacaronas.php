@@ -34,7 +34,7 @@
 		<?php 
 		foreach($lista as $item) {
 			$reserva = new Reserva;
-			$reserva->findById($item['id']);
+			$res = $reserva->findById($item['id']);
 		?>
 		<article class = "row">
 			<div class = "user">	
@@ -54,7 +54,7 @@
 				</div>
 				
 				<div class = "icons">
-					<a href= "msg"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
+					<a href= "<?= PATH_HREF ?>enviarMensagem/<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
 			</div>
@@ -72,17 +72,37 @@
 				<div class = "price"><strong><span>R$<?= $item['preco'] ?></span></strong><span class="perUnit" dir = "rtl">por passageiro</span></div>
 				<div class = "availability"><strong><?= $item['qtd_passageiros'] - $reserva->rows ?>&nbsp;</strong><span>lugares disponíveis</span></div>
 				
-				<?php 
-				$res = $reserva->findById($item['id']);
-				if($reserva->rows == 1) {
-					if($res[0]['email_passageiro'] == $_SESSION['email']) {
-				?>
-				<div class = "reservado">Você reservou!</div>
+				
 				<?php
-				} } else {
-				if($item['email_dono'] !== $_SESSION['email']) { ?> 
-				<div class = "enter"><a href="<?= PATH_HREF ?>action/reserva/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Ocupar lugar</a></div>
-				<?php } } ?>
+				if($item['email_dono'] == $_SESSION['email']){ ?>
+					<div class = "reservado">Você criou isto!</div>
+				<?php
+				}
+				else {
+					if ($reserva->rows >= 1){
+						$flag = false;
+						for($i = 0; $i < $reserva->rows; $i++){
+							if ($res[$i]['email_passageiro'] == $_SESSION['email']){ ?>
+								<div class = "reservado">Você já reservou!</div>
+				<?php
+								$flag = true;
+							}
+						}
+						if ($flag == false){
+						if ($reserva->rows >= $item['qtd_passageiros']){ ?>
+							<div class = "reservado">Cheia!</div>	
+				<?php
+						}
+						else{ ?>
+							<div class = "enter"><a href="<?= PATH_HREF ?>action/reserva/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Ocupar lugar</a></div>
+				<?php
+						}
+						}
+					}
+				} ?>
+		
+				
+				
 			</div>
 		</article>
 		<?php

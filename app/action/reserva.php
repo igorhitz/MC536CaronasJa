@@ -10,10 +10,10 @@
 	$reserva->setAttributes($id_carona, $email);
 	
 	if($reserva->insert()) {
-		header("Location: ../../../listaCaronas/query=".$reserva->encodeQuery()."/stat=reserva-ok");
+		header("Location: ../../../Home/query=".$reserva->encodeQuery());
 		exit;
 	} else {
-		header("Location: ../../../listaCaronas/stat=falha-insercao");
+		header("Location: ../../../Home/stat=falha-insercao");
 		exit;
 	}
 
