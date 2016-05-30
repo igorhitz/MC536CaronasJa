@@ -32,7 +32,7 @@
 			<div class="info">
 				<img src="<?=$item['foto'] ?>" width="72" height="72">
 				<span class="username"><b><?= $item['nome'] ?></b> <br>
-				<span class="username"><?= SiteHandler::formatData($item['nascimento']) ?> <br>
+				<span class="username">Idade: <?= 2016 - ($item['nascimento']) ?> anos <br>
 				</span>
 				<div class="trust">
 					<p>
