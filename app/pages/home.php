@@ -17,9 +17,9 @@
 			<?php 
 			foreach($listaRes as $itemRes) {
 			?>
-			<div>
+			<div class = "card">
 			<p><strong>Origem:</strong> <?= $itemRes['origem'] ?></p>
-			<p><strong>Destino:</strong> <?= $itemRes['origem'] ?></p>
+			<p><strong>Destino:</strong> <?= $itemRes['destino'] ?></p>
 			<p><strong>Data:</strong> <?= $itemRes['data'] ?></p>
 			<p><strong>Hora:</strong> <?= $itemRes['hora'] ?></p>
 			<p><strong>Motorista:</strong> <?= $itemRes['motorista'] ?></p>
@@ -39,7 +39,12 @@
 			<?php 
 			foreach($listaOfer as $itemOfer) {
 			?>
-			
+			<div class = "card">
+			<p><strong>Origem:</strong> <?= $itemOfer['origem'] ?></p>
+			<p><strong>Destino:</strong> <?= $itemOfer['destino'] ?></p>
+			<p><strong>Data:</strong> <?= $itemOfer['data'] ?></p>
+			<p><strong>Hora:</strong> <?= $itemOfer['hora'] ?></p>
+			</div>
 		<?php
 		}
 		?>
