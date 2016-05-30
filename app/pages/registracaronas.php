@@ -25,7 +25,7 @@
 				
 				<div class="col4">
 					<label>Horário:</label>
-					<input type="time" name="hora">
+					<input type="time" name="hora" placeholder="hh:mm:ss">
 				</div>
 			</div>
 			

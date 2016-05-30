@@ -62,7 +62,7 @@
 	<form class="default-form" action="<?= PATH_HREF ?>action/veiculoupdate" method="post">
 		<fieldset>
 			<div class="form-line">
-				<h2>Cadastrar Veículo</h2>
+				<h2>Editar Veículo</h2>
 			</div>
 			
 			<div class="form-line">
