@@ -182,7 +182,7 @@
 								'bagagem' => $bagagem,
 								'preco' => $preco,
 								'nome' => $nome,
-								'nome' => $modelo
+								'modelo' => $modelo
 								);
 						}
 						return $rows;
@@ -266,6 +266,9 @@
 				return false;
 			}
 		}
+
+
+		
 
 	}
 ?>
