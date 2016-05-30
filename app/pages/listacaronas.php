@@ -69,9 +69,19 @@
 			<div class = "offer">
 				<div class = "price"><strong><span>R$<?= $item['preco'] ?></span></strong><span class="perUnit" dir = "rtl">por passageiro</span></div>
 				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
-				<?php if($item['email_dono'] !== $_SESSION['email']) { ?> 
+				
+				<?php 
+				$reserva = new Reserva;
+				$res = $reserva->findById($item['id']);
+				if($reserva->rows == 1) {
+					if($res[0]['email_passageiro'] == $_SESSION['email']) {
+				?>
+				<div class = "reservado">Você reservou!</div>
+				<?php
+				} } else {
+				if($item['email_dono'] !== $_SESSION['email']) { ?> 
 				<div class = "enter"><a href="<?= PATH_HREF ?>action/reserva/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Ocupar lugar</a></div>
-				<?php } ?>
+				<?php } } ?>
 			</div>
 		</article>
 		<?php

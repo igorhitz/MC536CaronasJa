@@ -5,15 +5,15 @@
 	}
 	
 	$reserva = new Reserva;
-	
+
 	//salva os atributos
 	$reserva->setAttributes($id_carona, $email);
 	
 	if($reserva->insert()) {
-		header("Location: ../../../listaCaronas/query=".$reserva->encodeQuery());
+		header("Location: ../../../listaCaronas/query=".$reserva->encodeQuery()."/stat=reserva-ok");
 		exit;
 	} else {
-		//header("Location: ../../../listaCaronas/stat=falha-insercao");
+		header("Location: ../../../listaCaronas/stat=falha-insercao");
 		exit;
 	}
 
