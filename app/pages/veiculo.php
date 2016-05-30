@@ -31,14 +31,14 @@
 				<div class="col4">
 					<label>Cor:</label>
 					<select name="cor">
+						<option value="Amarelo">Amarelo</option>
+						<option value="Azul">Azul</option>
+						<option value="Branco">Branco</option>
+						<option value="Laranja">Laranja</option>
 						<option value="Prata">Prata</option>
 						<option value="Preto">Preto</option>
-						<option value="Branco">Branco</option>
-						<option value="Azul">Azul</option>
-						<option value="Amarelo">Amarelo</option>
-						<option value="Vermelho">Vermelho</option>
 						<option value="Verde">Verde</option>
-						<option value="Laranja">Laranja</option>
+						<option value="Vermelho">Vermelho</option>						
 						<option value="Outra">Outra</option>
 					</select>
 				</div>
