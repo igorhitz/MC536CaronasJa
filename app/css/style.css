@@ -12,7 +12,9 @@ body a {color: #24A6CC; text-decoration: none;}
 body a:hover {text-decoration: underline;}
 body p {margin-bottom: 10px;}
 .alert {padding: 10px; border-radius: 2px; margin-bottom: 20px; box-sizing: border-box;}
-.adviseMsg {float: left; width: 100%; background: #cce6f9; border: 1px solid #8096aa;}
+.adviseMsg {float: left; width: 100%; background: #d1eefc; border: 1px solid #b9daea;}
+.successMsg {float: left; width: 100%; background: #dbfcdd; border: 1px solid #b0e8b4;}
+.errorMsg {float: left; width: 100%; background: #cce6f9; border: 1px solid #8096aa;}
 .query {font-family: "Courier New";}
 
 
@@ -108,8 +110,10 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .offer .price .small {font-size:23px; font-family: Arial,Helvetica,sans-serif;line-height: 30px; font-weight: bold;}
 .offer .price .perUnit {display: block; }
 .offer .availability {margin-top: 5px; font-size: 11px;}
-.offer .enter {margin-top: 5px;}
-.offer .enter a {height:18px; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+.offer .enter {margin-top: 5px; height:18px; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+.offer .enter a {color: #FFF;}
+.offer .reservado {margin-top: 5px; height:18px; background-color: #f97736; border-radius: 8px; border: none; color: white; padding: 5px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+
 
 .dark {font-weight: bold !important; color: #666;}
 .light {color: #888;}
