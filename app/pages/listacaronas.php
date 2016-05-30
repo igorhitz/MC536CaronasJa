@@ -1,18 +1,26 @@
 	<?php
 	$caronas = new Carona;
+
+	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['origem']) && $_GET['destino']) {
 		$origem = $_GET['origem'];
 		$destino = $_GET['destino'];
+
+		//data é opcional
 		if(isset($_GET['data'])) {
 			$data = $_GET['data'];
 		} else {
 			$data = '';
 		}
+
+		//se existirem buscamos por filtro
 		$lista = $caronas->findByFilter($origem, $destino, $data);
 	} else {
-		//obtem lista geral (*)
+		//senão obtem lista geral (*)
 		$lista = $caronas->selectAll();
 	}
+
+	SiteHandler::getQueryAlert(Carona::$query);
 	?>
 	<br>
 	<?php if($caronas->rows > 0) { ?>
@@ -61,7 +69,9 @@
 			<div class = "offer">
 				<div class = "price"><strong><span>R$<?= $item['preco'] ?></span></strong><span class="perUnit" dir = "rtl">por passageiro</span></div>
 				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
-				<div class = "enter"><a href = "#">Ocupar lugar</a></div>
+				<?php if($item['email_dono'] !== $_SESSION['email']) { ?> 
+				<div class = "enter"><a href="<?= PATH_HREF ?>action/reserva/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Ocupar lugar</a></div>
+				<?php } ?>
 			</div>
 		</article>
 		<?php
