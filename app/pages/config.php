@@ -2,6 +2,9 @@
 	<form class="default-form" action="<?= PATH_HREF ?>action/usuarioupdate" method="post">
 		<fieldset>
 			<div class="form-line">
+				<h2>Configurações</h2>
+			</div>
+			<div class="form-line">
 				<h2>Editar Usuário</h2>
 			</div>	
 				
