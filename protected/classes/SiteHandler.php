@@ -12,7 +12,7 @@
 		private $loginPage;
 
 		function __construct() {
-			$this->home = 'home';
+			$this->home = 'signin';
 			$this->loginPage = 'signin';
 		}
 

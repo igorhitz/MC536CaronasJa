@@ -18,7 +18,7 @@
     /* Se existirem os parametros passados via get */
     $site = new SiteHandler;
 
-    $permitidas = array('Home','Signin','SignUp');
+    $permitidas = array('Signin','SignUp');
 
     if(isset($_GET['p']) && !empty($_GET['p'])) {
         //exibe notificacao ao usuario se houver
