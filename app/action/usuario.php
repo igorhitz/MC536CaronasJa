@@ -57,7 +57,7 @@
 	$usuario->setAttributes($itens['email'], $itens['senha'], $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['foto'], $itens['celular']);
 	
 	if($usuario->insert()) {
-		header("Location: ../SignUp/query=".$usuario->encodeQuery());
+		header("Location: ../SignIn/query=".$usuario->encodeQuery());
 		exit;
 	} else {
 		header("Location: ../SignUp/stat=falha-insercao");
