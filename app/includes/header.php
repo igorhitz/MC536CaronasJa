@@ -57,7 +57,7 @@
             <div class="wrapper">
 					<nav id="menu">
 						<ul>
-							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>SignIn" class="PrincipAtivo"><b>Home</b></a></li>
+							<li id = "first"><a id = "link" href="<?= PATH_HREF ?>Home" class="PrincipAtivo"><b>Home</b></a></li>
 							<li id = "first" class = "dropdown"><a id = "link" data-toggle="dropdown" ><b>Caronas</b></a>
 								<ul class = "dropdown-menu">
 									<li><a href="<?= PATH_HREF ?>registraCaronas">Cadastrar Carona</a></li>

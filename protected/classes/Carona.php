@@ -268,6 +268,65 @@
 		}
 
 
+		/**
+		 ** Metodo de select para Caronas
+		 ** return @var mixed tupla do banco
+		**/
+		public function findByEmail($email_motorista) {
+			
+			if(parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE c.email = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE c.email = '$email_motorista'";
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('s', $email_motorista);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'id' => $id,
+								'email_dono' => $email,
+								'id_grupo' => $id_grupo,
+								'origem' => $origem,
+								'destino' => $destino,
+								'descricao' => $descricao,
+								'data' => $data,
+								'hora' => $hora,
+								'qtd_passageiros' => $qtd_passageiros,
+								'bagagem' => $bagagem,
+								'preco' => $preco,
+								'nome' => $nome,
+								'modelo' => $modelo,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+
 		
 
 	}
