@@ -35,7 +35,7 @@
 		 ** return @var string
 		**/
 		public static function getFields() {
-			return "c.id, c.email, c.id_grupo, c.origem, c.destino, c.descricao, c.data, c.hora, c.qtd_passageiros, c.bagagem, c.preco, u.nome, v.modelo";
+			return "c.id, c.email, c.id_grupo, c.origem, c.destino, c.descricao, c.data, c.hora, c.qtd_passageiros, c.bagagem, c.preco, u.nome, u.nascimento, u.foto, v.modelo, m.marca";
 		}
 
 		public static function checkAttributes($attributes) {
@@ -146,19 +146,20 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email";
+				
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
 				
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
 					self::$query .= " ORDER BY ".$orderBy;
 				}
-
+	
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $nascimento, $foto, $modelo, $marca);
 					
 					$rows = array();
 					if($stmt->num_rows >= 1) {
@@ -182,7 +183,10 @@
 								'bagagem' => $bagagem,
 								'preco' => $preco,
 								'nome' => $nome,
-								'modelo' => $modelo
+								'nascimento' => $nascimento,
+								'foto' => $foto,
+								'modelo' => $modelo,
+								'marca' => $marca,
 								);
 						}
 						return $rows;
@@ -208,8 +212,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE origem = ? && destino = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE origem = '$origem' && destino = '$destino'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
 				
 				if($data !== '') {
 					$query .= " AND data = ?";
@@ -225,7 +229,7 @@
 					}
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $nascimento, $foto, $modelo, $marca);
 					
 					$rows = array();
 
@@ -250,7 +254,10 @@
 								'bagagem' => $bagagem,
 								'preco' => $preco,
 								'nome' => $nome,
+								'nascimento' => $nascimento,
+								'foto' => $foto,
 								'modelo' => $modelo,
+								'marca' => $marca,
 								);
 						}
 						return $rows;
@@ -276,15 +283,15 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE c.email = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE c.email = '$email_motorista'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->bind_param('s', $email_motorista);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $nascimento, $foto, $modelo, $marca);
 					
 					$rows = array();
 
@@ -309,7 +316,10 @@
 								'bagagem' => $bagagem,
 								'preco' => $preco,
 								'nome' => $nome,
+								'nascimento' => $nascimento,
+								'foto' => $foto,
 								'modelo' => $modelo,
+								'marca' => $marca,
 								);
 						}
 						return $rows;

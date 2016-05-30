@@ -5,6 +5,8 @@
 		public $id_carona;
 		
 		public $email;
+		
+		public $rows;
 
 		public static $query;
 

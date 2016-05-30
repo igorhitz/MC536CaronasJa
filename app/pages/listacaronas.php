@@ -1,6 +1,6 @@
 	<?php
 	$caronas = new Carona;
-
+	
 	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['origem']) && $_GET['destino']) {
 		$origem = $_GET['origem'];
@@ -19,7 +19,7 @@
 		//senão obtem lista geral (*)
 		$lista = $caronas->selectAll();
 	}
-
+	
 	SiteHandler::getQueryAlert(Carona::$query);
 	?>
 	<br>
@@ -33,14 +33,16 @@
 	<div class = "search-results">
 		<?php 
 		foreach($lista as $item) {
+			$reserva = new Reserva;
+			$reserva->findById($item['id']);
 		?>
 		<article class = "row">
 			<div class = "user">	
-				<img class = "photo" src = "https://d2kwny77wxvuie.cloudfront.net/user/-SEos2b3QV2Op5xI4j5HsA/thumbnail_72x72.jpeg" width="72" height="72">
+				<img class = "photo" src = "<?= $item['foto'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
-					21 anos <br>
-					<span class = "dark"><?= $item['modelo'] ?></span> <br> <br>
+					<?= 2016 - $item['nascimento'] ?> anos<br>
+					<span class = "dark"><?= $item['marca'] ?> - <?=$item['modelo'] ?></span> <br> <br>
 				</div>
 				
 				<div class = "trust">
@@ -68,10 +70,9 @@
 			</div>
 			<div class = "offer">
 				<div class = "price"><strong><span>R$<?= $item['preco'] ?></span></strong><span class="perUnit" dir = "rtl">por passageiro</span></div>
-				<div class = "availability"><strong>1&nbsp;</strong><span>lugares disponíveis</span></div>
+				<div class = "availability"><strong><?= $item['qtd_passageiros'] - $reserva->rows ?>&nbsp;</strong><span>lugares disponíveis</span></div>
 				
 				<?php 
-				$reserva = new Reserva;
 				$res = $reserva->findById($item['id']);
 				if($reserva->rows == 1) {
 					if($res[0]['email_passageiro'] == $_SESSION['email']) {
