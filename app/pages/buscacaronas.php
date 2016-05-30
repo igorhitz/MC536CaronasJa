@@ -1,5 +1,3 @@
-	<?php (isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '';
-	?>
 	<form id="buscarCaronaForm" class="default-form" action="<?= PATH_HREF ?>listacaronas/">
 		<fieldset>
 			<div class="form-line">

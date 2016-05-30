@@ -150,12 +150,13 @@
 			
 			if (parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." v WHERE nome LIKE '?%'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u WHERE nome LIKE ?";
 				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u WHERE nome LIKE '".$nome."%'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('s', $nome);
+					$likestring = $nome.'%';
+					$stmt->bind_param('s', $likestring);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
 					$stmt->bind_result($email, $nome, $genero, $nascimento, $foto, $celular);

@@ -1,4 +1,3 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '' ?>
 	<form id="buscarUsuarioForm" class="default-form" action="<?= PATH_HREF ?>listaUsuarios/">
 		<fieldset>
 			<div class = "form-line">
