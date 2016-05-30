@@ -5,7 +5,7 @@
 	$veiculo = new Veiculo;
 	$veiculo->findByEmail($_SESSION['email']);
 	if ($veiculo->rows >= 1) {
-		SiteHandler::getAlert('Seu boboca, vc já cadastrou um carro', 'advise');
+		SiteHandler::getAlert('Você já cadastrou um carro', 'advise');
 	} else {
 	?>
 	<form class="default-form" action="<?= PATH_HREF ?>action/veiculo" method="post">
