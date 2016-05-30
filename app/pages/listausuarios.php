@@ -26,7 +26,7 @@
 
 		</div>
 			<div class = "icons col3">
-					<a href = "#" class = "btn">Adicionar Amigo</a>
+					<a href = "#" class = "btn">Adicionar Amigo</a> <br> <br>
 					<a href= "msg"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 			</div>

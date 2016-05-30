@@ -8,13 +8,15 @@
 		public $categoria;
 		
 		public $cor;
+	
+		public $rows;
 		
 		public $email_dono;
 
 		private static $query;
 
 		public static function tableName() {
-			return 'veiculo v';
+			return 'veiculo';
 		}
 		
 		public static function getFields() {
@@ -125,8 +127,8 @@
 			
 			if (parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." WHERE email = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." WHERE email = ".$email;
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." v WHERE email_dono = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." v WHERE email_dono = ".$email;
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
