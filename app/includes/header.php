@@ -74,6 +74,7 @@
 									<li><a href="<?= PATH_HREF ?>buscaGrupos">Buscar Grupos</a></li>
 								</ul>
 							</li>
+							<li id = "first"><a id = "link"href="<?= PATH_HREF ?>estatisticas"><b>Estatísticas</b></a></li>
 						</ul>
 					</nav>
 
