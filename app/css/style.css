@@ -70,7 +70,7 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 /* Listagem */
 .default-list {float:left; width: 100%;}
 .default-list div.line{float:left; width:100%; margin-bottom:20px; margin-left:30px; border-bottom: 1px solid #CCC;}
-.default-list .info{float:left; border-right:1px solid #CCC; margin-bottom: 20px; padding-right:20px;}
+.default-list .info{float:left; width:320px; border-right:1px solid #CCC; margin-bottom: 20px; padding-right:20px;}
 .default-list div.info img{float:left; border-radius:50%; margin-right:20px;}
 .default-list div.info span{float:right; font-size:15px; color: #666;}
 .default-list div.trust p {display:inline-block; margin:0; padding: 2px 0;}
