@@ -78,6 +78,8 @@
 			self::getAlert("O comando executado foi:<br> <span class=\"query\">".$query . "</span>", 'advise');
 		}
 
-
+		public static function formatData($data) {
+			return date("d/m/Y", strtotime($data));
+		}
 	}
 ?>

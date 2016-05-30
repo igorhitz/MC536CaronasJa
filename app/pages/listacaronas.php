@@ -57,7 +57,7 @@
 				</div>
 			</div>
 			<div class = "description-box">
-				<h3 class = "day-time"><?= $item['data'] ?> às <?= $item['hora'] ?></h3>
+				<h3 class = "day-time"><?= SiteHandler::formatData($item['data']) ?> às <?= $item['hora'] ?></h3>
 				<h3 class = "from-to">
 					<span class ="local"><?= $item['origem'] ?></span>
 					<span class ="arrow">→</span>
