@@ -23,7 +23,7 @@
 
 		public $rows;
 
-		private static $query;
+		public static $query;
 
 		public static function tableName() {
 			return 'carona c';
@@ -35,7 +35,7 @@
 		 ** return @var string
 		**/
 		public static function getFields() {
-			return "c.email, c.id_grupo, c.origem, c.destino, c.descricao, c.data, c.hora, c.qtd_passageiros, c.bagagem, c.preco, u.nome";
+			return "c.id, c.email, c.id_grupo, c.origem, c.destino, c.descricao, c.data, c.hora, c.qtd_passageiros, c.bagagem, c.preco, u.nome, v.modelo";
 		}
 
 		public static function checkAttributes($attributes) {
@@ -146,8 +146,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName();
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email";
 				
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
@@ -158,7 +158,7 @@
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome);
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
 					
 					$rows = array();
 					if($stmt->num_rows >= 1) {
@@ -170,6 +170,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'id' => $id,
 								'email_dono' => $email,
 								'id_grupo' => $id_grupo,
 								'origem' => $origem,
@@ -180,7 +181,8 @@
 								'qtd_passageiros' => $qtd_passageiros,
 								'bagagem' => $bagagem,
 								'preco' => $preco,
-								'nome' => $nome
+								'nome' => $nome,
+								'nome' => $modelo
 								);
 						}
 						return $rows;
@@ -206,12 +208,12 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email WHERE origem = ? && destino = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()."JOIN usuario u ON c.email = u.email WHERE origem = $origem && destino = $destino";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email WHERE origem = '$origem' && destino = '$destino'";
 				
 				if($data !== '') {
 					$query .= " AND data = ?";
-					self::$query .= " AND data = ".$data;
+					self::$query .= " AND data = '$data'";
 				}
 
 				//executa a query com prepared statement
@@ -223,7 +225,7 @@
 					}
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome);
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $modelo);
 					
 					$rows = array();
 
@@ -236,6 +238,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'id' => $id,
 								'email_dono' => $email,
 								'id_grupo' => $id_grupo,
 								'origem' => $origem,
@@ -246,7 +249,8 @@
 								'qtd_passageiros' => $qtd_passageiros,
 								'bagagem' => $bagagem,
 								'preco' => $preco,
-								'nome' => $nome
+								'nome' => $nome,
+								'modelo' => $modelo,
 								);
 						}
 						return $rows;

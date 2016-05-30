@@ -25,15 +25,12 @@
 			return true;
 		}
 
-		public function setAttributes($nome=null, $categoria=null, $email_criador=null) {
-			if(!empty($nome)) {
-				$this->nome = $nome;
+		public function setAttributes($id_carona=null, $email=null) {
+			if(!empty($id_carona)) {
+				$this->id_carona = $id_carona;
 			}
-			if(!empty($categoria)) {
-				$this->categoria = $categoria;
-			}
-			if(!empty($email_criador)) {
-				$this->email_criador = $email_criador;
+			if(!empty($email)) {
+				$this->email = $email;
 			}
 		}
 
@@ -74,9 +71,15 @@
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('sss', $this->id_carona, $this->email);
+					$stmt->bind_param('ss', $this->id_carona, $this->email);
 					$stmt->execute();
-					return true;
+					$stmt->store_result();
+					if($stmt->affected_rows == 1) {
+						return true;
+					} else {
+						echo self::$query;
+						return false;
+					}
 				} else {
 					return false;
 				}
