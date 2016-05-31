@@ -1,4 +1,10 @@
-	<?php (isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '' ?>
+	<?php 
+		(isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '';
+	
+		$grupo = new Grupo;
+		$lista_nomes = $grupo->getNames();
+	?>
+	
 	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
 		<fieldset>
 			<div class="form-line">
@@ -67,9 +73,13 @@
 				<div class = "col6">
 					<label>Grupo:</label>
 					<select name="id_grupo">
-						<option selected value></option>
-						<option value="1">Grupo BR</option>
-						<option value="2">NANANINANAO</option>
+						<?php 	
+						foreach($lista_nomes as $item) {
+						?>
+							<option value="<?= $item['nome_grupo'] ?>"></option>
+						<?php
+						}
+						?>
 					</select>
 				</div>
 			</div>
