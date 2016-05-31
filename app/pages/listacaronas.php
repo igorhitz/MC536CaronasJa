@@ -42,7 +42,7 @@
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
 					<?= 2016 - $item['nascimento'] ?> anos<br>
-					<span class = "dark"><?= $item['marca'] ?> - <?=$item['modelo'] ?></span> <br> <br>
+					<span class = "dark"><?= $item['modelo'] ?></span> <br> <br>
 				</div>
 				
 				<div class = "trust">

@@ -149,8 +149,8 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
 				
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
@@ -188,7 +188,7 @@
 								'nascimento' => $nascimento,
 								'foto' => $foto,
 								'modelo' => $modelo,
-								'marca' => $marca,
+								'marca' => $marca
 								);
 						}
 						return $rows;
@@ -214,14 +214,17 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
 				
 				if($data !== '') {
-					$query .= " AND data = ?";
+					$query .= " AND data = ? ";
 					self::$query .= " AND data = '$data'";
 				}
 
+				$query .= " GROUP BY c.id";
+				self::$query .= " GROUP BY c.id";
+				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					if($data == '') {
@@ -285,8 +288,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
