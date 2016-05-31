@@ -3,10 +3,10 @@
 	$lista_ranking = $avalia->ranking();
 	
 	$carona_origem = new Carona;
-	$lista_origem = $carona_origem->qtdUsers("origem");
+	$lista_origem = $carona_origem->moreUsers("origem");
 	
 	$carona_destino = new Carona;
-	$lista_destino = $carona_destino->qtdUsers("destino");
+	$lista_destino = $carona_destino->moreUsers("destino");
 ?>
 
 	<div class="lefloat">
