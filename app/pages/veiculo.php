@@ -21,7 +21,7 @@
 						<?php 	
 						foreach($lista as $item) {
 						?>
-						<option value="<?= $item['modelo'] ?>"><?= $item['modelo'].' - '.$item['marca'] ?></option>
+						<option value="<?= $item['modelo'] ?>"><?= $item['marca'].' - '.$item['modelo'] ?></option>
 						<?php
 						}
 						?>
