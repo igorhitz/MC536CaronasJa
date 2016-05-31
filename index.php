@@ -11,6 +11,7 @@
     require_once("protected/classes/Veiculo.php");
     require_once("protected/classes/Reserva.php");
 	require_once("protected/classes/Avalia.php");
+	require_once("protected/classes/Mensagem.php");
 
 
     //Inclusao do cabecalho (topo) do site
