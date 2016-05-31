@@ -3,6 +3,7 @@
 	
 		$grupo = new Grupo;
 		$lista_nomes = $grupo->getNames();
+		echo $lista_nomes[0]['nome_grupo'];
 	?>
 	
 	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
@@ -76,7 +77,7 @@
 						<?php 	
 						foreach($lista_nomes as $item) {
 						?>
-							<option value="<?= $item['nome_grupo'] ?>"></option>
+							<option value="<?= $item['nome_grupo'] ?>"><?= $item['nome_grupo'] ?></option>
 						<?php
 						}
 						?>

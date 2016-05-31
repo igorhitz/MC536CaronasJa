@@ -342,6 +342,7 @@
 		public function moreUsers($campo) {
 			if(parent::checkConnection()) {
 				$query = "SELECT ".$campo.", COUNT(".$campo.") FROM ".self::tableName(). " GROUP BY ".$campo." ORDER BY COUNT(".$campo.") DESC";
+				self::$query = "SELECT ".$campo.", COUNT(".$campo.") FROM ".self::tableName(). " GROUP BY ".$campo." ORDER BY COUNT(".$campo.") DESC";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {

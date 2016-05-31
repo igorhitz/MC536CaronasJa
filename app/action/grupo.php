@@ -45,7 +45,7 @@
 /** --------------------------------------- **/
 	
 	//salva os atributos
-	$grupo->setAttributes($itens['email_criador'], $itens['nome'], $itens['categoria']);
+	$grupo->setAttributes($itens['nome'], $itens['email_criador'], $itens['categoria']);
 	
 	if($grupo->insert()) {
 		header("Location: ../registraGrupo/query=".$grupo->encodeQuery());
