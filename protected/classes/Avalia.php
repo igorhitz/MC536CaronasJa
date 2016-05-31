@@ -20,7 +20,7 @@
 		}
 		
 		public static function getFields() {
-			return 'email_avaliado, AVG(nota)';
+			return 'email_avaliador, email_avaliado, data, nota, conteudo';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -102,24 +102,18 @@
 				return false;
 			}
 		}
-		
-		/*
-			SELECT email_avaliado, AVG(nota)
-			FROM avalia
-			GROUP BY email_avaliado
-			ORDER BY AVG(nota) DESC;
-		*/
+
 		public function ranking() {
 			if (parent::checkConnection()) {
 				// query para fazer uma lista de usuarios e suas respectivas notas, em ordem decrescente de notas
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." GROUP BY email_avaliado ORDER BY AVG(nota) DESC";
+				$query = "SELECT u.nome, AVG(a.nota) FROM ".self::tableName()." a JOIN usuario u ON a.email_avaliado = u.email GROUP BY a.email_avaliado ORDER BY AVG(a.nota) DESC";
 				//self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." v WHERE email_dono = ".$email;
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email_avaliado, $media_nota);
+					$stmt->bind_result($nome_avaliado, $media_nota);
 					
 					$rows = array();
 
@@ -132,7 +126,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
-								'email_avaliado' => $email_avaliado,
+								'nome_avaliado' => $nome_avaliado,
 								'media_nota' => $media_nota,
 								);
 						}
