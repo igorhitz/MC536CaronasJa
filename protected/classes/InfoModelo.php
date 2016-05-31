@@ -108,8 +108,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName();
-				self::$query = "SELECT * FROM ".self::tableName();
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." ORDER BY marca ASC";
+				self::$query = "SELECT * FROM ".self::tableName()." ORDER BY marca ASC";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {

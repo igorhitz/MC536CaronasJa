@@ -88,14 +88,15 @@
 		}
 
 		/* retorna os nomes de todos os grupos cadastrados no site, em ordem crescente */
-		public function getNames() {
+		public function getNames($email) {
 			
 			if (parent::checkConnection()) {
-				$query = "SELECT nome FROM ".self::tableName();
+				$query = "SELECT g.nome FROM ".self::tableName()." g WHERE g.email_criador = ? OR g.id = (SELECT p.id_grupo FROM participa p WHERE p.email = ?)";
 				//self::$query = "SELECT nome FROM ".self::tableName()." WHERE 1";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('ss',$email, $email);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
 					$stmt->bind_result($nome);

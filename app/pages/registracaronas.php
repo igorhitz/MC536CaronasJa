@@ -2,8 +2,7 @@
 		(isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '';
 	
 		$grupo = new Grupo;
-		$lista_nomes = $grupo->getNames();
-		echo $lista_nomes[0]['nome_grupo'];
+		$lista_nomes = $grupo->getNames($_SESSION['email']);
 	?>
 	
 	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
