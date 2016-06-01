@@ -342,11 +342,17 @@
 		}
 
 		/* Verifica de quais locais partem / chegam (origem / destino) mais usuários */
-		public function moreUsers($campo) {
+		public function moreUsers($campo, $limit='') {
 			if(parent::checkConnection()) {
+				
 				$query = "SELECT ".$campo.", COUNT(".$campo.") FROM ".self::tableName(). " GROUP BY ".$campo." ORDER BY COUNT(".$campo.") DESC";
 				self::$query = "SELECT ".$campo.", COUNT(".$campo.") FROM ".self::tableName(). " GROUP BY ".$campo." ORDER BY COUNT(".$campo.") DESC";
 				
+				if(!empty($limit)) {
+					$query .= " LIMIT $limit";
+					self::$query .= " LIMIT $limit";
+				}
+
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->execute();
