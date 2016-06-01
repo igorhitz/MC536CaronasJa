@@ -1,16 +1,20 @@
 <?php
 	$avalia = new Avalia;
 	$lista_ranking = $avalia->ranking();
+	$rankingQuery = Avalia::$query;
 	
 	$carona_origem = new Carona;
-	$lista_origem = $carona_origem->moreUsers("origem");
+	$lista_origem = $carona_origem->moreUsers("origem", 10);
+	$origemQuery = Carona::$query;
 	
 	$carona_destino = new Carona;
-	$lista_destino = $carona_destino->moreUsers("destino");
+	$lista_destino = $carona_destino->moreUsers("destino", 10);
+	$destinoQuery = Carona::$query;
 ?>
-
+	
 	<div class="lefloat">
 		<div class = "card">
+		<?php 	SiteHandler::getQueryAlert($rankingQuery); ?>
 			<h2>Ranking</h2><br>
 			<table>
 			<?php
@@ -31,6 +35,7 @@
 
 	<div class="rifloat">
 		<div class = "card">
+			<?php 	SiteHandler::getQueryAlert($origemQuery); ?>			
 			<h2>De onde partem mais usuários?</h2><br>
 			<table>
 			<?php
@@ -49,6 +54,7 @@
 		<br>
 		
 		<div class = "card">
+		<?php 	SiteHandler::getQueryAlert($destinoQuery); ?>
 		<h2>Para onde chegam mais usuários?</h2><br>
 		<table>
 			<?php
