@@ -1,5 +1,5 @@
 	<?php (isset($_GET['query'])) ? Grupo::showQuery($_GET['query']) : '' ?>
-	<form class="default-form" action="<?= PATH_HREF ?>action/grupo" method="post">
+	<form id="buscarGrupoForm" class="default-form" action="<?= PATH_HREF ?>listaGrupos" method="get">
 		<fieldset>
 			<div class="form-line">
 				<h2>Buscar Grupo</h2>
@@ -17,3 +17,11 @@
 			</div>
 		</fieldset>
 	</form>
+
+	<script>
+		$('#buscarGrupoForm').submit(function(e){
+			e.preventDefault();
+			var nome = $('input[name=nome]').val();
+			$(location).attr('href','listaGrupos/nome='+nome);
+		});
+	</script>

@@ -7,7 +7,7 @@
 		
 		public $email_criador;
 
-		private static $query;
+		public static $query;
 
 		public static function tableName() {
 			return 'grupo';
@@ -114,6 +114,106 @@
 							$rows[] = array(
 								'id_grupo' => $id,
 								'nome_grupo' => $nome,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+
+
+		/**
+		 ** Metodo de busca por nome de grupo
+		 ** @return array ou boolean 
+		**/
+
+		public function getGruposByNome($nome) {
+			
+			if (parent::checkConnection()) {
+				$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g WHERE g.nome LIKE ?";
+				self::$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g WHERE g.nome LIKE '%$nome%'";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$likestring = '%'.$nome.'%';
+					$stmt->bind_param('s',$likestring);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($id, $nome, $categoria, $email_criador);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'id_grupo' => $id,
+								'nome_grupo' => $nome,
+								'categoria' => $categoria,
+								'email_criador' => $email_criador,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+		/**
+		 ** Metodo de busca por nome de grupo
+		 ** @return array ou boolean 
+		**/
+
+		public function selectAll() {
+			
+			if (parent::checkConnection()) {
+				$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName(). " g";
+				self::$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName(). " g";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($id, $nome, $categoria, $email_criador);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'id_grupo' => $id,
+								'nome_grupo' => $nome,
+								'categoria' => $categoria,
+								'email_criador' => $email_criador,
 								);
 						}
 						return $rows;
