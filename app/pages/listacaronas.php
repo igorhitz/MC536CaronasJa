@@ -75,10 +75,11 @@
 				
 				<?php
 				if($item['email_dono'] == $_SESSION['email']){ ?>
-					<div class = "reservado">Você criou isto!</div>
+					<div class = "reservado">Você está oferecendo!</div>
 				<?php
 				}
-				else {
+				else {						
+					echo $reserva->rows.'ddsfsd';
 					if ($reserva->rows >= 1){
 						$flag = false;
 						for($i = 0; $i < $reserva->rows; $i++){
