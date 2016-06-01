@@ -128,3 +128,6 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 footer {position: relative; padding-top:5px; margin-top:5px;}
 footer ul {float:right; list-style: none;}
 footer ul li {display: inline; float: right; font-size: 8px; margin-right: 20px;}
+
+/* Headings */
+h2 {text-align:center;}
