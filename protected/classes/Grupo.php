@@ -88,18 +88,18 @@
 		}
 
 		/* retorna os nomes de todos os grupos cadastrados no site, em ordem crescente */
-		public function getNames($email) {
+		public function getGrupos($email) {
 			
 			if (parent::checkConnection()) {
-				$query = "SELECT g.nome FROM ".self::tableName()." g WHERE g.email_criador = ? OR g.id = (SELECT p.id_grupo FROM participa p WHERE p.email = ?)";
-				//self::$query = "SELECT nome FROM ".self::tableName()." WHERE 1";
+				$query = "SELECT g.id, g.nome FROM ".self::tableName()." g WHERE g.email_criador = ? OR g.id = (SELECT p.id_grupo FROM participa p WHERE p.email = ?)";
+				self::$query = "SELECT g.id, g.nome FROM ".self::tableName()." g WHERE g.email_criador = '$email' OR g.id = (SELECT p.id_grupo FROM participa p WHERE p.email = '$email')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->bind_param('ss',$email, $email);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($nome);
+					$stmt->bind_result($id, $nome);
 					
 					$rows = array();
 
@@ -112,6 +112,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'id_grupo' => $id,
 								'nome_grupo' => $nome,
 								);
 						}

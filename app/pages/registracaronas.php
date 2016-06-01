@@ -2,7 +2,7 @@
 		(isset($_GET['query'])) ? Carona::showQuery($_GET['query']) : '';
 	
 		$grupo = new Grupo;
-		$lista_nomes = $grupo->getNames($_SESSION['email']);
+		$lista_nomes = $grupo->getGrupos($_SESSION['email']);
 	?>
 	
 	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
@@ -76,7 +76,7 @@
 						<?php 	
 						foreach($lista_nomes as $item) {
 						?>
-							<option value="<?= $item['nome_grupo'] ?>"><?= $item['nome_grupo'] ?></option>
+							<option value="<?= $item['id_grupo'] ?>"><?= $item['nome_grupo'] ?></option>
 						<?php
 						}
 						?>
