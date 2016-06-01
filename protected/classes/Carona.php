@@ -28,7 +28,7 @@
 		public static $query;
 
 		public static function tableName() {
-			return 'carona c';
+			return 'carona';
 		}
 
 
@@ -119,7 +119,7 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				$query = "INSERT INTO ".self::tableName()."(`email`, `id_grupo`, `origem`, `destino`, `descricao`, `data`, `hora`, `qtd_passageiros`, `bagagem`, `preco`) VALUES (?,?,?,?,?,?,?,?,?,?)";
-				self::$query = "INSERT INTO `carona`(`email`, `id_grupo`, `origem`, `destino`, `descricao`, `data`, `hora`, `qtd_passageiros`, `bagagem`, `preco`) VALUES ('".$this->email."', '".$this->id_grupo."', '".$this->origem."', '".$this->destino."', '".$this->descricao."', '".$this->data."', '".$this->hora."', '".$this->qtd_passageiros."', '".$this->bagagem."', '".$this->preco."')";
+				self::$query = "INSERT INTO ".self::tableName()."(`email`, `id_grupo`, `origem`, `destino`, `descricao`, `data`, `hora`, `qtd_passageiros`, `bagagem`, `preco`) VALUES ('".$this->email."', '".$this->id_grupo."', '".$this->origem."', '".$this->destino."', '".$this->descricao."', '".$this->data."', '".$this->hora."', '".$this->qtd_passageiros."', '".$this->bagagem."', '".$this->preco."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
@@ -149,8 +149,8 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
 				
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
@@ -214,8 +214,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
 				
 				if($data !== '') {
 					$query .= " AND data = ? ";
@@ -288,8 +288,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
@@ -383,7 +383,7 @@
 					return false;
 				}
 			} else {
-				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				parent::getAlert('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.','error');
 				return false;
 			}
 		}
