@@ -1,5 +1,5 @@
 	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
-	$email = $_GET['email'];
+	(isset($_GET['email'])) ? $email = $_GET['email'] : '';
 	?>
 	<form class = "default-form" action="<?= PATH_HREF ?>action/mensagem" method="post">
 		<fieldset>

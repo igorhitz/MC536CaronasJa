@@ -44,8 +44,7 @@
 		header("Location: ../enviarMensagem/query=".$mensagem->encodeQuery());
 		exit;
 	} else {
-		print_r($itensObrigatorios);
-		//header("Location: ../enviarMensagem/stat=falha-insercao");
+		header("Location: ../enviarMensagem/stat=falha-insercao");
 		exit;
 	}
 
