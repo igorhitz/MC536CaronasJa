@@ -1,6 +1,5 @@
 <?php
 
-
 	$date = date('Y-m-d H:i:s');
 	$campos = array( 'conteudo', 'email_remetente', 'email_destinatario'	);
 	$camposObrigatorios = array( 'conteudo', 'email_remetente', 'email_destinatario' );
@@ -31,7 +30,7 @@
 
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Mensagem::checkAttributes($itensObrigatorios)) {
-		header("Location: ../Home/stat=campos-vazios");
+		header("Location: ../enviarMensagem/stat=campos-vazios");
 		exit;
 	}
 	
@@ -42,10 +41,11 @@
 	 $mensagem->setAttributes($itens['email_destinatario'], $itens['email_remetente'], $date, $itens['conteudo']);
 	
 	if($mensagem->insert()) {
-		header("Location: ../Home/query=".$mensagem->encodeQuery());
+		header("Location: ../enviarMensagem/query=".$mensagem->encodeQuery());
 		exit;
 	} else {
-		header("Location: ../Home/stat=falha-insercao");
+		print_r($itensObrigatorios);
+		//header("Location: ../enviarMensagem/stat=falha-insercao");
 		exit;
 	}
 

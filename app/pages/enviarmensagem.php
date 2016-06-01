@@ -4,7 +4,14 @@
 	<form class = "default-form" action="<?= PATH_HREF ?>action/mensagem" method="post">
 		<fieldset>
 			<div class="form-line">
-				<h2>Enviando mensagem para: <?= $email ?></h2>
+				<h2>Enviar mensagem</h2>
+			</div>
+
+			<div class="form-line">
+				<div class="col10">
+					<label>Destinatário:</label>
+					<input type = "text" name = "email_destinatario" value = "<?= (isset($email)) ? $email : '' ?>">
+				</div>
 			</div>
 			
 			<div class = "form-line">
@@ -15,7 +22,6 @@
 			</div>
 			
 			<div>
-				<input type = "hidden" name = "email_destinatario" value = "<?= $email?>"> 
 				<input type = "hidden" name = "email_remetente" value = "<?= $_SESSION['email']?>"> 
 				<button type="submit" class="btn">Enviar Mensagem</button>
 			</div>

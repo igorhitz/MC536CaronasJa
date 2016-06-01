@@ -5,16 +5,16 @@
 		
 		public $email_remetente;
 		
-		public $data;
-		
 		public $conteudo;
+
+		public $status;
 		
 		public $rows;
 
 		public static $query;
 
 		public static function tableName() {
-			return 'mensagem m';
+			return 'mensagem';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -69,6 +69,7 @@
 			return parent::getQueryAlert(self::decodeQuery($query));
 		}
 
+
 		/**
 		 ** Metodo de insert para nova avaliacao
 		 ** return @var integer ultimo id inserido
@@ -77,19 +78,25 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO ".self::tableName()."(`email_destinatario`, `email_remetente`, `data`, `conteudo`) VALUES (?,?,?,?)";
-				self::$query = "INSERT INTO `mensagem`(`email_destinatario`, `email_remetente`, `data`, `conteudo`) VALUES ('".$this->email_destinatario."', '".$this->email_remetente."', '".$this->data."', '".$this->conteudo."')";
+				$query = "INSERT INTO ".self::tableName()." (`email_destinatario`, `email_remetente`, `conteudo`) VALUES (?,?,?)";
+				self::$query = "INSERT INTO ".self::tableName()." (`email_destinatario`, `email_remetente`, `conteudo`) VALUES ('".$this->email_destinatario."', '".$this->email_remetente."', '".$this->conteudo."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ssss', $this->email_destinatario, $this->email_remetente, $this->data,  $this->conteudo);
+					$stmt->bind_param('sss', $this->email_destinatario, $this->email_remetente, $this->conteudo);
 					$stmt->execute();
-					return true;
+					if($stmt->affected_rows == 1) {
+						return true;
+					} else {
+						parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
+						//return false;
+					}
 				} else {
+					parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
 					return false;
 				}
 			} else {
-				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				parent::getAlert('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
 				return false;
 			}
 		}
