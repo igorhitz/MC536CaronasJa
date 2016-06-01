@@ -3,6 +3,11 @@
 	
 		$grupo = new Grupo;
 		$lista_nomes = $grupo->getGrupos($_SESSION['email']);
+		$veiculo = new Veiculo;
+		$veiculo->findByEmail($_SESSION['email']);
+		if ($veiculo->rows >= 1) {
+			SiteHandler::getAlert('Você precisa cadastrar um carona.', 'advise');
+		} else {
 	?>
 	
 	<form class="default-form" action="<?= PATH_HREF ?>action/carona" method="post">
@@ -73,6 +78,7 @@
 				<div class = "col6">
 					<label>Grupo:</label>
 					<select name="id_grupo">
+						<option value = " "></option>
 						<?php 	
 						foreach($lista_nomes as $item) {
 						?>
@@ -98,3 +104,6 @@
 			</div>
 		</fieldset>
 	</form>
+	<?php
+		}
+	?>

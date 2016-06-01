@@ -58,6 +58,7 @@
 /** --------------------------------------- **/
 	$carona = new Carona;
 	//salva os atributos
+	if($itens['id_grupo'] == ' ') $itens['id_grupo'] = null;
 	$carona->setAttributes($itens['email'], $itens['id_grupo'], $itens['origem'], $itens['destino'], $itens['descricao'], $itens['data'], $itens['hora'], $itens['qtd_passageiros'], $itens['bagagem'], $itens['preco']);
 	
 	if($carona->insert()) {
