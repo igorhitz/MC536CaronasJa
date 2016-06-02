@@ -88,11 +88,11 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .search-results {padding: 0px; margin : 0; }
 .search-results article {display:block; width:96.5%;border-top:1px solid #CCC; float:left; margin-bottom:20px; }
 .search-results article .row{margin-left: 50px}
-.row .user {width:190px; float:left; min-height:1px; margin-top: 20px; margin-left:20px; border-right: 1px solid #CCC;}
+.row .user {width:230px; float:left; min-height:1px; margin-top: 20px; margin-left:20px; border-right: 1px solid #CCC;}
 .user .photo {border-radius:50%; margin-top:1px; float: left;}
 .photo img {max-width:100%; vertical-align: middle; border: 0;}
-.user .info {float:left; width:95px; font-size:12px; line-height:20px; margin: 0 0 0 8px; color: #666;}
-.info h2 {overflow: hidden; text-overflow: ellipsis; margin: 0; padding: 6px 0 2px; line-height: 1; font-weight: bold; font-size: 15px; color: #333;}
+.user .info {float:left; width:130x; font-size:12px; line-height:20px; margin: 0 0 0 8px; color: #666;}
+.info h2 {overflow: hidden; text-align:left; text-overflow: ellipsis; margin: 0; padding: 6px 0 2px; line-height: 1; font-weight: bold; font-size: 15px; color: #333;}
 .user .trust {clear:both; font-size: 12px; padding-top:4px; margin-left:10px;}
 .ratings {display: inline-block; padding: 2px 0; margin: 0;}
 .ratings img {width:12px; height:12px;}
