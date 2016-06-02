@@ -55,7 +55,7 @@
 				
 				<div class = "icons">
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
-					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
+					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
 			</div>
 			<div class = "description-box">
@@ -75,7 +75,7 @@
 				
 				<?php
 				if($item['email_dono'] == $_SESSION['email']){ ?>
-					<div class = "reservado">Você criou isto!</div>
+					<div class = "reservado">Você criou a carona!</div>
 				<?php
 				}
 				else {						
@@ -90,7 +90,7 @@
 						}
 						if ($flag == false){
 						if ($reserva->rows >= $item['qtd_passageiros']){ ?>
-							<div class = "reservado">Cheia!</div>	
+							<div class = "reservado">Carona lotada!</div>	
 				<?php
 						}
 						else{ ?>

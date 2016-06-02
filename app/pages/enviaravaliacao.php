@@ -1,7 +1,17 @@
-	<form class = "default-form" action="<?= PATH_HREF ?>action/msg" method="post">
+	<?php (isset($_GET['query'])) ? Avalia::showQuery($_GET['query']) : '';
+	(isset($_GET['email'])) ? $email = $_GET['email'] : '';
+	?>
+	<form class = "default-form" action="<?= PATH_HREF ?>action/avalia" method="post">
 		<fieldset>
 			<div class="form-line">
-				<h2>Enviando avaliação para: Caio H.</h2>
+				<h2>Enviar Avaliação</h2>
+			</div>
+			
+			<div class="form-line">
+				<div class="col10">
+					<label>Avaliando:</label>
+					<input type = "text" name="email_avaliado" value = "<?= (isset($email)) ? $email : '' ?>"> 
+				</div>
 			</div>
 			
 			<div class="form-line">
@@ -25,6 +35,7 @@
 			</div>
 			
 			<div>
+				<input type = "hidden" name="email_avaliador" value = "<?= $_SESSION['email']?>"> 
 				<button type="submit" class="btn">Enviar Avaliação</button>
 			</div>
 		</fieldset>

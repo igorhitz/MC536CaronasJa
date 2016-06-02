@@ -1,4 +1,4 @@
-	<?php (isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+	<?php (isset($_GET['query'])) ? Mensagem::showQuery($_GET['query']) : '';
 	(isset($_GET['email'])) ? $email = $_GET['email'] : '';
 	?>
 	<form class = "default-form" action="<?= PATH_HREF ?>action/mensagem" method="post">
@@ -10,7 +10,7 @@
 			<div class="form-line">
 				<div class="col10">
 					<label>Destinatário:</label>
-					<input type = "text" name = "email_destinatario" value = "<?= (isset($email)) ? $email : '' ?>">
+					<input type = "text" name = "email_destinatario" value = "<?= (isset($email)) ? $email : '' ?>" disabled> 
 				</div>
 			</div>
 			

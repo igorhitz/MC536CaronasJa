@@ -86,12 +86,12 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO ".self::tableName()."(`email_avaliador`, `email_avaliador`, `data`, `nota`, `conteudo`) VALUES (?,?,?,?,?)";
-				self::$query = "INSERT INTO `avalia`(`email_avaliador`, `email_avaliador`, `data`, `nota`, `conteudo`) VALUES ('".$this->email_avaliador."', '".$this->email_avaliado."', '".$this->data."', '".$this->nota."', '".$this->conteudo."')";
+				$query = "INSERT INTO ".self::tableName()."(`email_avaliador`, `email_avaliado`, `data`, `nota`, `conteudo`) VALUES (?,?,?,?,?)";
+				self::$query = "INSERT INTO `avalia`(`email_avaliador`, `email_avaliado`, `data`, `nota`, `conteudo`) VALUES ('".$this->email_avaliador."', '".$this->email_avaliado."', '".$this->data."', '".$this->nota."', '".$this->conteudo."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('sssssss', $this->email_avaliador, $this->email_avaliado, $this->data, $this->nota, $this->conteudo);
+					$stmt->bind_param('sssis', $this->email_avaliador, $this->email_avaliado, $this->data, $this->nota, $this->conteudo);
 					$stmt->execute();
 					return true;
 				} else {
