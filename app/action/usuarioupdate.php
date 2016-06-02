@@ -51,7 +51,7 @@
 /** --------------------------------------- **/
 	
 	//salva os atributos
-	$usuario->setAttributes($itens['email'], null, $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['celular']);
+	$usuario->setAttributes($itens['email'], null, $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['foto'], $itens['celular']);
 	
 	if($usuario->update()) {
 		header("Location: ../Config/query=".$usuario->encodeQuery());

@@ -20,7 +20,7 @@
     /* Se existirem os parametros passados via get */
     $site = new SiteHandler;
 
-    $permitidas = array('Signin','SignUp');
+    $permitidas = array('signin','signup');
 
     if(isset($_GET['p']) && !empty($_GET['p'])) {
         //exibe notificacao ao usuario se houver
@@ -32,7 +32,7 @@
         } else {
             //se não for uma action
             //se a página for permitida (sem necessidade de login)
-            if(in_array($_GET['p'], $permitidas)) {
+            if(in_array(strtolower($_GET['p']), $permitidas)) {
                 require_once($site->getPage($_GET['p'])); 
             } else {
                 //se for restrita verifica se há login

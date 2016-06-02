@@ -140,7 +140,6 @@
 					$rows = array();
 
 					if($stmt->num_rows >= 1) {
-
 						//salva o numero de linhas 
 						$this->rows = $stmt->num_rows;
 
@@ -163,7 +162,7 @@
 					return false;
 				}
 			} else {
-				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				parent::getAlert('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
 				return false;
 			}
 		}

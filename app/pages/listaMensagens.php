@@ -1,23 +1,8 @@
 	<?php
-	$caronas = new Carona;
-	
-	//verifica se existe parametros de filtro de busca
-	if(isset($_GET['origem']) && $_GET['destino']) {
-		$origem = $_GET['origem'];
-		$destino = $_GET['destino'];
+	$mensagem = new Mensagem;
 
-		//data é opcional
-		if(isset($_GET['data'])) {
-			$data = $_GET['data'];
-		} else {
-			$data = '';
-		}
-
-		//se existirem buscamos por filtro
-		$lista = $caronas->findByFilter($origem, $destino, $data);
-	} else {
-		//senão obtem lista geral (*)
-		$lista = $caronas->selectAll();
+	//obtem lista de mensagens
+	$lista = $mensagem->findByEmail($_SESSION['email']);
 	}
 	
 	SiteHandler::getQueryAlert(Carona::$query);
@@ -38,11 +23,11 @@
 		?>
 		<article class = "row">
 			<div class = "user">	
-				<img class="photo" src="<?= PATH.'resources/'.$item['foto'] ?>" width="72" height="72">
+				<img class = "photo" src = "<?= $item['foto'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
 					<?= 2016 - $item['nascimento'] ?> anos<br>
-					<span class = "dark"><?= $item['marca'] ?> - <?= $item['modelo'] ?></span> <br> <br>
+					<span class = "dark"><?= $item['modelo'] ?></span> <br> <br>
 				</div>
 				
 				<div class = "trust">
@@ -55,7 +40,7 @@
 				
 				<div class = "icons">
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
-					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
+					<a href= "avaliar"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
 			</div>
 			<div class = "description-box">
@@ -75,11 +60,12 @@
 				
 				<?php
 				if($item['email_dono'] == $_SESSION['email']){ ?>
-					<div class = "reservado">Você criou a carona!</div>
+					<div class = "reservado">Você está oferecendo!</div>
 				<?php
 				}
 				else {						
-					if ($reserva->rows >= 0){
+					echo $reserva->rows.'ddsfsd';
+					if ($reserva->rows >= 1){
 						$flag = false;
 						for($i = 0; $i < $reserva->rows; $i++){
 							if ($res[$i]['email_passageiro'] == $_SESSION['email']){ ?>
@@ -90,7 +76,7 @@
 						}
 						if ($flag == false){
 						if ($reserva->rows >= $item['qtd_passageiros']){ ?>
-							<div class = "reservado">Carona lotada!</div>	
+							<div class = "reservado">Cheia!</div>	
 				<?php
 						}
 						else{ ?>

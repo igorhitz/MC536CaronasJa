@@ -43,7 +43,6 @@
 		}
 	}
 
-	print_r($itensObrigatorios);
 	//verifica se os campos obrigatorios existem e foram preenchidos
 	if(!Usuario::checkAttributes($itensObrigatorios)) {
 		header("Location: ../SignUp/stat=campos-vazios");
@@ -53,6 +52,8 @@
 	$usuario = new Usuario;
 /** --------------------------------------- **/
 	
+	if(empty($itens['foto']) || $itens['foto'] == '') $itens['foto'] = 'default-photo.png';
+
 	//salva os atributos
 	$usuario->setAttributes($itens['email'], $itens['senha'], $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['foto'], $itens['celular']);
 	

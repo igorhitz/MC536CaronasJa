@@ -6,7 +6,7 @@
 		$veiculo = new Veiculo;
 		$veiculo->findByEmail($_SESSION['email']);
 		if ($veiculo->rows < 1) {
-			SiteHandler::getAlert('Você precisa cadastrar um <a href="">veículo</a>.', 'advise');
+			SiteHandler::getAlert('Você precisa <a href="'.PATH_HREF.'veiculo">cadastrar um veículo</a>.', 'advise');
 		} else {
 	?>
 	
