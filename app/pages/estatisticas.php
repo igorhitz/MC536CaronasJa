@@ -17,31 +17,15 @@
 		<?php 	SiteHandler::getQueryAlert($rankingQuery); ?>
 			<h2>Ranking</h2><br>
 			<table>
-			<tr>
-				<td><p><b><?= $lista_ranking[0]['nome_avaliado'] ?></b></p></td>
-				<td><p><?= number_format($lista_ranking[0]['media_nota'], 1) ?></p></td>
-				<td><img src="<?= PATH.'resources/'?>gold.png" width="25" height="25"></td>
-			</tr>
-
-			<tr>
-				<td><p><b><?= $lista_ranking[1]['nome_avaliado'] ?></b></p></td>
-				<td><p><?= number_format($lista_ranking[1]['media_nota'], 1) ?></p></td>
-				<td><img src="<?= PATH.'resources/'?>silver.png" width="25" height="25"></td>
-			</tr>
-			
-			<tr>
-				<td><p><b><?= $lista_ranking[2]['nome_avaliado'] ?></b></p></td>
-				<td><p><?= number_format($lista_ranking[2]['media_nota'], 1) ?></p></td>
-				<td><img src="<?= PATH.'resources/'?>bronze.png" width="25" height="25"></td>
-			</tr>
-			
 			<?php
-				$i = 3;
-				for($i = 3; $i < count($lista_ranking); $i++) {
+				for($i = 0; $i < count($lista_ranking); $i++) {
 			?>
 				<tr>
 					<td><p><b><?= $lista_ranking[$i]['nome_avaliado'] ?></b></p></td>
 					<td><p><?= number_format($lista_ranking[$i]['media_nota'], 1) ?></p></td>
+					<?php if($i < 3)  { ?>
+					<td><img src="<?= PATH.'resources/'?>medalha<?=$i?>.png" width="25" height="25"></td>
+					<?php } ?>
 				</tr>
 			<?php
 				}
