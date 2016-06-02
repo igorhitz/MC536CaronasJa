@@ -10,7 +10,7 @@
 			<div class="form-line">
 				<div class="col10">
 					<label>Destinatário:</label>
-					<input type = "text" name = "email_destinatario" value = "<?= (isset($email)) ? $email : '' ?>" disabled> 
+					<input type = "text" name = "email_destinatario" value = "<?= (isset($email)) ? $email : '' ?>"> 
 				</div>
 			</div>
 			
