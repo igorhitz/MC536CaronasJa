@@ -17,13 +17,31 @@
 		<?php 	SiteHandler::getQueryAlert($rankingQuery); ?>
 			<h2>Ranking</h2><br>
 			<table>
+			<tr>
+				<td><p><b><?= $lista_ranking[0]['nome_avaliado'] ?></b></p></td>
+				<td><p><?= number_format($lista_ranking[0]['media_nota'], 1) ?></p></td>
+				<td><img src="<?= PATH.'resources/'?>gold.png" width="25" height="25"></td>
+			</tr>
+
+			<tr>
+				<td><p><b><?= $lista_ranking[1]['nome_avaliado'] ?></b></p></td>
+				<td><p><?= number_format($lista_ranking[1]['media_nota'], 1) ?></p></td>
+				<td><img src="<?= PATH.'resources/'?>silver.png" width="25" height="25"></td>
+			</tr>
+			
+			<tr>
+				<td><p><b><?= $lista_ranking[2]['nome_avaliado'] ?></b></p></td>
+				<td><p><?= number_format($lista_ranking[2]['media_nota'], 1) ?></p></td>
+				<td><img src="<?= PATH.'resources/'?>bronze.png" width="25" height="25"></td>
+			</tr>
+			
 			<?php
-				foreach($lista_ranking as $item) {
+				$i = 3;
+				for($i = 3; $i < count($lista_ranking); $i++) {
 			?>
 				<tr>
-					<td><p><b><?= $item['nome_avaliado'] ?></b></p></td>
-					<td><p><?= number_format($item['media_nota'], 1) ?></p></td>
-					<td><img src="<?= PATH.'resources/'?>gold.png" width="25" height="25"></td>
+					<td><p><b><?= $lista_ranking[$i]['nome_avaliado'] ?></b></p></td>
+					<td><p><?= number_format($lista_ranking[$i]['media_nota'], 1) ?></p></td>
 				</tr>
 			<?php
 				}
