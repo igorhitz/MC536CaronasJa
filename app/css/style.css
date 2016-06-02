@@ -120,7 +120,7 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .light {color: #888;}
 
 
-.card {width:400px; border: 1px solid #CCC; padding-left:10px; padding-top:10px; margin-top:10px; box-shadow: 0 0 7px 1px #93DB60;}
+.card {width:400px; border: 1px solid #CCC; padding:10px 10px 10px 10px; margin-top:10px;  box-shadow: 0 0 7px 1px #93DB60;}
 .card p {line-height:12px;}
 
 
