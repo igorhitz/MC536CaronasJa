@@ -5,8 +5,8 @@
 		$lista_nomes = $grupo->getGrupos($_SESSION['email']);
 		$veiculo = new Veiculo;
 		$veiculo->findByEmail($_SESSION['email']);
-		if ($veiculo->rows >= 1) {
-			SiteHandler::getAlert('Você precisa cadastrar um carona.', 'advise');
+		if ($veiculo->rows < 1) {
+			SiteHandler::getAlert('Você precisa cadastrar um <a href="">veículo</a>.', 'advise');
 		} else {
 	?>
 	
