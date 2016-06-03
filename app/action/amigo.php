@@ -1,7 +1,7 @@
 <?php
-	if(isset($_GET['email_1']) && isset($_GET['email_2'])) {
-		$email_amigo1 = $_GET['email'];
-		$email_amigo2 = $_GET['email'];
+	if(isset($_GET['email1']) && isset($_GET['email2'])) {
+		$email_amigo1 = $_GET['email1'];
+		$email_amigo2 = $_GET['email2'];
 	}
 	
 	$amizade = new Amizade;
