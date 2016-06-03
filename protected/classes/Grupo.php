@@ -140,8 +140,8 @@
 		public function getGruposByNome($nome) {
 			
 			if (parent::checkConnection()) {
-				$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g WHERE g.nome LIKE ?";
-				self::$query = "SELECT g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g WHERE g.nome LIKE '%$nome%'";
+				$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.nome LIKE ?";
+				self::$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.nome LIKE '%$nome%'";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
@@ -149,7 +149,7 @@
 					$stmt->bind_param('s',$likestring);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($id, $nome, $categoria, $email_criador);
+					$stmt->bind_result($nome_user, $id, $nome, $categoria, $email_criador);
 					
 					$rows = array();
 
@@ -162,6 +162,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'nome_user' => $nome_user,
 								'id_grupo' => $id,
 								'nome_grupo' => $nome,
 								'categoria' => $categoria,
