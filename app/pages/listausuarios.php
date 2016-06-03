@@ -46,9 +46,9 @@
 
 		</div>
 			<div class = "icons col3">
-					<a href="#" class="btn">Adicionar Amigo</a> <br> <br>
-					<a href="msg"><img src="<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
-					<a href="avaliar"><img src="<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
+					<a href="<?= PATH_HREF  ?>action/amigo/<?= $item['email'] ?>/<?= $_SESSION['email'] ?>" class="btn">Adicionar Amigo</a> <br> <br>
+					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
+					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 			</div>
 	</div>
 	<?php
