@@ -12,7 +12,8 @@
     require_once("protected/classes/Reserva.php");
 	require_once("protected/classes/Avalia.php");
 	require_once("protected/classes/Mensagem.php");
-
+	require_once("protected/classes/Amizade.php");
+	
 
     //Inclusao do cabecalho (topo) do site
     include_once("app/includes/header.php");
