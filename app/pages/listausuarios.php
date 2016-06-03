@@ -30,7 +30,7 @@
 	<div class="line">
 		<div class="col4">
 			<div class="info">
-				<img src="<?= PATH.'resources/'.$item['foto'] ?>" width="72" height="72">
+				<img src="<?= $item['foto'] ?>" width="72" height="72">
 				<span class="username"><b><?= $item['nome'] ?></b> <br>
 				<span class="username">Idade: <?= 2016 - ($item['nascimento']) ?> anos <br>
 				</span>

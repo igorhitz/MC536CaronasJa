@@ -38,7 +38,7 @@
 		?>
 		<article class = "row">
 			<div class = "user">	
-				<img class="photo" src="<?= PATH.'resources/'.$item['foto'] ?>" width="72" height="72">
+				<img class="photo" src="<?= $item['foto'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
 					<?= 2016 - $item['nascimento'] ?> anos<br>
