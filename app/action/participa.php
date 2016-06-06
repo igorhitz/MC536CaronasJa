@@ -4,7 +4,7 @@
 		$id_grupo = $_GET['id'];
 	}
 	
-	$particpa = new Participa;
+	$participa = new Participa;
 
 	//salva os atributos
 	$participa->setAttributes($id_grupo, $email);
