@@ -1,5 +1,25 @@
 	<?php (isset($_GET['query'])) ? Avalia::showQuery($_GET['query']) : '';
-	(isset($_GET['email'])) ? $email = $_GET['email'] : '';
+	
+	$flag = true;
+	if (isset($_GET['email'])){
+		$email = $_GET['email'];
+		$participa = new Reserva;
+		$caronas = new Carona;
+		$flag = false;
+		$lista = $caronas->findbyEmail($email);
+		foreach($lista as $item){
+			$participantes = $participa->findbyID($item['id']);
+			foreach($participantes as $pessoas){
+				if($pessoas['email_passageiro'] == $_SESSION['email']){
+					$flag = true;
+				}
+			}
+		}
+	}
+	
+	if ($flag == false){
+		SiteHandler::getAlert('Você precisa primeiro participar de uma carona deste usuario', 'advise');
+	} else {
 	?>
 	<form class = "default-form" action="<?= PATH_HREF ?>action/avalia" method="post">
 		<fieldset>
@@ -40,3 +60,6 @@
 			</div>
 		</fieldset>
 	</form>
+	<?php
+	}
+	?>
