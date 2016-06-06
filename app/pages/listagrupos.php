@@ -31,7 +31,7 @@
 				<?= $item['categoria'] ?>
 				Criador: <?= $item['nome_user'] ?>
 				<a href= "#">Participantes</a>
-				<div class = "enter">Entrar no grupo</div>
+				<div class = "enter"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Entrar no grupo</a></div>
 		</article>
 		<?php
 		}
