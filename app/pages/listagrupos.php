@@ -22,16 +22,15 @@
 	<?php 
 	}
 	?>
-	<div class = "search-results">
+	<div class = "search-results">	
 		<?php 
 		foreach($lista as $item) {
 		?>
 		<article class = "row">
-				<?= $item['nome_grupo'] ?>
-				<?= $item['categoria'] ?>
-				Criador: <?= $item['nome_user'] ?>
-				<a href= "#">Participantes</a>
-				<div class = "enter"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id_grupo'] ?>/<?= $_SESSION['email'] ?>">Entrar no grupo</a></div>
+			<div class = "name"><?= $item['nome_grupo'] ?></div>
+			<div class = "categoria"><?= $item['categoria'] ?></div>
+			<div class = "participa"><a href= "#">Participantes</a></div>
+			<div class = "entra btn" href="<?= PATH_HREF ?>action/participa/<?= $item['id_grupo'] ?>/<?= $_SESSION['email'] ?>">Entrar no grupo</a></div>
 		</article>
 		<?php
 		}
