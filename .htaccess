@@ -10,8 +10,6 @@ RewriteRule ^([a-z0-9-]+)/query=([a-z0-9-@=.]+)'?/?$ index.php?p=$1&query=$2 [NC
 
 #reserva
 RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-@=.]+)/([a-z0-9-@=.]+)'?/?$ index.php?p=$1&s=$2&id=$3&email=$4 [NC]
-#amizade
-RewriteRule ^([a-z0-9-]+)/([a-z0-9-]+)/([a-z0-9-@=.]+)/([a-z0-9-@=.]+)'?/?$ index.php?p=$1&s=$2&email1=$3&email2=$4 [NC]
 
 #listagem com filtro de nome
 RewriteRule ^([a-z0-9-]+)/nome=([a-z0-9-@=.\s]+)/?'?/?$ index.php?p=$1&nome=$2 [NC]

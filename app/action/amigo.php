@@ -1,13 +1,15 @@
 <?php
-	if(isset($_GET['email1']) && isset($_GET['email2'])) {
-		$email_amigo1 = $_GET['email1'];
-		$email_amigo2 = $_GET['email2'];
+	echo $_SERVER['QUERY_STRING']; 
+	if(isset($_GET['id']) && isset($_GET['email'])) {
+		$email1 = $_GET['id'];
+		$email2 = $_GET['email'];
 	}
+	
 	
 	$amizade = new Amizade;
 
 	//salva os atributos
-	$amizade->setAttributes($email_amigo1, $email_amigo2);
+	$amizade->setAttributes($email1, $email2);
 	
 	if($amizade->insert()) {
 		header("Location: ../../../Home/query=".$amizade->encodeQuery());
