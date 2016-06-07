@@ -9,7 +9,11 @@
 		
 	}
 	
+	$avalia = new Avalia;
+	$avaliacoes = array(); 
+	
 	SiteHandler::getQueryAlert(Usuario::$query);
+	SiteHandler::getQueryAlert(Avalia::$query);
 	?>
 
 <div class="default-list">
@@ -36,9 +40,12 @@
 				</span>
 				<div class="trust">
 					<p>
+						<?php
+						$avaliacoes = $avalia->getMediaQtdNota($item['email']);
+						?>
 						<img src="<?= PATH.'resources/'?>star.png" width="15" height="15">
-						<span class="dark">4.9&nbsp;</span> 
-						<span class="light"> - 10 avaliações</span>
+						<span class="dark"><?=  number_format($avaliacoes[0]['media_nota'],1) ?>&nbsp;</span> 
+						<span class="light"> - <?= $avaliacoes[0]['qtd_notas'] ?>avaliações</span>
 					</p>
 				</div>
 				

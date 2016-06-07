@@ -143,5 +143,45 @@
 				return false;
 			}
 		}
+		
+		public function getMediaQtdNota($email) {
+			if (parent::checkConnection()) {
+				$query = "SELECT COUNT(nota), AVG(nota) FROM ".self::tableName()." WHERE email_avaliado = '".$email."' GROUP BY email_avaliado";
+				self::$query = "SELECT COUNT(nota), AVG(nota) FROM ".self::tableName()." WHERE email_avaliado = '".$email."' GROUP BY email_avaliado";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($qtd_notas, $media_nota);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'qtd_notas' => $qtd_notas,
+								'media_nota' => $media_nota,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
 	}
 ?>
