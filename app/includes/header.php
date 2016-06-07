@@ -75,6 +75,7 @@
 								</ul>
 							</li>
 							<li id = "first"><a id = "link"href="<?= PATH_HREF ?>estatisticas"><b>Estatísticas</b></a></li>
+                            <li id = "first"><a id = "link"href="<?= PATH_HREF ?>listaMensagens"><b>Mensagens</b></a></li>
 						</ul>
 					</nav>
 
