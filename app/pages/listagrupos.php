@@ -2,7 +2,7 @@
 	$grupos = new Grupo;
 	
 	//verifica se existe parametros de filtro de busca
-	if(isset($_GET['nome'])) {
+	if(isset($_GET['nome']) && !empty($_GET['home'])) {
 		$nome = $_GET['nome'];
 
 		//se existirem buscamos por filtro
