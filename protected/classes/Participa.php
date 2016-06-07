@@ -147,7 +147,7 @@
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
 				$query = "SELECT id_grupo, email FROM ".self::tableName(). " WHERE email = ?";
-				self::$query = "SELECT id_grupo, email FROM ".self::tableName()." WHERE email = $email";
+				self::$query = "SELECT id_grupo, email FROM ".self::tableName()." WHERE email = '$email'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
