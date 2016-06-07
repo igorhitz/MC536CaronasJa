@@ -1,5 +1,7 @@
 	<?php
 	$usuario = new Usuario;
+	$amizade = new Amizade;
+
 	$listas = array ();
 	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['nome'])) {
@@ -10,7 +12,7 @@
 		$listas = $usuario->selectAll();
 	}
 	
-	(isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+	(isset($_GET['query'])) ? Amizade::showQuery($_GET['query']) : '';
 	
 	SiteHandler::getQueryAlert(Usuario::$query);
 	?>
@@ -49,9 +51,15 @@
 
 		</div>
 			<div class = "icons col3">
-				<?php if($_SESSION['email'] !== $item['email']): ?>
+				<?php 
+					//se forem amigos
+					$amigos = $amizade->findByEmail($_SESSION['email'], $item['email']);
+					if($amizade->rows >= 1): ?>
+					<a class="btn">Vocês são amigos</a> <br> <br>
+				<?php elseif($_SESSION['email'] !== $item['email']): ?>
 					<a href="<?= PATH_HREF  ?>action/amigo/<?= $item['email'] ?>/<?= $_SESSION['email'] ?>" class="btn">Adicionar Amigo</a> <br> <br>
-				<?php endif; ?>	
+				<?php endif; ?> 
+
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 			</div>

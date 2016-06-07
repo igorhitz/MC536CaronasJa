@@ -92,23 +92,24 @@
 		}
 
 		/**
-		 ** Metodo de select para Reserva
+		 ** Metodo de select para Amizade
 		 ** return @var mixed tupla do banco
 		**/
-		/*
-		public function findByEmail($email_amigo1) {
+		
+		public function findByEmail($email_amigo1, $email_amigo2) {
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName(). " r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = ?";
-				self::$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName()." r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = '$email_passageiro'";
+				$query = "SELECT a.email_amigo1, a.email_amigo2, a.data_inicio FROM ".self::tableName(). " a WHERE (a.email_amigo1 = ? AND a.email_amigo2 = ?) OR (a.email_amigo2 = ? AND a.email_amigo1 = ?)";
+				self::$query = "SELECT a.email_amigo1, a.email_amigo2, a.data_inicio FROM ".self::tableName(). " a WHERE a.email_amigo1 = '$email_amigo1' AND a.email_amigo2 = '$email_amigo2'";
+
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('s', $email_passageiro);
+					$stmt->bind_param('ssss', $email_amigo1, $email_amigo2, $email_amigo1, $email_amigo2);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($id, $email, $origem, $destino, $descricao, $data, $hora, $preco, $qtd_passageiros, $bagagem, $motorista);
+					$stmt->bind_result($email_amigo1, $email_amigo2, $data_incio);
 					
 					$rows = array();
 
@@ -121,17 +122,9 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
-								'id' => $id,
-								'email_passageiro' => $email,
-								'origem' => $origem,
-								'destino' => $destino,
-								'descricao' => $descricao,
-								'data' => $data,
-								'hora' => $hora,
-								'preco' => $preco,
-								'qtd_passageiros' => $qtd_passageiros,
-								'bagagem' => $bagagem,
-								'motorista' => $motorista
+								'email_amigo1' => $email_amigo1,
+								'email_amigo2' => $email_amigo2,
+								'data_inico' => $data_inicio
 								);
 						}
 						return $rows;
@@ -148,7 +141,7 @@
 				return false;
 			}
 		}
-		*/
+		
 
 	}
 ?>
