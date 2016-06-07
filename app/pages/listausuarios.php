@@ -6,7 +6,8 @@
 		$nome = $_GET['nome'];
 		//se existirem buscamos por filtro
 		$listas = $usuario->findByNome($nome);
-		
+	} else {
+		$listas = $usuario->selectAll();
 	}
 	
 	(isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
