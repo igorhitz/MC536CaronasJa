@@ -30,7 +30,28 @@
 			<div class = "name"><?= $item['nome_grupo'] ?></div>
 			<div class = "categoria"><?= $item['categoria'] ?></div>
 			<div class = "participa"><a href= "#">Participantes</a></div>
-			<div class = "entra btn" href="<?= PATH_HREF ?>action/participa/<?= $item['id_grupo'] ?>/<?= $_SESSION['email'] ?>">Entrar no grupo</a></div>
+			
+			<?php
+				$participa = new Participa;
+				$res = $participa->findById($item['id_grupo']);
+				if($item['email_criador'] == $_SESSION['email']){ ?>
+					<div class = "entra btn">Você criou o grupo!</div>
+				<?php
+				}
+				else {						
+					$flag = false;
+					for($i = 0; $i < $reserva->rows; $i++){
+						if ($res[$i]['email'] == $_SESSION['email']){ ?>
+							<div class = "entra btn">Você já participa!</div>
+			<?php
+							$flag = true;
+						}
+					}
+					if ($flag == false){ ?>
+						<div class = "entra btn"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Entrar no Grupo</a></div>
+			<?php
+					}
+				} ?>
 		</article>
 		<?php
 		}
