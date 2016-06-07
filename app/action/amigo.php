@@ -12,7 +12,7 @@
 	$amizade->setAttributes($email1, $email2);
 	
 	if($amizade->insert()) {
-		header("Location: ../../../Home/query=".$amizade->encodeQuery());
+		header("Location: ../../../ListaUsuarios/query=".$amizade->encodeQuery());
 		exit;
 	} else {
 		header("Location: ../../../Home/stat=falha-insercao");

@@ -9,6 +9,8 @@
 		
 	}
 	
+	(isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+	
 	SiteHandler::getQueryAlert(Usuario::$query);
 	?>
 
