@@ -7,6 +7,10 @@
 		
 		public $email_criador;
 
+		public $rows;
+
+		public $lastID;
+
 		public static $query;
 
 		public static function tableName() {
@@ -77,7 +81,11 @@
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->bind_param('sss', $this->nome, $this->categoria, $this->email_criador);
 					$stmt->execute();
-					return true;
+					if($stmt->affected_rows == 1) {
+						$this->lastID = $stmt->insert_id;
+						return true;
+					} 
+					
 				} else {
 					return false;
 				}
@@ -147,6 +155,56 @@
 				if($stmt = $this->con->prepare($query)) {
 					$likestring = '%'.$nome.'%';
 					$stmt->bind_param('s',$likestring);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($nome_user, $id, $nome, $categoria, $email_criador);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'nome_user' => $nome_user,
+								'id_grupo' => $id,
+								'nome_grupo' => $nome,
+								'categoria' => $categoria,
+								'email_criador' => $email_criador,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
+
+		/**
+		 ** Metodo de busca por nome de grupo
+		 ** @return array ou boolean 
+		**/
+
+		public function findGruposByCriador($email_criador) {
+			
+			if (parent::checkConnection()) {
+				$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.email_criador LIKE ?";
+				self::$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.email_criador = '$email_criador'";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('s',$email_criador);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
 					$stmt->bind_result($nome_user, $id, $nome, $categoria, $email_criador);

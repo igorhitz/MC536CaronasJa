@@ -48,8 +48,13 @@
 	$grupo->setAttributes($itens['nome'], $itens['categoria'], $itens['email_criador']);
 	
 	if($grupo->insert()) {
-		header("Location: ../registraGrupo/query=".$grupo->encodeQuery());
-		exit;
+		$participa = new Participa;
+		$participa->setAttributes($grupo->lastID, $itens['email_criador']);
+	
+		if($participa->insert()) {
+			header("Location: ../registraGrupo/query=".$grupo->encodeQuery());
+			exit;
+		}
 	}
 
 ?>
