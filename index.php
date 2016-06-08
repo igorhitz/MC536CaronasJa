@@ -14,6 +14,7 @@
 	require_once("protected/classes/Mensagem.php");
 	require_once("protected/classes/Amizade.php");
 	require_once("protected/classes/Participa.php");
+	require_once("protected/classes/Preferencia.php");
 	
 
     //Inclusao do cabecalho (topo) do site

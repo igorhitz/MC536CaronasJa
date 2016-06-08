@@ -8,10 +8,11 @@
 			<div class="form-line">
 				<div class="col3">
 					<label>Descrição:</label>
-					<input type="text" name="descricao" maxlength="50" placeholder="">
+					<textarea name="descricao" maxlength="50" rows="5" cols="50" placeholder="Ex: Prefiro caronas sem fumantes."></textarea>
 				</div>
-
+			</div>
 			<div>
+				<input type="hidden" name="email" value="<?= $_SESSION['email'] ?>">
 				<button type="submit" class="btn">Cadastrar</button>
 			</div>
 		</fieldset>

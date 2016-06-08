@@ -71,7 +71,7 @@
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('ss', $this->descricao);
+					$stmt->bind_param('s', $this->descricao);
 					$stmt->execute();
 					if($stmt->affected_rows == 1) {
 						return true;

@@ -37,6 +37,7 @@
                     } else {
                     ?>
                     <li><a href="SignIn"><?=  $_SESSION['email'] ?></a></li>
+					<li><a href="<?= PATH_HREF ?>preferencia">Adicionar preferência</a></li>
 					<li><a href="<?= PATH_HREF ?>Config">Configurações</a></li>
                     <li><a href="<?= PATH_HREF ?>action/Logout">Sair</a></li>
                     <?php
