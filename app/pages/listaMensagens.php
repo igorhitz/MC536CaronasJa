@@ -23,12 +23,11 @@
 				<img class = "photo" src = "<?= PATH.'resources/'.$item['foto_remetente'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username">De: <?= $item['nome_remetente'] ?></h2>
-					<p>Email: <?= $item['email_remetente']; ?></p>
-					<span class = "dark"><?= $item['modelo'] ?></span> <br> <br>
+					<p>Email: <?= $item['email_remetente']; ?></p> <br>
 				</div>
 			</div>
 			<div class = "description-box">
-				<h3 class = "day-time"><?= SiteHandler::formatData($item['data']) ?> às <?= $item['hora'] ?></h3>
+				<h3 class = "day-time"><?= SiteHandler::formatData($item['data']) ?></h3>
 				
 				<h3 class = "description"><?= $item['conteudo'] ?></h3>
 			</div>

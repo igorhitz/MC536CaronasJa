@@ -109,9 +109,8 @@
 		public function findByEmail($email_destinatario){
 			
 			if (parent::checkConnection()) {
-				//query para busca de carona por origem e destino, e data opcional
 				$query = "SELECT ".self::getFields().", u.foto as foto_remetente, u.nome as nome_remetente FROM ".self::tableName()." m JOIN usuario u ON u.email = m.email_remetente WHERE m.email_destinatario = ?";
-				self::$query = "SELECT ".self::getFields().", u.foto as foto_remetente,  u.nome as nome_remetente FROM ".self::tableName()." m JOIN usuario u ON u.email = m.email_remetente WHERE m.email_destinatario = '$email_destinatario'";
+				self::$query = "SELECT ".self::getFields().", u.foto as foto_remetente,  u.nome as nome_remetente FROM ".self::tableName()." m JOIN usuario u ON u.email = m.email_remetente WHERE m.email_destinatario = 'email_destinatario'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
