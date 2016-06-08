@@ -1,6 +1,6 @@
 	<?php
 	$caronas = new Carona;
-	$date = date('Y');
+	$date = new DateTime('today');
 	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['origem']) && $_GET['destino']) {
 		$origem = $_GET['origem'];
@@ -48,7 +48,7 @@
 				<img class="photo" src="<?= $item['foto'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
-					<?= $date - $item['nascimento'] ?> anos<br>
+					<?= $date->diff(date_create($item['nascimento']))->y ?> anos<br>
 					<span class = "dark"><?= $item['marca'] ?> - <?= $item['modelo'] ?></span> <br> <br>
 				</div>
 				

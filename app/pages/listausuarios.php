@@ -1,7 +1,7 @@
 	<?php
 	$usuario = new Usuario;
 	$amizade = new Amizade;
-	$date = date('Y');
+	$date = new DateTime('today');
 	
 	$listas = array ();
 	//verifica se existe parametros de filtro de busca
@@ -38,13 +38,14 @@
 			$nota[0]['avg_nota'] = 0;
 			$nota[0]['count_nota'] = 0;
 		}
+		
 	?>
 	<div class="line">
 		<div class="col4">
 			<div class="info">
 				<img src="<?= $item['foto'] ?>" width="72" height="72">
 				<span class="username"><b><?= $item['nome'] ?></b> <br>
-				<span class="username">Idade: <?= $date - ($item['nascimento']) ?> anos <br>
+				<span class="username">Idade: <?= $date->diff(date_create($item['nascimento']))->y ?> anos <br>
 				</span>
 				<div class="trust">
 					<p>
