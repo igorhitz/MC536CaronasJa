@@ -1,19 +1,11 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
-<<<<<<< HEAD
-=======
-		'id',
->>>>>>> 5f96fb21ebd5190172bd94b21bf2eafe037af658
 		'descricao'
 		);
 
 	//campos de preenchimento obrigatorio
 	$camposObrigatorios = array(
-<<<<<<< HEAD
-=======
-		'id',
->>>>>>> 5f96fb21ebd5190172bd94b21bf2eafe037af658
 		'descricao'
 		);
 
@@ -53,17 +45,10 @@
 	$preferencia->setAttributes($itens['descricao']);
 	
 	if($preferencia->insert()) {
-<<<<<<< HEAD
 		header("Location: ../preferencia/query=".$preferencia->encodeQuery());
 		exit;
 	} else {
 		header("Location: ../preferencia/stat=falha-insercao");
-=======
-		header("Location: ../SignIn/query=".$preferencia->encodeQuery());
-		exit;
-	} else {
-		header("Location: ../SignUp/stat=falha-insercao");
->>>>>>> 5f96fb21ebd5190172bd94b21bf2eafe037af658
 		exit;
 	}
 
