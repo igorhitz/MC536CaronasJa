@@ -1,6 +1,6 @@
 	<?php
 	$caronas = new Carona;
-	
+	$date = date('Y');
 	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['origem']) && $_GET['destino']) {
 		$origem = $_GET['origem'];
@@ -35,21 +35,28 @@
 		foreach($lista as $item) {
 			$reserva = new Reserva;
 			$res = $reserva->findById($item['id']);
+			$avalia = new Avalia;
+			$nota = $avalia->getCountAvgNotas($item['email_dono']);
+			if ($avalia->rows < 1){
+				$nota[0]['avg_nota'] = 0;
+				$nota[0]['count_nota'] = 0;
+			}
+			
 		?>
 		<article class = "row">
 			<div class = "user">	
 				<img class="photo" src="<?= $item['foto'] ?>" width="72" height="72">
 				<div class = "info">
 					<h2 class = "username"><?= $item['nome'] ?></h2>
-					<?= 2016 - $item['nascimento'] ?> anos<br>
+					<?= $date - $item['nascimento'] ?> anos<br>
 					<span class = "dark"><?= $item['marca'] ?> - <?= $item['modelo'] ?></span> <br> <br>
 				</div>
 				
 				<div class = "trust">
 					<p class="ratings">
 						<img src = "<?= PATH.'resources/'?>star.png" width="10" height="10">
-						<span class = "dark">4.9</span> 
-						<span class = "light"> - 10 avaliações</span>
+						<span class = "dark"><?= number_format($nota[0]['avg_nota'],1) ?></span> 
+						<span class = "light"> - <a href ="<?= PATH_HREF ?>listaAvalia/email=<?= $item['email_dono'] ?>"><?= $nota[0]['count_nota'] ?> avaliações </a> </span>
 					</p>
 				</div>
 				

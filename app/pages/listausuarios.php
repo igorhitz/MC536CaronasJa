@@ -1,7 +1,8 @@
 	<?php
 	$usuario = new Usuario;
 	$amizade = new Amizade;
-
+	$date = date('Y');
+	
 	$listas = array ();
 	//verifica se existe parametros de filtro de busca
 	if(isset($_GET['nome'])) {
@@ -31,19 +32,25 @@
 	</div>
 	<?php 
 		foreach($listas as $item) {
+		$avalia = new Avalia;
+		$nota = $avalia->getCountAvgNotas($item['email']);
+		if ($avalia->rows < 1){
+			$nota[0]['avg_nota'] = 0;
+			$nota[0]['count_nota'] = 0;
+		}
 	?>
 	<div class="line">
 		<div class="col4">
 			<div class="info">
-				<img src="<?= PATH.'resources/'.$item['foto'] ?>" width="72" height="72">
+				<img src="<?= $item['foto'] ?>" width="72" height="72">
 				<span class="username"><b><?= $item['nome'] ?></b> <br>
-				<span class="username">Idade: <?= 2016 - ($item['nascimento']) ?> anos <br>
+				<span class="username">Idade: <?= $date - ($item['nascimento']) ?> anos <br>
 				</span>
 				<div class="trust">
 					<p>
 						<img src="<?= PATH.'resources/'?>star.png" width="15" height="15">
-						<span class="dark">4.9&nbsp;</span> 
-						<span class="light"> - 10 avaliações</span>
+						<span class="dark"><?= number_format($nota[0]['avg_nota'],1) ?>&nbsp;</span> 
+						<span class="light"> - <a href ="<?= PATH_HREF ?>listaAvalia/email=<?= $item['email'] ?>"><?= $nota[0]['count_nota'] ?> avaliações </a></span>
 					</p>
 				</div>
 				

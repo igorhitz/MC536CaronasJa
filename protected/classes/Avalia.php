@@ -167,7 +167,7 @@
 							//adiciona no vetor rows[]
 							$rows[] = array(
 								'count_nota' => $count_nota,
-								'avg_nota' => $avg_nota,
+								'avg_nota' => $avg_nota
 								);
 						}
 						return $rows;
