@@ -112,7 +112,8 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .row .participa {float:left; padding-top:5px; margin-top: 10px; border-right: 1px solid #CCC; width:120px; text-align: center;}
 .row .entra {float:left; }
 .row .entra{margin-top: 10px; margin-left:25px; height:16px; background-color: #4CAF50; border-radius: 8px; border: none; color: white; padding: 6px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
-.row .entra{margin-top: 10px; margin-left:25px; height:16px; background-color: #f97736; border-radius: 8px; border: none; color: white; padding: 6px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+.row .entra2{margin-top: 10px; margin-left:25px; height:16px; background-color: #f97736; border-radius: 8px; border: none; color: white; padding: 6px 10px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+.row .entra a {text-decoration:none; color: white;}
 
 .offer {float:right; margin-top:20px; margin-right:5px;}
 .offer .price {color :#58B20D; width:130px;}

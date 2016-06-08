@@ -2,7 +2,7 @@
 	$grupos = new Grupo;
 	
 	//verifica se existe parametros de filtro de busca
-	if(isset($_GET['nome']) && !empty($_GET['home'])) {
+	if(isset($_GET['nome'])) {
 		$nome = $_GET['nome'];
 
 		//se existirem buscamos por filtro
@@ -35,20 +35,20 @@
 				$participa = new Participa;
 				$res = $participa->findById($item['id_grupo']);
 				if($item['email_criador'] == $_SESSION['email']){ ?>
-					<div class = "entra btn">Você criou o grupo!</div>
+					<div class = "entra2 btn">Você criou o grupo!</div>
 				<?php
 				}
 				else {						
 					$flag = false;
-					for($i = 0; $i < $reserva->rows; $i++){
+					for($i = 0; $i < $participa->rows; $i++){
 						if ($res[$i]['email'] == $_SESSION['email']){ ?>
-							<div class = "entra btn">Você já participa!</div>
+							<div class = "entra2 btn">Você já participa!</div>
 			<?php
 							$flag = true;
 						}
 					}
 					if ($flag == false){ ?>
-						<div class = "entra btn"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Entrar no Grupo</a></div>
+						<div class = "entra btn"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id_grupo'] ?>/<?= $_SESSION['email'] ?>">Entrar no Grupo</a></div>
 			<?php
 					}
 				} ?>
