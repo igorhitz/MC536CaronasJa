@@ -24,8 +24,8 @@
 				<div class="col2">
 					<label>Gênero:</label>
 					<select name="genero">
-						<option value="M" <?php if($item['genero']=='M') echo 'checked'; ?>>Masculino</option>
-						<option value="F" <?php if($item['genero']=='F') echo 'checked'; ?>>Feminino</option>
+						<option value="M" <?php if($item['genero']=='M') echo 'selected'; ?>>Masculino</option>
+						<option value="F" <?php if($item['genero']=='F') echo 'selected'; ?>>Feminino</option>
 					</select>
 				</div>
 			</div>
@@ -82,7 +82,7 @@
 						foreach($lista as $item) {
 							 echo $usuarioVeiculo['modelo']
 						?>
-						<option value="<?= $item['modelo'] ?>"  <?php if($item['modelo'] == $usuarioVeiculo[0]['modelo']) echo 'checked'; ?>><?= $item['modelo'].' - '.$item['marca'] ?></option>
+						<option value="<?= $item['modelo'] ?>"  <?php if($item['modelo'] == $usuarioVeiculo[0]['modelo']) echo 'selected'; ?>><?= $item['modelo'].' - '.$item['marca'] ?></option>
 						<?php
 						}
 						?>
@@ -92,15 +92,15 @@
 				<div class="col4">
 					<label>Cor:</label>
 					<select name="cor">
-						<option value="Amarelo" <?php if('Amarelo' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Amarelo</option>
-						<option value="Azul" <?php if('Azul' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Azul</option>
-						<option value="Branco" <?php if('Branco' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Branco</option>
-						<option value="Laranja" <?php if('Laranja' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Laranja</option>
-						<option value="Prata" <?php if('Prata' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Prata</option>
-						<option value="Preto" <?php if('Preto' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Preto</option>
-						<option value="Verde" <?php if('Verde' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Verde</option>
-						<option value="Vermelho" <?php if('Vermelho' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Vermelho</option>						
-						<option value="Outra" <?php if('Outra' == $usuarioVeiculo[0]['cor']) echo 'checked'; ?>>Outra</option>
+						<option value="Amarelo" <?php if('Amarelo' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Amarelo</option>
+						<option value="Azul" <?php if('Azul' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Azul</option>
+						<option value="Branco" <?php if('Branco' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Branco</option>
+						<option value="Laranja" <?php if('Laranja' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Laranja</option>
+						<option value="Prata" <?php if('Prata' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Prata</option>
+						<option value="Preto" <?php if('Preto' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Preto</option>
+						<option value="Verde" <?php if('Verde' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Verde</option>
+						<option value="Vermelho" <?php if('Vermelho' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Vermelho</option>						
+						<option value="Outra" <?php if('Outra' == $usuarioVeiculo[0]['cor']) echo 'selected'; ?>>Outra</option>
 					</select>
 				</div>
 			</div>
@@ -109,19 +109,19 @@
 				<div class="col4">
 					<label>Categoria:</label>
 					<select name="categoria">
-						<option value="Hatch" <?php if('Hatch' == $usuarioVeiculo[0]['categoria']) echo 'checked'; ?>>Hatch</option>
-						<option value="Sedan" <?php if('Sedan' == $usuarioVeiculo[0]['categoria']) echo 'checked'; ?>>Sedan</option>
-						<option value="SUV" <?php if('SUV' == $usuarioVeiculo[0]['categoria']) echo 'checked'; ?>>SUV</option>
-						<option value="Perua/Van" <?php if('Perua/Van' == $usuarioVeiculo[0]['categoria']) echo 'checked'; ?>>Perua/Van</option>
+						<option value="Hatch" <?php if('Hatch' == $usuarioVeiculo[0]['categoria']) echo 'selected'; ?>>Hatch</option>
+						<option value="Sedan" <?php if('Sedan' == $usuarioVeiculo[0]['categoria']) echo 'selected'; ?>>Sedan</option>
+						<option value="SUV" <?php if('SUV' == $usuarioVeiculo[0]['categoria']) echo 'selected'; ?>>SUV</option>
+						<option value="Perua/Van" <?php if('Perua/Van' == $usuarioVeiculo[0]['categoria']) echo 'selected'; ?>>Perua/Van</option>
 					</select>
 				</div>
 
 				<div class="col4">
 					<label>Conforto:</label>
 					<select name="conforto">
-						<option value="Básico" <?php if('Básico' == $usuarioVeiculo[0]['conforto']) echo 'checked'; ?>>Básico</option>
-						<option value="Confortável" <?php if('Confortável' == $usuarioVeiculo[0]['conforto']) echo 'checked'; ?>>Confortável</option>
-						<option value="Luxuoso" <?php if('Luxuoso' == $usuarioVeiculo[0]['conforto']) echo 'checked'; ?>>Luxuoso</option>
+						<option value="Básico" <?php if('Básico' == $usuarioVeiculo[0]['conforto']) echo 'selected'; ?>>Básico</option>
+						<option value="Confortável" <?php if('Confortável' == $usuarioVeiculo[0]['conforto']) echo 'selected'; ?>>Confortável</option>
+						<option value="Luxuoso" <?php if('Luxuoso' == $usuarioVeiculo[0]['conforto']) echo 'selected'; ?>>Luxuoso</option>
 					</select>
 				</div>
 			</div>
