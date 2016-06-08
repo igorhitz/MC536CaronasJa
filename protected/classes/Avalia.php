@@ -183,5 +183,53 @@
 				return false;
 			}
 		}
+		
+		public function findByEmail($email_avaliado){
+			
+			if (parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = ?";
+				self::$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = '$email_avaliado'";
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('s', $email_avaliado);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($email_avaliado, $email_avaliador, $data, $nota, $conteudo, $foto, $nome);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'email_avaliado' => $email_avaliado,
+								'email_avaliador' => $email_avaliador,
+								'conteudo' => $conteudo,
+								'nota' => $nota,
+								'data' => $data,
+								'foto_avaliador' => $foto,
+								'nome_avaliador' => $nome
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
+				return false;
+			}
+		}
 	}
 ?>
