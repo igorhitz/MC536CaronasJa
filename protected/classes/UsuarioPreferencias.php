@@ -1,18 +1,19 @@
 <?php
-	class Preferencia extends DBOp {
+	class UsuarioPreferencias extends DBOp {
+		public $id;
 
-		public $descricao;
+		public $email;
 		
 		public $rows;
 
 		public static $query;
 
 		public static function tableName() {
-			return 'preferencias';
+			return 'usuario_preferencias';
 		}
 
 		public static function getFields() {
-			return 'p.descricao';
+			return 'up.id, up.email';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -28,9 +29,12 @@
 			return true;
 		}
 
-		public function setAttributes($descricao=null) {
-			if(!empty($descricao)) {
-				$this->descricao = $descricao;
+		public function setAttributes($id=null, $email=null) {
+			if(!empty($id)) {
+				$this->id = $id;
+			}
+			if(!empty($email)) {
+				$this->email = $email;
 			}
 		}
 
@@ -66,25 +70,31 @@
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
-				$query = "INSERT INTO ".self::tableName()." (`descricao`) VALUES (?)";
-				self::$query = "INSERT INTO ".self::tableName()." (`descricao`) VALUES ('".$this->descricao."')";
+				$query = "INSERT INTO ".self::tableName()." (`id`,`email`) VALUES (?,?)";
+				self::$query = "INSERT INTO `usuario_preferencias`(`id`, `email`) VALUES ('".$this->id."', '".$this->email."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('s', $this->descricao);
+					$stmt->bind_param('ss', $this->id, $this->email);
 					$stmt->execute();
 					if($stmt->affected_rows == 1) {
 						return true;
 					} else {
 						parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
-						//return false;
+						echo 'false1';
+						exit;
+						return false;
 					}
 				} else {
 					parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
+					echo 'false2';
+						exit;
 					return false;
 				}
 			} else {
 				parent::getAlert('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				echo 'false3';
+						exit;
 				return false;
 			}
 		}

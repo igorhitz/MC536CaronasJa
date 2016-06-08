@@ -15,7 +15,7 @@
 	require_once("protected/classes/Amizade.php");
 	require_once("protected/classes/Participa.php");
 	require_once("protected/classes/Preferencia.php");
-	
+	require_once("protected/classes/UsuarioPreferencias.php");
 
     //Inclusao do cabecalho (topo) do site
     include_once("app/includes/header.php");

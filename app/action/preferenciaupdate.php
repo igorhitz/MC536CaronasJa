@@ -33,8 +33,8 @@
 	}
 
 	//verifica se os campos obrigatorios existem e foram preenchidos
-	if(!Preferencia::checkAttributes($itensObrigatorios)) {
-		header("Location: ../preferencia/stat=campos-vazios");
+	if(!Usuario::checkAttributes($itensObrigatorios)) {
+		header("Location: ../SignUp/stat=campos-vazios");
 		exit;
 	}
 
@@ -44,7 +44,7 @@
 	//salva os atributos
 	$preferencia->setAttributes($itens['descricao']);
 	
-	if($preferencia->insert()) {
+	if($preferencia->update()) {
 		header("Location: ../preferencia/query=".$preferencia->encodeQuery());
 		exit;
 	} else {

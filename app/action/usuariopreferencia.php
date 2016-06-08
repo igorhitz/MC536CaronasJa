@@ -1,12 +1,14 @@
 <?php
 	//campos vindos do formulario
 	$campos = array(
-		'descricao'
+		'idpreferencia',
+		'email'
 		);
 
 	//campos de preenchimento obrigatorio
 	$camposObrigatorios = array(
-		'descricao'
+		'idpreferencia',
+		'email'
 		);
 
 /** 
@@ -33,19 +35,19 @@
 	}
 
 	//verifica se os campos obrigatorios existem e foram preenchidos
-	if(!Preferencia::checkAttributes($itensObrigatorios)) {
+	if(!UsuarioPreferencias::checkAttributes($itensObrigatorios)) {
 		header("Location: ../preferencia/stat=campos-vazios");
 		exit;
 	}
 
-	$preferencia = new Preferencia;
+	$usuariopreferencia = new UsuarioPreferencias;
 /** --------------------------------------- **/
 	
 	//salva os atributos
-	$preferencia->setAttributes($itens['descricao']);
+	$usuariopreferencia->setAttributes($itens['idpreferencia'], $itens['email']);
 	
-	if($preferencia->insert()) {
-		header("Location: ../preferencia/query=".$preferencia->encodeQuery());
+	if($usuariopreferencia->insert()) {
+		header("Location: ../preferencia/query=".$usuariopreferencia->encodeQuery());
 		exit;
 	} else {
 		header("Location: ../preferencia/stat=falha-insercao");
