@@ -16,34 +16,14 @@
 	?>
 	<div class = "search-results">	
 		<?php 
-		foreach($lista as $item) {
+		foreach($lista as $itemg) {
+		$grupo = new Grupo;
+		$item = $grupo->findGruposbyId($itemg['id_grupo']);
 		?>
 		<article class = "row">
-			<div class = "name"><?= $item['nome_grupo'] ?></div>
-			<div class = "categoria"><?= $item['categoria'] ?></div>
+			<div class = "name"><?= $item[0]['nome_grupo'] ?></div>
+			<div class = "categoria"><?= $item[0]['categoria'] ?></div>
 			<div class = "participa"><a href= "#">Participantes</a></div>
-			
-			<?php
-				$participa = new Participa;
-				$res = $participa->findById($item['id_grupo']);
-				if($item['email_criador'] == $_SESSION['email']){ ?>
-					<div class = "entra btn">Você criou o grupo!</div>
-				<?php
-				}
-				else {						
-					$flag = false;
-					for($i = 0; $i < $reserva->rows; $i++){
-						if ($res[$i]['email'] == $_SESSION['email']){ ?>
-							<div class = "entra btn">Você já participa!</div>
-			<?php
-							$flag = true;
-						}
-					}
-					if ($flag == false){ ?>
-						<div class = "entra btn"><a href="<?= PATH_HREF ?>action/participa/<?= $item['id'] ?>/<?= $_SESSION['email'] ?>">Entrar no Grupo</a></div>
-			<?php
-					}
-				} ?>
 		</article>
 		<?php
 		}

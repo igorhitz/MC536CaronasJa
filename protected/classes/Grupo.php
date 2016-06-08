@@ -240,6 +240,50 @@
 				return false;
 			}
 		}
+		
+		public function findGruposbyID($id){
+			if (parent::checkConnection()) {
+				$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.id LIKE ?";
+				self::$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.id = '$id'";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i',$id);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($nome_user, $id, $nome, $categoria, $email_criador);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'nome_user' => $nome_user,
+								'id_grupo' => $id,
+								'nome_grupo' => $nome,
+								'categoria' => $categoria,
+								'email_criador' => $email_criador,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
 
 		/**
 		 ** Metodo de busca por nome de grupo
