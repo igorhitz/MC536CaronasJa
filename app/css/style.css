@@ -141,3 +141,10 @@ footer ul li {display: inline; float: right; font-size: 8px; margin-right: 20px;
 
 /* Headings */
 h2 {text-align:center;}
+
+
+/* Listagem de mensagens */
+table.show-results {float: left; width: 100%;}
+table.show-results tr {text-align: center;}
+table.show-results th {background: #666; color: #FFF;}
+table.show-results tr:nth-child(odd)  {background: #F1F1F1;}
