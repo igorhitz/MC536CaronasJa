@@ -241,7 +241,7 @@
 			}
 		}
 		
-		public function findGruposbyID($id){
+		public function findGruposbyId($id){
 			if (parent::checkConnection()) {
 				$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.id LIKE ?";
 				self::$query = "SELECT u.nome, g.id, g.nome, g.categoria, g.email_criador FROM ".self::tableName()." g JOIN usuario u ON g.email_criador = u.email WHERE g.id = '$id'";

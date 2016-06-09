@@ -20,7 +20,7 @@
 		}
 		
 		public static function getFields() {
-			return 'email_avaliador, email_avaliado, data, nota, conteudo';
+			return 'a.email_avaliador, a.email_avaliado, a.data, a.nota, a.conteudo';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -188,15 +188,15 @@
 			
 			if (parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = ?";
-				self::$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = '$email_avaliado'";
+				$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliado WHERE a.email_avaliado = ?";
+				self::$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliado WHERE a.email_avaliado = '$email_avaliado'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
 					$stmt->bind_param('s', $email_avaliado);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email_avaliado, $email_avaliador, $data, $nota, $conteudo, $foto, $nome);
+					$stmt->bind_result($email_avaliador, $email_avaliado, $data, $nota, $conteudo, $foto, $nome);
 					
 					$rows = array();
 
@@ -204,7 +204,7 @@
 
 						//salva o numero de linhas 
 						$this->rows = $stmt->num_rows;
-
+						
 						//para cada linha retornada
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
