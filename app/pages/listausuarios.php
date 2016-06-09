@@ -11,10 +11,12 @@
 		//se existirem buscamos por filtro
 		$listas = $usuario->findByNome($nome);
 	} else if (isset($_GET['grupo'])) {
-		$grupo = $_GET['grupo'];
-		
+		$grupo = $_GET['grupo'];	
 		$listas = $usuario->findByGrupo($grupo);
-	}else {
+	}else if (isset($_GET['email'])){
+		$email = $_GET['email'];
+		$listas = $usuario->findFriends($email);
+	}else{
 		$listas = $usuario->selectAll();
 	}
 	
