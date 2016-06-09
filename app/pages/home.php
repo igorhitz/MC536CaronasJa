@@ -1,8 +1,10 @@
 	<?php
+	$usuario = new Usuario;
+	$listaUsuario = $usuario->findByEmail($_SESSION['email']);
+	
 	$reserva = new Reserva;
 	//caronas reservadas
 	$listaRes = $reserva->findByEmail($_SESSION['email']);
-
 
 	$carona = new Carona;
 	//caronas oferecidas
@@ -10,6 +12,10 @@
 	?>
 	<br>
 	
+	<div>
+	<h2>Olá, <?= $listaUsuario['email'] ?>!</h2>
+	<br>
+	</div>
 	<div class="lefloat">
 		<?php 	SiteHandler::getQueryAlert(Reserva::$query); ?>
 		<h2>Você tem <?= $reserva->rows ?> caronas reservadas</h2>
