@@ -22,11 +22,20 @@
 		</tr>
 		<?php 
 		foreach($lista as $item) {
+		if($item['status'] == 1) $view = true;
+		else $view = false;
 		?>
+
 		<tr height="30">
-			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= $item['nome_remetente'] ?></td>
-			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= $item['email_remetente'] ?></td>
-			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= date('d/m/Y', strtotime($item['data'])) ?></td>
+			<td>
+				<a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>" <?php if($view) echo 'class="viewed"' ?>><?= $item['nome_remetente'] ?></a>
+			</td>
+			<td>
+				<a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>" <?php if($view) echo 'class="viewed"' ?>><?= $item['email_remetente'] ?></a>
+			</td>
+			<td>
+				<a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>" <?php if($view) echo 'class="viewed"' ?>><?= date('d/m/Y', strtotime($item['data'])) ?></a>
+			</td>
 		</tr>
 		<?php
 		}

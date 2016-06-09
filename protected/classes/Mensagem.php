@@ -74,6 +74,27 @@
 		}
 
 
+		public function updateStatus($id, $value) {
+			if(parent::checkConnection()) {
+				//query para insercao generica
+				$query = "UPDATE ".self::tableName()." SET `status` = ? WHERE id = ?";
+				self::$query .= "<br> UPDATE ".self::tableName()." SET `status` = $value WHERE id = $id";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('si', $value, $id);
+					$stmt->execute();
+				} else {
+					parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
+					return false;
+				}
+			} else {
+				parent::getAlert('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
+				return false;
+			}
+		}
+
+
 		/**
 		 ** Metodo de insert para nova avaliacao
 		 ** return @var integer ultimo id inserido
