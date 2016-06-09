@@ -14,25 +14,22 @@
 	<?php 
 	}
 	?>
-	<div class = "search-results">
+	<table class="show-results">
+		<tr height="30">
+			<th>Nome do remetente</th>
+			<th>E-mail do remetente</th>
+			<th>Data de envio</th>
+		</tr>
 		<?php 
 		foreach($lista as $item) {
 		?>
-		<article class = "row">
-			<div class = "user">	
-				<img class = "photo" src = "<?= PATH.'resources/'.$item['foto_remetente'] ?>" width="72" height="72">
-				<div class = "info">
-					<h2 class = "username">De: <?= $item['nome_remetente'] ?></h2>
-					<p>Email: <?= $item['email_remetente']; ?></p> <br>
-				</div>
-			</div>
-			<div class = "description-box">
-				<h3 class = "day-time"><?= SiteHandler::formatData($item['data']) ?></h3>
-				
-				<h3 class = "description"><?= $item['conteudo'] ?></h3>
-			</div>
-		</article>
+		<tr height="30">
+			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= $item['nome_remetente'] ?></td>
+			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= $item['email_remetente'] ?></td>
+			<td><a href="<?= PATH_HREF.'/mostraMensagem/'.$item['id'] ?>"><?= date('d/m/Y', strtotime($item['data'])) ?></td>
+		</tr>
 		<?php
 		}
 		?>
+	</table>
 	</div>

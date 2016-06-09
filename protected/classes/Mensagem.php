@@ -18,7 +18,7 @@
 		}
 
 		public static function getFields() {
-			return 'm.email_destinatario, m.email_remetente, m.conteudo, m.status, m.data';
+			return 'm.id, m.email_destinatario, m.email_remetente, m.conteudo, m.status, m.data';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -93,7 +93,7 @@
 						return true;
 					} else {
 						parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
-						//return false;
+						return false;
 					}
 				} else {
 					parent::getAlert('Erro: '.$this->con->error."\n ".self::$query,'error');
@@ -117,7 +117,7 @@
 					$stmt->bind_param('s', $email_destinatario);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email_destinatario, $email_remetente, $conteudo, $status, $data, $foto_remetente, $nome_remetente);
+					$stmt->bind_result($id, $email_destinatario, $email_remetente, $conteudo, $status, $data, $foto_remetente, $nome_remetente);
 					
 					$rows = array();
 
@@ -130,6 +130,56 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'id' => $id,
+								'email_destinatario' => $email_destinatario,
+								'email_remetente' => $email_remetente,
+								'conteudo' => $conteudo,
+								'status' => $status,
+								'data' => $data,
+								'foto_remetente' => $foto_remetente,
+								'nome_remetente' => $nome_remetente
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
+				return false;
+			}
+		}
+
+		public function findById($id_mensagem){
+			
+			if (parent::checkConnection()) {
+				$query = "SELECT ".self::getFields().", u.foto as foto_remetente, u.nome as nome_remetente FROM ".self::tableName()." m JOIN usuario u ON u.email = m.email_remetente WHERE m.id = ?";
+				self::$query = "SELECT ".self::getFields().", u.foto as foto_remetente,  u.nome as nome_remetente FROM ".self::tableName()." m JOIN usuario u ON u.email = m.email_remetente WHERE m.id = $id_mensagem";
+				
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $id_mensagem);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($id, $email_destinatario, $email_remetente, $conteudo, $status, $data, $foto_remetente, $nome_remetente);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'id' => $id,
 								'email_destinatario' => $email_destinatario,
 								'email_remetente' => $email_remetente,
 								'conteudo' => $conteudo,
