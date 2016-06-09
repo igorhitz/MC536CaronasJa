@@ -3,9 +3,35 @@
 	$infoModelo = new InfoModelo;
 	$lista = $infoModelo->selectAll();
 	$veiculo = new Veiculo;
-	$veiculo->findByEmail($_SESSION['email']);
-	if ($veiculo->rows >= 1) {
-		SiteHandler::getAlert('Você já cadastrou um carro', 'advise');
+	$usuarioVeiculo = $veiculo->findByEmail($_SESSION['email']);
+	?>
+	<?php
+	if (!empty($usuarioVeiculo)) {
+		SiteHandler::getAlert('Você já cadastrou um veículo.', 'advise');
+		$marca = $infoModelo->findByModelo($usuarioVeiculo[0]['modelo']);
+	?>
+	<table class="show-results">
+		<tr height="30">
+			<th>Marca e Modelo</th>
+			<th>Cor</th>
+			<th>Categoria</th>
+			<th>Conforto</th>
+		</tr>
+		<tr height="30">
+			<td><?= $marca[0]['marca'].' - '.$usuarioVeiculo[0]['modelo'] ?></td>
+			<td><?= $usuarioVeiculo[0]['cor'] ?></td>
+			<td><?= $usuarioVeiculo[0]['categoria'] ?></td>
+			<td><?= $usuarioVeiculo[0]['conforto'] ?></td>
+		</tr>
+	</table>
+	<form class="default-form" method="post">
+		<fieldset>
+			<div>
+				<a href="<?= PATH_HREF ?>Config" class="btnL" role="button">Editar Veículo</a>
+			</div>
+		</fieldset>
+	</form>
+	<?php
 	} else {
 	?>
 	<form class="default-form" action="<?= PATH_HREF ?>action/veiculo" method="post">

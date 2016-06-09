@@ -2,9 +2,6 @@
 	(isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
 	$usuario = new Usuario;
 	$item = $usuario->findByEmail($_SESSION['email']);
-	if($item['genero'] == 'Masculino') {
-		$checkGen = 'checked';
-	}
 	 ?>
 	<form class="default-form" action="<?= PATH_HREF ?>action/usuarioupdate" method="post">
 		<fieldset>
@@ -67,6 +64,7 @@
 	$lista = $infoModelo->selectAll();
 	$veiculo = new Veiculo;
 	$usuarioVeiculo = $veiculo->findByEmail($_SESSION['email']);
+	if (!empty($usuarioVeiculo)) {
 	 ?>
 	<form class="default-form" action="<?= PATH_HREF ?>action/veiculoupdate" method="post">
 		<fieldset>
@@ -80,7 +78,6 @@
 					<select name="modelo" maxlength="50">
 						<?php 	
 						foreach($lista as $item) {
-							 echo $usuarioVeiculo['modelo']
 						?>
 						<option value="<?= $item['modelo'] ?>"  <?php if($item['modelo'] == $usuarioVeiculo[0]['modelo']) echo 'selected'; ?>><?= $item['modelo'].' - '.$item['marca'] ?></option>
 						<?php
@@ -132,3 +129,16 @@
 			</div>
 		</fieldset>
 	</form>
+<?php
+	} else{
+?>
+	<form class="default-form" method="post">
+		<fieldset>
+			<div>
+				<a href="<?= PATH_HREF ?>veiculo" class="btnL" role="button">Cadastrar Veículo</a>
+			</div>
+		</fieldset>
+	</form>
+<?php
+}
+?>
