@@ -66,10 +66,12 @@
 					<a class="btn">Vocês são amigos</a> <br> <br>
 				<?php elseif($_SESSION['email'] !== $item['email']): ?>
 					<a href="<?= PATH_HREF  ?>action/amigo/<?= $item['email'] ?>/<?= $_SESSION['email'] ?>" class="btn">Adicionar Amigo</a> <br> <br>
-				<?php endif; ?> 
-
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
+				<?php endif; ?>
+				<?php if($_SESSION['email'] == $item['email']): ?>
+					<p>&nbsp;&nbsp;É você!</p>
+				<?php endif; ?>
 			</div>
 	</div>
 	<?php
