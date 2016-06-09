@@ -67,7 +67,8 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .btn {height:30px; text-decoration: none; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 .btn:hover {color: #4B4B4B;}
 .btn2{height:30px; text-decoration: none; background-color: #f97736; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
-
+.btnL {height:20px; text-decoration: none; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
+.btnL:hover {color: #4B4B4B;}
 
 /* Listagem */
 .default-list {float:left; width: 100%;}
