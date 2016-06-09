@@ -54,6 +54,7 @@
 				<img src="<?= $item['foto'] ?>" width="72" height="72">
 				<span class="username"><b><?= $item['nome'] ?></b> <br>
 				<span class="username">Idade: <?= $date->diff(date_create($item['nascimento']))->y ?> anos <br>
+				<a href="<?= PATH_HREF ?>listaUsuarios/email=<?= $item['email'] ?>"> Amigos </a>
 				</span>
 				<div class="trust">
 					<p>

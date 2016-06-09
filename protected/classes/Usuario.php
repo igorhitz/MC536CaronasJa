@@ -339,8 +339,8 @@
 			
 			if (parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u WHERE u.email = (SELECT a.email_amigo1 FROM amizade a WHERE a.email_amigo2 = ?) OR u.email = (SELECT a.email_amigo2 FROM amizade a WHERE a.email_amigo1 = ?)";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u WHERE u.email = (SELECT a.email_amigo1 FROM amizade a WHERE a.email_amigo2 = '$email_amigo') OR u.email = (SELECT a.email_amigo2 FROM amizade a WHERE a.email_amigo1 = '$email_amigo')";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN amizade a ON u.email = a.email_amigo1 WHERE a.email_amigo2 = ? UNION SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN amizade a ON u.email = a.email_amigo2 WHERE a.email_amigo1 = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN amizade a ON u.email = a.email_amigo1 WHERE a.email_amigo2 = '$email_amigo' UNION SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN amizade a ON u.email = a.email_amigo2 WHERE a.email_amigo1 = '$email_amigo'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
