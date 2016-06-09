@@ -5,6 +5,8 @@
 		public $email_amigo1;
 		
 		public $email_amigo2;
+		
+		public $data_inicio;
 				
 		public $rows;
 
@@ -109,7 +111,7 @@
 					$stmt->bind_param('ssss', $email_amigo1, $email_amigo2, $email_amigo1, $email_amigo2);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($email_amigo1, $email_amigo2, $data_incio);
+					$stmt->bind_result($email_amigo1, $email_amigo2, $data_inicio);
 					
 					$rows = array();
 
