@@ -1,0 +1,12 @@
+INSERT INTO preferencias (`descricao`) VALUES ("FumanteSim"),
+("FumanteNeutro"),
+("FumanteNao"),
+("ConversaSim"),
+("ConversaNeutro"),
+("ConversaNao"),
+("AnimalSim"),
+("AnimalNeutro"),
+("AnimalNao"),
+("MusicaSim"),
+("MusicaNeutro"),
+("MusicaNao");
