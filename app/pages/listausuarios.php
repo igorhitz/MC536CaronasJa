@@ -1,6 +1,7 @@
 	<?php
 	$usuario = new Usuario;
 	$amizade = new Amizade;
+	$participa = new Participa;
 	$date = new DateTime('today');
 	
 	$listas = array ();
@@ -9,9 +10,14 @@
 		$nome = $_GET['nome'];
 		//se existirem buscamos por filtro
 		$listas = $usuario->findByNome($nome);
-	} else {
+	} else if (isset($_GET['grupo'])) {
+		$grupo = $_GET['grupo'];
+		
+		$listas = $usuario->findByGrupo($grupo);
+	}else {
 		$listas = $usuario->selectAll();
 	}
+	
 	
 	(isset($_GET['query'])) ? Amizade::showQuery($_GET['query']) : '';
 	

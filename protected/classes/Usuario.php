@@ -287,6 +287,53 @@
 				return false;
 			}
 		}
+		
+		public function findByGrupo($id){
+			
+			if (parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN participa p ON u.email = p.email WHERE p.id_grupo = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN participa p ON u.email = p.email WHERE p.id_grupo = '$id'";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $id);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($email, $nome, $genero, $nascimento, $foto, $celular);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'email' => $email,
+								'nome' => $nome,
+								'genero' => $genero,
+								'nascimento' => $nascimento,
+								'foto' => $foto,
+								'celular' => $celular
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
 
 	}
 ?>

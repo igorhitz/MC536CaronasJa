@@ -29,7 +29,7 @@
 		<article class = "row">
 			<div class = "name"><?= $item['nome_grupo'] ?></div>
 			<div class = "categoria"><?= $item['categoria'] ?></div>
-			<div class = "participa"><a href= "#">Participantes</a></div>
+			<div class = "participa"><a href= "<?= PATH_HREF ?>listaUsuarios/grupo=<?=$item['id_grupo']?>">Participantes</a></div>
 			
 			<?php
 				$participa = new Participa;
