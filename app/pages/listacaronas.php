@@ -15,6 +15,9 @@
 
 		//se existirem buscamos por filtro
 		$lista = $caronas->findByFilter($origem, $destino, $data);
+	} else if (isset($_GET['grupo'])){
+		$grupo = $_GET['grupo'];
+		$lista = $caronas->findByGrupo($grupo);
 	} else {
 		//senão obtem lista geral (*)
 		$lista = $caronas->selectAll();

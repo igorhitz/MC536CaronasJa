@@ -76,7 +76,7 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .default-list .info{float:left; width:320px; border-right:1px solid #CCC; margin-bottom: 20px; padding-right:20px;}
 .default-list div.info img{float:left; border-radius:50%; margin-right:20px;}
 .default-list div.info span{float:right; font-size:15px; color: #666;}
-.default-list div.trust p {display:inline-block; margin:0; padding: 2px 0;}
+.default-list div.trust p {float:right; display:inline-block; margin:0; padding: 2px 0;}
 .default-list div.trust img {width:15px; height:15px; margin-right:5px; border-radius:0%;}
 .default-list div.trust span {float:left;}
 .default-list div.icons{float:left;}

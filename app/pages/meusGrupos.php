@@ -24,6 +24,7 @@
 			<div class = "name"><?= $item[0]['nome_grupo'] ?></div>
 			<div class = "categoria"><?= $item[0]['categoria'] ?></div>
 			<div class = "participa"><a href= "<?= PATH_HREF ?>listaUsuarios/grupo=<?=$itemg['id_grupo']?>">Participantes</a></div>
+			<div class = "participa"><a href= "<?= PATH_HREF ?>listaCaronas/grupo=<?=$itemg['id_grupo']?>">Caronas</a></div>"
 		</article>
 		<?php
 		}

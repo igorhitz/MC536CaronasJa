@@ -149,8 +149,8 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo GROUP BY c.id";
 				
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
@@ -214,8 +214,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = ? && destino = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE origem = '$origem' && destino = '$destino'";
 				
 				if($data !== '') {
 					$query .= " AND data = ? ";
@@ -278,7 +278,66 @@
 				return false;
 			}
 		}
+		
+			public function findByGrupo($id) {
+			
+			if(parent::checkConnection()) {
+				//query para busca de carona por origem e destino, e data opcional
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE id_grupo = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE id_grupo = '$id'";
+				
+				$query .= " GROUP BY c.id";
+				self::$query .= " GROUP BY c.id";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $id);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($id, $email, $id_grupo, $origem, $destino, $descricao, $data, $hora, $qtd_passageiros, $bagagem, $preco, $nome, $nascimento, $foto, $modelo, $marca);
+					
+					$rows = array();
 
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'id' => $id,
+								'email_dono' => $email,
+								'id_grupo' => $id_grupo,
+								'origem' => $origem,
+								'destino' => $destino,
+								'descricao' => $descricao,
+								'data' => $data,
+								'hora' => $hora,
+								'qtd_passageiros' => $qtd_passageiros,
+								'bagagem' => $bagagem,
+								'preco' => $preco,
+								'nome' => $nome,
+								'nascimento' => $nascimento,
+								'foto' => $foto,
+								'modelo' => $modelo,
+								'marca' => $marca,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
 
 		/**
 		 ** Metodo de select para Caronas
@@ -288,8 +347,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email LEFT JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
