@@ -52,7 +52,7 @@
 	$usuario = new Usuario;
 /** --------------------------------------- **/
 	
-	if(empty($itens['foto']) || $itens['foto'] == '') $itens['foto'] =  'default-photo.png';
+	if(empty($itens['foto']) || $itens['foto'] == '') $itens['foto'] =  'http://icons.iconarchive.com/icons/paomedia/small-n-flat/256/profile-icon.png';
 
 	//salva os atributos
 	$usuario->setAttributes($itens['email'], $itens['senha'], $itens['nome'], $itens['genero'], $itens['nascimento'], $itens['foto'], $itens['celular']);
