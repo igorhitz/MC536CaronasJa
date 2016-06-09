@@ -138,5 +138,48 @@
 			}
 		}
 
+		/**
+		** Método efetua select em InfoModelo e retorna marca dada modelo
+		**/
+		public function findByModelo($modelo) {
+			if (parent::checkConnection()) {
+				//query para busca de marca baseada em modelo
+				$query = "SELECT modelo, marca FROM ".self::tableName()." v WHERE modelo = ?";
+				self::$query = "SELECT modelo, marca FROM ".self::tableName()." v WHERE modelo = ".$modelo;
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('s', $modelo);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($modelo, $marca);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'modelo' => $modelo,
+								'marca' => $marca,
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getAlert('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
+				return false;
+			}
+		}
+
 	}
 ?>
