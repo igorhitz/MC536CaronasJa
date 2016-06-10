@@ -6,14 +6,16 @@
 	
 	$participa = new Participa;
 
+	
+
 	//salva os atributos
 	$participa->setAttributes($id_grupo, $email);
 	
 	if($participa->insert()) {
-		header("Location: ../../../Home/query=".$participa->encodeQuery());
+		header("Location: ../../../meusGrupos/query=".$participa->encodeQuery());
 		exit;
 	} else {
-		header("Location: ../../../Home/stat=falha-insercao");
+		header("Location: ../../../meusGrupos/stat=falha-insercao");
 		exit;
 	}
 

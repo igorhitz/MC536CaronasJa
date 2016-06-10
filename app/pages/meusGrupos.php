@@ -1,4 +1,7 @@
 	<?php
+
+	(isset($_GET['query'])) ? Usuario::showQuery($_GET['query']) : '';
+
 	$participa = new Participa;
 
 	//se existirem buscamos por filtro
