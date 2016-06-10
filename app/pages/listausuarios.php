@@ -6,7 +6,7 @@
 	
 	$listas = array ();
 	//verifica se existe parametros de filtro de busca
-	if(isset($_GET['nome'])) {
+	if(isset($_GET['nome']) && !empty($_GET['nome'])) {
 		$nome = $_GET['nome'];
 		//se existirem buscamos por filtro
 		$listas = $usuario->findByNome($nome);
