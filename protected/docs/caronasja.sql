@@ -1,11 +1,11 @@
 CREATE TABLE usuario (
 	email			VARCHAR(100) NOT NULL,
-	senha			CHAR(64) COMMENT 'Senha criptografada em 64 bytes',
-foto			VARCHAR(255) COMMENT 'Caminho do arquivo da foto',
+	senha			CHAR(64) COMMENT "Senha criptografada em 64 bytes",
+foto			VARCHAR(255) COMMENT "Caminho do arquivo da foto",
 	nome			VARCHAR(50),
 	genero			CHAR(1),
 	nascimento		DATE,
-	celular			VARCHAR(11),
+	celular			VARCHAR(14),
 	PRIMARY KEY 		(email)
 );
 
@@ -74,7 +74,6 @@ REFERENCES usuario (email)  ON DELETE CASCADE ON UPDATE CASCADE,
 	FOREIGN KEY		(modelo)
 REFERENCES info_modelo(modelo)  ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 
 
 CREATE TABLE mensagem (
