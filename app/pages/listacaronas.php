@@ -20,7 +20,7 @@
 		$lista = $caronas->findByGrupo($grupo);
 	} else {
 		//senão obtem lista geral (*)
-		$lista = $caronas->selectAll();
+		$lista = $caronas->selectAll("data, hora");
 	}
 	
 	SiteHandler::getQueryAlert(Carona::$query);

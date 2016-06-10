@@ -222,8 +222,8 @@
 					self::$query .= " AND data = '$data'";
 				}
 
-				$query .= " GROUP BY c.id";
-				self::$query .= " GROUP BY c.id";
+				$query .= " GROUP BY c.id ORDER BY data, hora";
+				self::$query .= " GROUP BY c.id ORDER BY data, hora";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
@@ -286,8 +286,8 @@
 				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE id_grupo = ?";
 				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = u.email JOIN info_modelo m ON v.modelo = m.modelo WHERE id_grupo = '$id'";
 				
-				$query .= " GROUP BY c.id";
-				self::$query .= " GROUP BY c.id";
+				$query .= " GROUP BY c.id ORDER BY data, hora";
+				self::$query .= " GROUP BY c.id ORDER BY data, hora";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
