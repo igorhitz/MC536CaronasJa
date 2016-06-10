@@ -18,9 +18,9 @@ RewriteRule ^([a-z0-9-]+)/email=([a-z0-9-@=.\s]+)?/?'?/?$ index.php?p=$1&email=$
 RewriteRule ^([a-z0-9-]+)/carona=([a-z0-9-@=.\s]+)?/?'?/?$ index.php?p=$1&carona=$2 [NC]
 
 #listagem de caronas
-RewriteRule ^([a-z0-9-]+)/origem=([a-z0-9-@=.\s]+)?/'?/?$ index.php?p=$1&origem=$2 [NC]
-RewriteRule ^([a-z0-9-]+)/origem=([a-z0-9-@=.\s]+)/destino=([a-z0-9-@=.\s]+)?'?/?$ index.php?p=$1&origem=$2&destino=$3 [NC]
-RewriteRule ^([a-z0-9-]+)/origem=([a-z0-9-@=.\s]+)?/destino=([a-z0-9-@=.\s]+)?/data=([a-z0-9-@=.]+)?'?/?$ index.php?p=$1&origem=$2&destino=$3&data=$4 [NC]
+RewriteRule ^([a-z0-9-]+)/origem=([^/.]+)?/'?/?$ index.php?p=$1&origem=$2 [NC]
+RewriteRule ^([a-z0-9-]+)/origem=([^/.]+)/destino=([^/.]+)?'?/?$ index.php?p=$1&origem=$2&destino=$3 [NC]
+RewriteRule ^([a-z0-9-]+)/origem=([^/.]+)?/destino=([^/.]+)?/data=([a-z0-9-@=.]+)?'?/?$ index.php?p=$1&origem=$2&destino=$3&data=$4 [NC]
 
 #passagem de email
 RewriteRule ^([a-z0-9-]+)/email=([a-z0-9-@=.]+)'?/?$ index.php?p=$1&email=$2 [NC]
