@@ -71,11 +71,11 @@
 				<?php 
 					//se forem amigos
 					 if($_SESSION['email'] == $item['email']) { ?>
-					<p>&nbsp;&nbsp;É você!</p>
+					<a class="br">É você!</a> <br> <br>
 					<?php } else { 
 					$amigos = $amizade->findByEmail($_SESSION['email'], $item['email']);
 					if($amizade->rows >= 1): ?>
-					<a class="btn">Vocês são amigos</a> <br> <br>
+					<a class="br">Vocês são amigos</a> <br> <br>
 				<?php elseif($_SESSION['email'] !== $item['email']): ?>
 					<a href="<?= PATH_HREF  ?>action/amigo/<?= $item['email'] ?>/<?= $_SESSION['email'] ?>" class="btn">Adicionar Amigo</a> <br> <br>
 				<?php endif; ?>
