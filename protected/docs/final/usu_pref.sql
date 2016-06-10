@@ -726,10 +726,10 @@ INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquad
 INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitora.ca", "4");
 INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitora.ca", "5");
 INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitora.ca", "7");
-INSERT INTO usuario_preferencias (email, id) VALUES ("12345", "2");
-INSERT INTO usuario_preferencias (email, id) VALUES ("12345", "4");
-INSERT INTO usuario_preferencias (email, id) VALUES ("12345", "6");
-INSERT INTO usuario_preferencias (email, id) VALUES ("12345", "8");
+INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitor.ca", "2");
+INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitor.ca", "4");
+INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitor.ca", "6");
+INSERT INTO usuario_preferencias (email, id) VALUES ("Pellentesque.ut@sociosquadlitor.ca", "8");
 INSERT INTO usuario_preferencias (email, id) VALUES ("et@natoquepenatibuset.co.uk", "2");
 INSERT INTO usuario_preferencias (email, id) VALUES ("et@natoquepenatibuset.co.uk", "3");
 INSERT INTO usuario_preferencias (email, id) VALUES ("et@natoquepenatibuset.co.uk", "6");
