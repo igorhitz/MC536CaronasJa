@@ -44,6 +44,10 @@
 				$nota[0]['avg_nota'] = 0;
 				$nota[0]['count_nota'] = 0;
 			}
+			$pref = new Preferencia;
+			$usupref = new UsuarioPreferencias;
+			$preferencias = $usupref->findByEmail($item['email_dono']);
+			
 			
 		?>
 		<article class = "row">
@@ -53,6 +57,45 @@
 					<h2 class = "username"><?= $item['nome'] ?></h2>
 					<?= $date->diff(date_create($item['nascimento']))->y ?> anos<br>
 					<span class = "dark"><?= $item['marca'] ?> - <?= $item['modelo'] ?></span> <br> <br>
+					<?php 
+						foreach($preferencias as $valor){
+						$descricao = $pref->findByID($valor['id']);
+							switch ($descricao[0]['descricao']){
+								case "Aceito fumantes": ?>
+							<img src = "<?= PATH.'resources/'?>pref-smoking-yes.png" width="30px">
+					<?php
+								break;
+								case "Nao aceito fumantes": ?>
+							<img src =  "<?= PATH.'resources/'?>pref-smoking-no.png" width="30px">
+					<?php
+								break;
+								case "Gosto de ouvir musica":?>
+							<img src = "<?= PATH.'resources/'?>pref-music-yes.png" width="30px"">
+					<?php
+								break;
+								case "Nao gosto de ouvir musica":?>
+							<img src = "<?= PATH.'resources/'?>pref-music-no.png" width="30px"">
+					<?php
+								break;
+								case "Adoro animais":?>
+							<img src = "<?= PATH.'resources/'?>pref-pet-yes.png" width="30px"">
+					<?php
+								break;
+								case "Nao gosto de animais": ?>
+							<img src = "<?= PATH.'resources/'?>pref-pet-no.png" width="30px"">
+					<?php
+								break;
+								case "Gosto de conversar": ?>
+							<img src = "<?= PATH.'resources/'?>pref-bla.png" width="30px"">
+					<?php
+								break;
+								case "Nao gosto de conversar": ?>
+							<img src = "<?= PATH.'resources/'?>pref-blablabla.png" width="30px"">
+					<?php
+								break;
+							}
+						} ?>
+					
 				</div>
 				
 				<div class = "trust">
@@ -67,6 +110,7 @@
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
+				
 				<?php } ?>
 			</div>
 			<div class = "description-box">

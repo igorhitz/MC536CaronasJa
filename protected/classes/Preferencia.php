@@ -147,5 +147,45 @@
 				return false;
 			}
 		}
+		
+		public function findByID($id_usu){
+			if (parent::checkConnection()) {
+				$query = "SELECT descricao FROM ".self::tableName()." WHERE id = ?";
+				self::$query = "SELECT descricao FROM ".self::tableName()." WHERE id = '$id_usu'";
+
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $id_usu);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($descricao);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'descricao' => $descricao
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
+				return false;
+			}
+		}
 	}
 ?>
