@@ -18,7 +18,7 @@
 		$listas = $usuario->findFriends($email);
 	}else if (isset($_GET['carona'])) {
 		$carona = $_GET['carona'];
-		$listas = $participa->findByID($carona);
+		$listas = $usuario->findByCarona($carona);
 	} else {
 		$listas = $usuario->selectAll();
 	}
