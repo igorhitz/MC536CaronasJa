@@ -62,11 +62,12 @@
 						<span class = "light"> - <a href ="<?= PATH_HREF ?>listaAvalia/email=<?= $item['email_dono'] ?>"><?= $nota[0]['count_nota'] ?> avaliações </a> </span>
 					</p>
 				</div>
-				
+				<?php if($item['email_dono'] != $_SESSION['email']){ ?>
 				<div class = "icons">
 					<a href= "<?= PATH_HREF ?>enviarMensagem/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>msg.png" width="30" height="30"></a>
 					<a href= "<?= PATH_HREF ?>enviarAvaliacao/email=<?= $item['email_dono'] ?>"><img src = "<?= PATH.'resources/'?>avaliar.png" width="30" height="30"></a>
 				</div>
+				<?php } ?>
 			</div>
 			<div class = "description-box">
 				<h3 class = "day-time"><?= SiteHandler::formatData($item['data']) ?> às <?= $item['hora'] ?></h3>
