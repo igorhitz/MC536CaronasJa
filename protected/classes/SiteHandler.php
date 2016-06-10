@@ -70,6 +70,9 @@
 					case 'falha-insercao':
 						self::getAlert('Não foi possível inserir o registro.');
 						break;
+					case 'falha-delecao':
+						self::getAlert('Não foi possível deletar o registro.');
+						break;
 				}
 			}
 		}
