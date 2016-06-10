@@ -4848,7 +4848,6 @@ REFERENCES usuario (email)  ON DELETE CASCADE ON UPDATE CASCADE,
 REFERENCES carona (id)  ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO reserva (email, id_carona) VALUES ("Morbi.accumsan.laoreet@aliquetPhasellusfermentum.org", "0");
 INSERT INTO reserva (email, id_carona) VALUES ("Aenean@egestasascelerisque.org", "1");
 INSERT INTO reserva (email, id_carona) VALUES ("non.dui.nec@nullaante.co.uk", "2");
 INSERT INTO reserva (email, id_carona) VALUES ("aliquet@Suspendissealiquet.co.uk", "3");
@@ -5648,6 +5647,7 @@ INSERT INTO reserva (email, id_carona) VALUES ("vel.sapien@magna.org", "796");
 INSERT INTO reserva (email, id_carona) VALUES ("auctor@euturpisNulla.co.uk", "797");
 INSERT INTO reserva (email, id_carona) VALUES ("nulla@magnisdis.net", "798");
 INSERT INTO reserva (email, id_carona) VALUES ("lectus.sit@Nunc.ca", "799");
+INSERT INTO reserva (email, id_carona) VALUES ("Morbi.accumsan.laoreet@aliquetPhasellusfermentum.org", "800");
 
 
 CREATE TABLE amizade (
