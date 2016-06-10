@@ -379,6 +379,53 @@
 				return false;
 			}
 		}
+
+		public function findByCarona($id){
+			
+			if (parent::checkConnection()) {
+				//query para busca de usuários participantes de uma certa carona
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN reserva r ON u.email = r.email WHERE r.id_carona = ?";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." u JOIN reserva r ON u.email = r.email WHERE r.id_carona = '$id'";
+				
+				//executa a query com prepared statement
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $id);
+					$stmt->execute();
+					$stmt->store_result(); //armazena os dados de execução em memória
+					$stmt->bind_result($email, $nome, $genero, $nascimento, $foto, $celular);
+					
+					$rows = array();
+
+					if($stmt->num_rows >= 1) {
+
+						//salva o numero de linhas 
+						$this->rows = $stmt->num_rows;
+
+						//para cada linha retornada
+						while($row = $stmt->fetch()) {
+							//adiciona no vetor rows[]
+							$rows[] = array(
+								'email' => $email,
+								'nome' => $nome,
+								'genero' => $genero,
+								'nascimento' => $nascimento,
+								'foto' => $foto,
+								'celular' => $celular
+								);
+						}
+						return $rows;
+					} else {
+						$this->rows = 0;
+						return $rows;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}
+		}
 		
 	}
 ?>
