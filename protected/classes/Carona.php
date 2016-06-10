@@ -144,7 +144,7 @@
 		 ** Metodo de select para Caronas
 		 ** return @var mixed tupla do banco
 		**/
-		public function selectAll($orderBy='') {
+		public function selectAll($orderBy='', $limit='') {
 			
 			if(parent::checkConnection()) {
 				//query para insercao generica
@@ -155,6 +155,11 @@
 				if($orderBy !== '') {
 					$query .= " ORDER BY ".$orderBy;
 					self::$query .= " ORDER BY ".$orderBy;
+				}
+
+				if($limit !== '') {
+					$query .= " LIMIT ".$limit;
+					self::$query .= " LIMIT ".$limit;
 				}
 	
 				//executa a query com prepared statement
