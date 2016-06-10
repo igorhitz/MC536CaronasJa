@@ -347,8 +347,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id";
-				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id";
+				$query = "SELECT ".self::getFields()." FROM ".self::tableName(). " c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = ? GROUP BY c.id ORDER BY c.data ASC";
+				self::$query = "SELECT ".self::getFields()." FROM ".self::tableName()." c JOIN usuario u ON c.email = u.email JOIN veiculo v ON v.email_dono = c.email JOIN info_modelo m ON v.modelo = m.modelo WHERE c.email = '$email_motorista' GROUP BY c.id ORDER BY c.data ASC";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {

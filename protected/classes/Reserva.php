@@ -147,8 +147,8 @@
 			
 			if(parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName(). " r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = ?";
-				self::$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName()." r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = '$email_passageiro'";
+				$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName(). " r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = ? ORDER BY c.data ASC";
+				self::$query = "SELECT r.id_carona, r.email, c.origem, c.destino, c.descricao, c.data, c.hora, c.preco, c.qtd_passageiros, c.bagagem, u.nome FROM ".self::tableName()." r JOIN carona c ON c.id = r.id_carona JOIN usuario u ON u.email = c.email WHERE r.email = '$email_passageiro' ORDER BY c.data ASC";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
