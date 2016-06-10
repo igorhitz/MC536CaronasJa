@@ -77,10 +77,8 @@
 			<div class="form-line">
 				<div class = "col6">
 					<label>Grupo:</label>
-					<?php if (!empty($lista_nomes)) {
-					?>
 					<select name="id_grupo">
-						<option value="nenhum">Nenhum</option>
+						<option value="">Nenhum</option>
 						<?php 	
 						foreach($lista_nomes as $item) {
 						?>
@@ -89,14 +87,13 @@
 						}
 						?>
 					</select>
-					<?php } else {?>
-						<p>Você precisa <a href="<?= PATH_HREF ?>buscaGrupos">participar de um grupo</a> se deseja postar a carona nele.</p>
+					<?php if (empty($lista_nomes)) { ?>
+						<p value="id_grupo">Você pode <a href="<?= PATH_HREF ?>buscaGrupos">participar de um grupo</a> se desejar postar a carona nele.</p>
 					<?php
 					}
 					?>
 				</div>
 			</div>
-			
 			
 			<div class="form-line">
 				<div class="col6">
