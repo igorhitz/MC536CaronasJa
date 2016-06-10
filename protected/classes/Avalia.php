@@ -106,8 +106,8 @@
 		public function ranking() {
 			if (parent::checkConnection()) {
 				// query para fazer uma lista de usuarios e suas respectivas notas, em ordem decrescente de notas
-				$query = "SELECT u.nome, AVG(a.nota) FROM ".self::tableName()." a JOIN usuario u ON a.email_avaliado = u.email GROUP BY a.email_avaliado ORDER BY AVG(a.nota) DESC";
-				self::$query = "SELECT u.nome, AVG(a.nota) FROM ".self::tableName()." a JOIN usuario u ON a.email_avaliado = u.email GROUP BY a.email_avaliado ORDER BY AVG(a.nota) DESC";
+				$query = "SELECT u.nome, AVG(a.nota) FROM ".self::tableName()." a JOIN usuario u ON a.email_avaliado = u.email GROUP BY a.email_avaliado ORDER BY AVG(a.nota) DESC LIMIT 10";
+				self::$query = "SELECT u.nome, AVG(a.nota) FROM ".self::tableName()." a JOIN usuario u ON a.email_avaliado = u.email GROUP BY a.email_avaliado ORDER BY AVG(a.nota) DESC LIMIT 10";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
