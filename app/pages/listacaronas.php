@@ -62,35 +62,35 @@
 						$descricao = $pref->findByID($valor['id']);
 							switch ($descricao[0]['descricao']){
 								case "Aceito fumantes": ?>
-							<img src = "<?= PATH.'resources/'?>pref-smoking-yes.png" width="30px">
+							<img src = "<?= PATH.'resources/'?>pref-smoking-yes.png" width="30px" title="Aceito fumantes">
 					<?php
 								break;
 								case "Nao aceito fumantes": ?>
-							<img src =  "<?= PATH.'resources/'?>pref-smoking-no.png" width="30px">
+							<img src =  "<?= PATH.'resources/'?>pref-smoking-no.png" width="30px" title="Não aceito fumantes">
 					<?php
 								break;
 								case "Gosto de ouvir musica":?>
-							<img src = "<?= PATH.'resources/'?>pref-music-yes.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-music-yes.png" width="30px" title="Gosto de ouvir música">
 					<?php
 								break;
 								case "Nao gosto de ouvir musica":?>
-							<img src = "<?= PATH.'resources/'?>pref-music-no.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-music-no.png" width="30px" title="Não gosto de ouvir música">
 					<?php
 								break;
 								case "Adoro animais":?>
-							<img src = "<?= PATH.'resources/'?>pref-pet-yes.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-pet-yes.png" width="30px" title="Adoro animais">
 					<?php
 								break;
 								case "Nao gosto de animais": ?>
-							<img src = "<?= PATH.'resources/'?>pref-pet-no.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-pet-no.png" width="30px" title="Não gosto de animais no veículo">
 					<?php
 								break;
 								case "Gosto de conversar": ?>
-							<img src = "<?= PATH.'resources/'?>pref-bla.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-bla.png" width="30px" title="Gosto de conversar">
 					<?php
 								break;
 								case "Nao gosto de conversar": ?>
-							<img src = "<?= PATH.'resources/'?>pref-blablabla.png" width="30px"">
+							<img src = "<?= PATH.'resources/'?>pref-blablabla.png" width="30px" title="Não gosto de conversar">
 					<?php
 								break;
 							}
