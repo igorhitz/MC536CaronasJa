@@ -43,7 +43,10 @@
 /** --------------------------------------- **/
 	
 	$login = new Login;
-	$login->setAttributes($itens['email'], $itens['senha']);
+	//echo Usuario::codificaSenha($itens['senha']).'<br>';
+
+	//exit;
+	$login->setAttributes($itens['email'], Usuario::codificaSenha($itens['senha']));
 	if($login->auth()) {
 		header("Location: ../Home");
 		exit;

@@ -94,12 +94,9 @@
 		 ** return @var string senha encriptada
 		**/
 		public static function codificaSenha($senha) {
-			$options = [
-			    'cost' => 12,
-			];
-			return password_hash($senha, PASSWORD_DEFAULT, $options);
+			$salt = 'JiJy._//wERVictorious-==';
+			return sha1($senha).$salt;
 		}
-
 
 
 		/**
@@ -111,11 +108,11 @@
 			if(parent::checkConnection()) {
 				//query para insercao generica
 				$query = "INSERT INTO ".self::tableName()."(`email`, `senha`, `foto`, `nome`, `genero`, `nascimento`, `celular`) VALUES (?,?,?,?,?,?,?)";
-				self::$query = "INSERT INTO `usuario`(`email`, `senha`, `foto`, `nome`, `genero`, `nascimento`, `celular`) VALUES ('".$this->email."', '".$this->senha."', '".$this->foto."', '".$this->nome."', '".$this->genero."', '".$this->nascimento."', '".$this->celular."')";
+				self::$query = "INSERT INTO `usuario`(`email`, `senha`, `foto`, `nome`, `genero`, `nascimento`, `celular`) VALUES ('".$this->email."', '".self::codificaSenha($this->senha)."', '".$this->foto."', '".$this->nome."', '".$this->genero."', '".$this->nascimento."', '".$this->celular."')";
 				
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
-					$stmt->bind_param('sssssss', $this->email, $this->senha, $this->foto, $this->nome, $this->genero, $this->nascimento, $this->celular);
+					$stmt->bind_param('sssssss', $this->email, self::codificaSenha($this->senha), $this->foto, $this->nome, $this->genero, $this->nascimento, $this->celular);
 					$stmt->execute();
 					return true;
 				} else {
