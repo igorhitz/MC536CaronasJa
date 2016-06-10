@@ -1,6 +1,8 @@
 <?php
 	class Veiculo extends DBOp {
 		
+		public $id;
+
 		public $modelo;
 		
 		public $conforto;
@@ -20,7 +22,7 @@
 		}
 		
 		public static function getFields() {
-			return 'v.modelo, v.conforto, v.categoria, v.cor';
+			return 'v.id, v.modelo, v.conforto, v.categoria, v.cor';
 		}
 
 		public static function checkAttributes($attributes) {
@@ -36,7 +38,7 @@
 			return true;
 		}
 
-		public function setAttributes($modelo=null, $conforto=null, $categoria=null, $cor=null, $email_dono=null) {
+		public function setAttributes($modelo=null, $conforto=null, $categoria=null, $cor=null, $email_dono=null, $id=null) {
 			if(!empty($modelo)) {
 				$this->modelo = $modelo;
 			}
@@ -51,6 +53,9 @@
 			}
 			if(!empty($email_dono)) {
 				$this->email_dono = $email_dono;
+			}
+			if(!empty($id)) {
+				$this->id = $id;
 			}
 		}
 
@@ -135,7 +140,7 @@
 					$stmt->bind_param('s', $email);
 					$stmt->execute();
 					$stmt->store_result(); //armazena os dados de execução em memória
-					$stmt->bind_result($modelo, $conforto, $categoria, $cor);
+					$stmt->bind_result($id, $modelo, $conforto, $categoria, $cor);
 					
 					$rows = array();
 
@@ -147,6 +152,7 @@
 						while($row = $stmt->fetch()) {
 							//adiciona no vetor rows[]
 							$rows[] = array(
+								'id' => $id,
 								'modelo' => $modelo,
 								'conforto' => $conforto,
 								'categoria' => $categoria,
@@ -165,6 +171,30 @@
 				parent::getAlert('Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.', 'error');
 				return false;
 			}
+		}
+
+
+		public function delete() {
+			
+			if(parent::checkConnection()){
+				$query = "DELETE FROM ".self::tableName()." WHERE `id`=?";
+				self::$query = "DELETE FROM ".self::tableName()." WHERE `id`=$this->id";
+				
+				if($stmt = $this->con->prepare($query)) {
+					$stmt->bind_param('i', $this->id);
+					$stmt->execute();
+					if($stmt->affected_rows == 1) {
+						return true;
+					} else {
+						return false;
+					}
+				} else {
+					return false;
+				}
+			} else {
+				parent::getMsg('error', 'Não existe uma conexão com o banco. Inicialize uma antes de realizar essa operação.');
+				return false;
+			}	
 		}
 
 	}

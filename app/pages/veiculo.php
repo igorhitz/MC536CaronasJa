@@ -24,13 +24,10 @@
 			<td><?= $usuarioVeiculo[0]['conforto'] ?></td>
 		</tr>
 	</table>
-	<form class="default-form" method="post">
-		<fieldset>
-			<div>
-				<a href="<?= PATH_HREF ?>Config" class="btnL" role="button">Editar Veículo</a>
-			</div>
-		</fieldset>
-	</form>
+	
+	<a href="<?= PATH_HREF ?>Config" class="btnL" role="button">Editar Veículo</a>
+	<a href="<?= PATH_HREF ?>action/deleteVeiculo/id=<?= $usuarioVeiculo[0]['id'] ?>" class="btnL redBtn" role="confirm">Excluir Veículo</a>
+
 	<?php
 	} else {
 	?>
