@@ -143,9 +143,15 @@ footer ul li {display: inline; float: right; font-size: 8px; margin-right: 20px;
 /* Headings */
 h2 {text-align:center;}
 
+.totalbusca {width: 100%; float: left;}
 
 /* Listagem de mensagens */
 table.show-results {float: left; width: 100%;}
 table.show-results tr {text-align: center;}
 table.show-results th {background: #666; color: #FFF;}
 table.show-results tr:nth-child(odd)  {background: #F1F1F1;}
+
+.show-unique-result {margin-top: -40px;}
+figure {float: left; width: 80px; }
+.show-unique-result figure img {width: 100%; border-radius: 50%;}
+.show-unique-result .show-info {float: left; margin-left: 20px; margin-top: 10px;}
