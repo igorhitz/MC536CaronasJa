@@ -69,6 +69,8 @@ form.default-form input:focus, form.default-form textarea:focus {box-shadow: 0 0
 .btn2{height:30px; text-decoration: none; background-color: #f97736; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 .btnL {height:20px; text-decoration: none; background-color: #4CAF50; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 .btnL:hover {color: #4B4B4B;}
+.redBtn {background:#982F41; color: #FFF;}
+.redBtn:hover {color: #FFF;}
 .br {height:20px; text-decoration: none; background-color: #f97736; cursor: pointer; border-radius: 8px; border: none; color: white; padding: 5px 14px; text-align: center; text-decoration: none; display: inline-block; font-size: 14px;}
 
 /* Listagem */
