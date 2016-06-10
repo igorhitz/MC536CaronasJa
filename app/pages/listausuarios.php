@@ -16,7 +16,10 @@
 	}else if (isset($_GET['email'])){
 		$email = $_GET['email'];
 		$listas = $usuario->findFriends($email);
-	}else{
+	}else if (isset($_GET['carona'])) {
+		$carona = $_GET['carona'];
+		$listas = $participa->findByID($carona);
+	} else {
 		$listas = $usuario->selectAll();
 	}
 	
