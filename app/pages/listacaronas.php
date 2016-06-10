@@ -86,11 +86,11 @@
 					<?php
 								break;
 								case "Gosto de conversar": ?>
-							<img src = "<?= PATH.'resources/'?>pref-bla.png" width="30px" title="Gosto de conversar">
+							<img src = "<?= PATH.'resources/'?>pref-blablabla.png" width="30px" title="Gosto de conversar">
 					<?php
 								break;
 								case "Nao gosto de conversar": ?>
-							<img src = "<?= PATH.'resources/'?>pref-blablabla.png" width="30px" title="Não gosto de conversar">
+							<img src = "<?= PATH.'resources/'?>pref-bla.png" width="30px" title="Não gosto de conversar">
 					<?php
 								break;
 							}
