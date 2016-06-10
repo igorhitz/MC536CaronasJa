@@ -155,3 +155,5 @@ table.show-results tr:nth-child(odd)  {background: #F1F1F1;}
 figure {float: left; width: 80px; }
 .show-unique-result figure img {width: 100%; border-radius: 50%;}
 .show-unique-result .show-info {float: left; margin-left: 20px; margin-top: 10px;}
+
+.reply {float: left; width: 100%;}
