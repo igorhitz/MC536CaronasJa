@@ -188,8 +188,8 @@
 			
 			if (parent::checkConnection()) {
 				//query para busca de carona por origem e destino, e data opcional
-				$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliado WHERE a.email_avaliado = ?";
-				self::$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliado WHERE a.email_avaliado = '$email_avaliado'";
+				$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = ?";
+				self::$query = "SELECT ".self::getFields().", u.foto, u.nome FROM ".self::tableName()." a JOIN usuario u ON u.email = a.email_avaliador WHERE a.email_avaliado = '$email_avaliado'";
 
 				//executa a query com prepared statement
 				if($stmt = $this->con->prepare($query)) {
