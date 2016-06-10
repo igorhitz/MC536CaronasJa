@@ -13,7 +13,7 @@
 	<br>
 	
 	<div>
-	<h2>Olá, <?= $listaUsuario['email'] ?>!</h2>
+	<h2>Olá, <?= $listaUsuario['nome'] ?>!</h2>
 	<br>
 	</div>
 	<div class="lefloat">
